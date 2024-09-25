@@ -3524,6 +3524,38 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   });
+  document.getElementById('select-part').addEventListener('change', function (event) {
+    switch (event.target.value) {
+      case "butt-cap":
+        document.getElementById('butt-sleeve').style.display = "none";
+        document.getElementById('butt-cap').style.display = "block";
+        break;
+      case "butt-sleeve":
+        document.getElementById('butt-cap').style.display = "none";
+        document.getElementById('butt-sleeve').style.display = "block";
+        break;
+      default:
+        break;
+    }
+  });
+  document.getElementById('butt-cap-material').addEventListener('change', function (event) {
+    var stainSection = document.getElementById('butt-cap-stain');
+    var paintSection = document.getElementById('butt-cap-paint');
+    switch (event.target.value) {
+      case "butt-cap-stain":
+        paintSection.classList.add('d-none');
+        stainSection.classList.remove('d-none');
+        stainSection.classList.add('d-block');
+        break;
+      case "butt-cap-paint":
+        stainSection.classList.add('d-none');
+        paintSection.classList.remove('d-none');
+        paintSection.classList.add('d-flex');
+        break;
+      default:
+        break;
+    }
+  });
 });
 
 /***/ }),

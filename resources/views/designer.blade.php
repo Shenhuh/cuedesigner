@@ -7,12 +7,23 @@
 
     #renderer {
         border: 1px solid black;
-        width: 1024px;
-        height: 1024px;
+        width: 100vh;
+        height: 100vh;
         position: relative;
     }
     .canvas-container:nth-of-type(2) {
       display: none;
+    }
+    .texture-option img {
+    border: 2px solid #ccc;
+    padding: 5px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+    .texture-option img:hover {
+        transform: scale(1.05);
+        border-color: #000;
     }
 
  
@@ -64,25 +75,286 @@
                 <li><a class="dropdown-item" href="#">Sign out</a></li>
             </ul>
         </div>  
-        </div>
-    <div class="d-flex" style="height: 100vh;">
+    </div>
 
-        <div class="bg-light" id="panel-tools" style="width: 20rem; height: 100vh;">
-            <h2 class="p-3">Panel Title</h2>
-            <p class="p-3">Content goes here...</p>
+    <div class="d-flex">
+
+        <div class="bg-white" id="panel-tools" style="width: 25rem; ">
+            <div class="container m-2">
+
+                <label for="select-part" class="form-label">Select Part:</label>
+                <select id="select-part">
+                    <option value="butt-cap">Butt Cap</option>
+                    <option value="butt-sleeve">Butt Sleeve</option>
+                    <option>Butt Wrap</option>
+                    <option>Forearm</option>
+    
+                </select>
+                <div id="content-panel" class="bg-white">
+                    <div id="butt-cap" class="content">
+                        <!-- <h4>Wood Type</h4>
+                        <label for="design" class="form-label">Choose Wood Type:</label>
+                        <select class="form-select">
+                            <option>Maple</option>
+                            <option>Ebony</option>
+                            <option>Rosewood</option>
+                            <option>Cocobolo</option>
+    
+                        </select> -->
+    
+                        <h4>Butt Cap</h4>
+                        <label for="design" class="form-label">Choose Design/Material:</label>
+                        <select class="form-select">
+                            <option>Black</option>
+                            <option>White</option>
+                            <option>Bone</option>
+                            <option>Stainless Steel</option>
+    
+                        </select>
+    
+                        <button class="btn btn-primary">Engraving</button>
+                    </div>
+                    <div id="butt-sleeve" class="content" style="display: none;">
+                        
+                        <h4>Butt Sleeve</h4>
+                      
+    
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                   Material
+                                </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <label for="design" class="form-label">Choose Design/Material:</label>
+                                        <select id="butt-cap-material" class="form-control form-select mr-4">
+                                            <option value="butt-cap-stain">Stain</option>
+                                            <option value="butt-cap-paint">Paint</option>
+                                        </select>
+                                    </div>
+                                    <div class="container mt-4">
+                                        <div id="butt-cap-stain" class="row load-stain d-flex overflow-y-auto mt-4" style="height: 350px;">
+                                            <!-- Image 1 -->
+                                            <div class="col-4">
+                                                <div class="texture-option">
+                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Stain 1" class="img-fluid" onclick="selectTexture('stain1')">
+                                                    <p class="text-center">Stain 1</p>
+                                                </div>
+                                            </div>
+                                            <!-- Image 2 -->
+                                            <div class="col-4">
+                                                <div class="texture-option">
+                                                    <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Stain 2" class="img-fluid" onclick="selectTexture('stain2')">
+                                                    <p class="text-center">Stain 2</p>
+                                                </div>
+                                            </div>
+                                            <!-- Image 3 -->
+                                            <div class="col-4">
+                                                <div class="texture-option">
+                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Stain 3" class="img-fluid" onclick="selectTexture('stain3')">
+                                                    <p class="text-center">Stain 3</p>
+                                                </div>
+                                            </div>
+                                            <!-- Image 4 -->
+                                            <div class="col-4">
+                                                <div class="texture-option">
+                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Paint 1" class="img-fluid" onclick="selectTexture('paint1')">
+                                                    <p class="text-center">Paint 1</p>
+                                                </div>
+                                            </div>
+                                            <!-- Image 5 -->
+                                            <div class="col-4">
+                                                <div class="texture-option">
+                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Paint 2" class="img-fluid" onclick="selectTexture('paint2')">
+                                                    <p class="text-center">Paint 2</p>
+                                                </div>
+                                            </div>
+                                            <!-- Image 6 -->
+                                            <div class="col-4">
+                                                <div class="texture-option">
+                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Paint 3" class="img-fluid" onclick="selectTexture('paint3')">
+                                                    <p class="text-center">Paint 3</p>
+                                                </div>
+                                            </div>
+                                            <!-- Image 7 -->
+                                            <div class="col-4">
+                                                <div class="texture-option">
+                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Custom 1" class="img-fluid" onclick="selectTexture('custom1')">
+                                                    <p class="text-center">Custom 1</p>
+                                                </div>
+                                            </div>
+                                            <!-- Image 8 -->
+                                            <div class="col-4">
+                                                <div class="texture-option">
+                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Custom 2" class="img-fluid" onclick="selectTexture('custom2')">
+                                                    <p class="text-center">Custom 2</p>
+                                                </div>
+                                            </div>
+                                            <!-- Image 9 -->
+                                            <div class="col-4">
+                                                <div class="texture-option">
+                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Custom 3" class="img-fluid" onclick="selectTexture('custom3')">
+                                                    <p class="text-center">Custom 3</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div id="butt-cap-paint" class="row load-paint d-none overflow-y-auto mt-4" style="height: 350px;">
+                                            <!-- Image 1 -->
+                                            <div class="col-4">
+                                                <div class="texture-option">
+                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Stain 1" class="img-fluid" onclick="selectTexture('stain1')">
+                                                    <p class="text-center">Stain 1</p>
+                                                </div>
+                                            </div>
+                                            <!-- Image 2 -->
+                                            <div class="col-4">
+                                                <div class="texture-option">
+                                                    <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Stain 2" class="img-fluid" onclick="selectTexture('stain2')">
+                                                    <p class="text-center">sdain 2</p>
+                                                </div>
+                                            </div>
+                                            <!-- Image 3 -->
+                                            <div class="col-4">
+                                                <div class="texture-option">
+                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Stain 3" class="img-fluid" onclick="selectTexture('stain3')">
+                                                    <p class="text-center">Stdin 3</p>
+                                                </div>
+                                            </div>
+                                            <!-- Image 4 -->
+                                            <div class="col-4">
+                                                <div class="texture-option">
+                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Paint 1" class="img-fluid" onclick="selectTexture('paint1')">
+                                                    <p class="text-center">Paint 1</p>
+                                                </div>
+                                            </div>
+                                            <!-- Image 5 -->
+                                            <div class="col-4">
+                                                <div class="texture-option">
+                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Paint 2" class="img-fluid" onclick="selectTexture('paint2')">
+                                                    <p class="text-center">Paint 2</p>
+                                                </div>
+                                            </div>
+                                            <!-- Image 6 -->
+                                            <div class="col-4">
+                                                <div class="texture-option">
+                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Paint 3" class="img-fluid" onclick="selectTexture('paint3')">
+                                                    <p class="text-center">Paint 3</p>
+                                                </div>
+                                            </div>
+                                            <!-- Image 7 -->
+                                            <div class="col-4">
+                                                <div class="texture-option">
+                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Custom 1" class="img-fluid" onclick="selectTexture('custom1')">
+                                                    <p class="text-center">Custom 1</p>
+                                                </div>
+                                            </div>
+                                            <!-- Image 8 -->
+                                            <div class="col-4">
+                                                <div class="texture-option">
+                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Custom 2" class="img-fluid" onclick="selectTexture('custom2')">
+                                                    <p class="text-center">Custom 2</p>
+                                                </div>
+                                            </div>
+                                            <!-- Image 9 -->
+                                            <div class="col-4">
+                                                <div class="texture-option">
+                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Custom 3" class="img-fluid" onclick="selectTexture('custom3')">
+                                                    <p class="text-center">Custom 3</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                           
+                                </div>
+
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Shapes
+                                </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <label for="design" class="form-label">Select a shape:</label>
+                                        <select class="form-select">
+                                            <option>Rectangle</option>
+                                            <option>Circle</option>
+                                            <option>Heart</option>
+                                            <option>Diamond</option>
+                                        </select>
+
+
+
+                                        <div class="row mt-4">
+                                            <div class="col">
+                                                <label for="stroke-color" class="form-label">Stroke Color</label>
+                                                <input type="color" class="form-control form-control-color" id="stroke-color" value="#CCCCCC">
+                                            </div>
+                                            <div class="col">
+                                                <label for="fill-color" class="form-label">Fill Color</label>
+                                                <input type="color" class="form-control form-control-color" id="fill-color" value="#CCCCCC">
+                                            </div>
+                                        </div>
+                    
+                                        <label for="stroke-width" class="form-label">Stroke Width</label>
+                                        <input type="number" class="form-control form-control" id="stroke-width" value="8">
+                                        
+                                        <button class="btn btn-primary mt-4 w-100">Add Shape</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Engraving
+                                </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    Inlays
+                                </button>
+                                </h2>
+                                <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                    </div>
+                    <div id="shapes" class="content" style="display: none;">Content for Tab 3</div>
+                </div>
+            </div>
         </div>
       
-    <div class="bg-light" style="flex-grow: 1; overflow-y: auto; height: 100vh; overflow-x:hidden;">
-        <canvas id="canvas1" class="border" height="4096" width="447"></canvas>
-    </div>
-    <div class="bg-light" style="flex-grow: 1; overflow-y: auto; height: 100vh; overflow-x:hidden;">
-
-    <div id="renderer" class="border">
-            <!-- Your canvas/renderer here -->
+        <div class="bg-light" style="flex-grow: 1; overflow-y: auto; height: 100vh; overflow-x:hidden;">
+            <canvas id="canvas1" class="border" height="4096" width="447"></canvas>
         </div>
-    </div>
 
-</div>
+
+        <div class="bg-light" style="flex-grow: 1; overflow-y: auto; height: 100vh; overflow-x:hidden;">
+            <div id="renderer" class="border"></div>
+        </div>
+
+    </div>
 
 </div>
 

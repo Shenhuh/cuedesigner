@@ -3138,8 +3138,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // Load the GLTF model
   loader.load('assets/supppp-orig.glb', function (gltf) {
     var model = gltf.scene;
-    model.scale.set(1, 1, 1);
     model.position.set(0, 0, 0);
+    model.scale.set(4, 4, 4);
     // model.rotation.z = 120 * (Math.PI / 180); // Convert degrees to radians
 
     // Create a THREE.CanvasTexture from the second Fabric.js canvas

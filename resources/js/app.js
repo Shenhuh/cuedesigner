@@ -6,7 +6,8 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 
 require('./tools');
 require('./refabric');
+require('./selectStain');
+require('./selectPaint');
 document.addEventListener('DOMContentLoaded', function(){
-      // Initialize Bootstrap popover
   
 })

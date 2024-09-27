@@ -144,7 +144,7 @@
                                             <!-- Image 1 -->
                                             <div class="col-4">
                                                 <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Stain 1" class="img-fluid" onclick="selectTexture('stain1')">
+                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Stain 1" class="img-fluid stain" data-id="1">
                                                     <p class="text-center">Stain 1</p>
                                                 </div>
                                             </div>

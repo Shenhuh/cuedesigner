@@ -3030,9 +3030,9 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__(/*! ./tools */ "./resources/js/tools.js");
 __webpack_require__(/*! ./refabric */ "./resources/js/refabric.js");
-document.addEventListener('DOMContentLoaded', function () {
-  // Initialize Bootstrap popover
-});
+__webpack_require__(/*! ./selectStain */ "./resources/js/selectStain.js");
+__webpack_require__(/*! ./selectPaint */ "./resources/js/selectPaint.js");
+document.addEventListener('DOMContentLoaded', function () {});
 
 /***/ }),
 
@@ -3049,7 +3049,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _refabric_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../refabric.js */ "./resources/js/refabric.js");
 
-function addImageToPart(image, width, height, top, left, id) {
+function addImageToPart(image, width, height, top, left, id, part) {
   setTimeout(function () {
     fabric.Image.fromURL(image, function (loadedImg) {
       var img = loadedImg;
@@ -3057,6 +3057,7 @@ function addImageToPart(image, width, height, top, left, id) {
         left: left,
         top: top,
         id: id,
+        part: part,
         // width: 447,
         // height: 200,
         scaleX: width / loadedImg.width,
@@ -3386,6 +3387,54 @@ function updateTexture() {
     texture.needsUpdate = true;
   }
 }
+
+/***/ }),
+
+/***/ "./resources/js/selectPaint.js":
+/*!*************************************!*\
+  !*** ./resources/js/selectPaint.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _designer_addImageToPart_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./designer/addImageToPart.js */ "./resources/js/designer/addImageToPart.js");
+
+document.addEventListener('DOMContentLoaded', function () {
+  var paint = document.querySelectorAll('.paint');
+  paint.forEach(function (tool) {
+    tool.addEventListener('click', function () {
+      paint.forEach(function (t) {
+        _designer_addImageToPart_js__WEBPACK_IMPORTED_MODULE_0__.addImageToPart(t.src, 400, 400, 0, 0, 'paint', t.dataset.part);
+        t.style.borderColor = "blue";
+      });
+    });
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/selectStain.js":
+/*!*************************************!*\
+  !*** ./resources/js/selectStain.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _designer_addImageToPart_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./designer/addImageToPart.js */ "./resources/js/designer/addImageToPart.js");
+
+document.addEventListener('DOMContentLoaded', function () {
+  var stain = document.querySelectorAll('.stain');
+  stain.forEach(function (tool) {
+    tool.addEventListener('click', function () {
+      stain.forEach(function (t) {
+        _designer_addImageToPart_js__WEBPACK_IMPORTED_MODULE_0__.addImageToPart(t.src, 400, 400, 0, 0, 'stain', t.dataset.part);
+        t.style.borderColor = "blue";
+      });
+    });
+  });
+});
 
 /***/ }),
 

@@ -309,7 +309,7 @@
                                         <label for="stroke-width" class="form-label">Stroke Width</label>
                                         <input type="number" class="form-control form-control" id="stroke-width" value="8">
                                         
-                                        <button class="btn btn-primary mt-4 w-100">Add Shape</button>
+                                        <button id="add-shape" class="btn btn-primary mt-4 w-100">Add Shape</button>
                                     </div>
                                 </div>
                             </div>

@@ -3011,6 +3011,35 @@ function withinMaxClamp(min, value, max) {
 
 /***/ }),
 
+/***/ "./resources/js/addShape.js":
+/*!**********************************!*\
+  !*** ./resources/js/addShape.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _refabric__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./refabric */ "./resources/js/refabric.js");
+
+document.addEventListener('DOMContentLoaded', function () {
+  document.getElementById('add-shape').addEventListener('click', function (event) {
+    // const polygonData = event.dataset.polygon;
+    var strokeColor = document.getElementById('stroke-color').value;
+    var fillColor = document.getElementById('fill-color').value;
+    var strokeWidth = document.getElementById('stroke-width').value;
+    var polygon = new fabric.Polygon([polygonData], {
+      left: 0,
+      top: 0,
+      fill: fillColor,
+      strokeColor: strokeColor,
+      strokeWidth: strokeWidth
+    });
+    _refabric__WEBPACK_IMPORTED_MODULE_0__.fabricCanvas1.add(polygon);
+  });
+});
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -3028,10 +3057,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-__webpack_require__(/*! ./tools */ "./resources/js/tools.js");
 __webpack_require__(/*! ./refabric */ "./resources/js/refabric.js");
+__webpack_require__(/*! ./tools */ "./resources/js/tools.js");
 __webpack_require__(/*! ./selectStain */ "./resources/js/selectStain.js");
 __webpack_require__(/*! ./selectPaint */ "./resources/js/selectPaint.js");
+__webpack_require__(/*! ./addShape */ "./resources/js/addShape.js");
 document.addEventListener('DOMContentLoaded', function () {});
 
 /***/ }),

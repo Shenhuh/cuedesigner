@@ -612,7 +612,6 @@
                                 </h2>
                                 <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        <input type="text" name="" id="text-to-add" class="form-control">
                                         <label for="select-font-style" class="form-label mt-3">Font Style:</label>
                                         <select class="form-control form-select" name="" id="select-font-style">
                                             <option value="Times New Roman">Times New Roman</option>

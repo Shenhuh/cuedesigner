@@ -1,31 +1,31 @@
 import { fabricCanvas1 } from "./refabric";
 
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('upload-image').addEventListener('click', function (e) {
+        var clipart = document.getElementById('upload-clipart').files[0]; // Move this inside the click event
+        if (!clipart) {
+            alert('Please select an image file.');
+            return;
+        }
 
-document.addEventListener('DOMContentLoaded', function(){
-    document.getElementById('upload-image').addEventListener('change', function (e) {
         var reader = new FileReader();
 
-        reader.onload = function (event) {
-          var image = new Image();
-          image.src = event.target.result;
+        reader.onload = function(event) {
+            var width = 200;
+            var height = 200;
+            var top = 0;
+            var left = 0;
 
-          var width = 200;
-          var height = 200;
-          var top = event.dataset.top;
-          var left = event.dataset.left;
-          
-     
-          image.onload = function () {
-            uploadImage(image, top, left, width, height);
-          }
-        }
-     
-        reader.readAsDataURL(e.target.files[0]);
+            // Use the data URL directly
+            uploadImage(event.target.result, top, left, width, height);
+        };
+
+        reader.readAsDataURL(clipart); // Read the file as a data URL
     });
 });
 
-function uploadImage(image, top, left, width, height, design){
-    fabric.Image.fromURL(image, function(loadedImg) {
+function uploadImage(imageURL, top, left, width, height, design) {
+    fabric.Image.fromURL(imageURL, function(loadedImg) {
         var img = loadedImg;
 
         img.set({
@@ -39,4 +39,3 @@ function uploadImage(image, top, left, width, height, design){
         fabricCanvas1.add(img);
     });
 }
-

@@ -3713,24 +3713,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _refabric__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./refabric */ "./resources/js/refabric.js");
 
 document.addEventListener('DOMContentLoaded', function () {
-  document.getElementById('upload-image').addEventListener('change', function (e) {
+  document.getElementById('upload-image').addEventListener('click', function (e) {
+    var clipart = document.getElementById('upload-clipart').files[0]; // Move this inside the click event
+    if (!clipart) {
+      alert('Please select an image file.');
+      return;
+    }
     var reader = new FileReader();
     reader.onload = function (event) {
-      var image = new Image();
-      image.src = event.target.result;
       var width = 200;
       var height = 200;
-      var top = event.dataset.top;
-      var left = event.dataset.left;
-      image.onload = function () {
-        uploadImage(image, top, left, width, height);
-      };
+      var top = 0;
+      var left = 0;
+
+      // Use the data URL directly
+      uploadImage(event.target.result, top, left, width, height);
     };
-    reader.readAsDataURL(e.target.files[0]);
+    reader.readAsDataURL(clipart); // Read the file as a data URL
   });
 });
-function uploadImage(image, top, left, width, height, design) {
-  fabric.Image.fromURL(image, function (loadedImg) {
+function uploadImage(imageURL, top, left, width, height, design) {
+  fabric.Image.fromURL(imageURL, function (loadedImg) {
     var img = loadedImg;
     img.set({
       left: left,

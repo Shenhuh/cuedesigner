@@ -3027,16 +3027,21 @@ document.addEventListener('DOMContentLoaded', function () {
     var strokeColor = document.getElementById('stroke-color').value;
     var fillColor = document.getElementById('fill-color').value;
     var strokeWidth = document.getElementById('stroke-width').value;
-    var polygon = new fabric.Polygon([polygonData], {
-      left: 0,
-      top: 0,
-      fill: fillColor,
-      strokeColor: strokeColor,
-      strokeWidth: strokeWidth
-    });
-    _refabric__WEBPACK_IMPORTED_MODULE_0__.fabricCanvas1.add(polygon);
+    var left;
+    var top;
+    addShape(polygonData, left, top, fillColor, strokeColor, strokeWidth);
   });
 });
+function addShape(polygonData, left, top, fillColor, strokeColor, strokeWidth) {
+  var polygon = new fabric.Polygon([polygonData], {
+    left: left,
+    top: top,
+    fill: fillColor,
+    strokeColor: strokeColor,
+    strokeWidth: strokeWidth
+  });
+  _refabric__WEBPACK_IMPORTED_MODULE_0__.fabricCanvas1.add(polygon);
+}
 
 /***/ }),
 

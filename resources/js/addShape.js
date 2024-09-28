@@ -7,15 +7,22 @@ document.addEventListener('DOMContentLoaded', function(){
     const strokeColor = document.getElementById('stroke-color').value;
     const fillColor = document.getElementById('fill-color').value;
     const strokeWidth = document.getElementById('stroke-width').value;
+    var left;
+    var top;
 
-    var polygon = new fabric.Polygon([polygonData], {
-        left: 0,
-        top: 0,
-        fill: fillColor,
-        strokeColor: strokeColor,
-        strokeWidth: strokeWidth,
-    });
-
-    fabricCanvas1.add(polygon);
+    addShape(polygonData, left, top, fillColor, strokeColor, strokeWidth);
+   
   });
 });
+
+function addShape(polygonData, left, top,fillColor, strokeColor, strokeWidth){
+  var polygon = new fabric.Polygon([polygonData], {
+      left: left,
+      top: top,
+      fill: fillColor,
+      strokeColor: strokeColor,
+      strokeWidth: strokeWidth,
+  });
+
+  fabricCanvas1.add(polygon);
+}

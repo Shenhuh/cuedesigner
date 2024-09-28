@@ -628,7 +628,7 @@
 
                                         <label for="select-font-color" class="form-label mt-3">Font Color:</label>
                                         <input type="color" class="form-color form-control" />
-                                        <button class="btn btn-primary mt-3 w-100">Add</button>
+                                        <button class="btn btn-primary mt-3 w-100" id="add-text">Add Text</button>
                                     </div>
                                    
                                 </div>

@@ -8,7 +8,9 @@ require('./refabric');
 require('./tools');
 require('./selectStain');
 require('./selectPaint');
-require('./addShape')
+require('./addShape');
+require('./addText');
+require('./uploadImage');
 document.addEventListener('DOMContentLoaded', function(){
   
 })

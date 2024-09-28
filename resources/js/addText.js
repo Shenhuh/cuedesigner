@@ -4,43 +4,53 @@ import { fabricCanvas1 } from "./refabric";
 document.addEventListener('DOMContentLoaded', function(){
   document.getElementById('add-text').addEventListener('click', function(event){
     // const polygonData = event.dataset.polygon;
-    const text = document.getElementById('stroke-color').value;
-    const fontColor = document.getElementById('fill-color').value;
-    var fontStyle;
-    const fontSize = document.getElementById('stroke-width').value;
-    var orientation;
-    var top;
-    var left;
 
+    const fontColor = document.getElementById('font-color').value;
+    var fontStyle = document.getElementById('font-style').value;
+    const fontSize = document.getElementById('select-font-size').value;
+    var orientation  = document.getElementById('select-orientation').value;
     
-    addText(text, fontColor, fontStyle, fontSize, orientation, top, left);
+    addText(fontColor, fontStyle, fontSize, orientation, top, left);
     
   });
 });
 
 
-function addText(text, fontColor, fontStyle, fontSize, orientation, top, left){
+function addText(fontColor, fontStyle, fontSize, orientation, top, left){
     var itext;
     switch (orientation) {
         case 'vertical':
-            itext = new fabric.IText(text, {
+            itext = new fabric.IText('Double Click to edit', {
                 left: left,
                 top: top,
                 fontFamily: fontStyle,
                 fill: fontColor,
                 fontSize: fontSize
+            });
+
+            itext.on('changed', function() {
+           
+                itext.text = itext.text.split('').join('\n');
+                var newText = this.text.split('').join('\n');
+                fabricCanvas1.renderAll();
+                
             });
             break;
     
         default:
-            itext = new fabric.IText(text, {
-                left: left,
-                top: top,
+            itext = new fabric.IText('Double Click to edit', {
+                left: 0,
+                top: 0,
+                width: 500,
+                height: 400,
                 fontFamily: fontStyle,
                 fill: fontColor,
-                fontSize: fontSize
+    
+                fontSize: 50
             });
+      
             break;
-    }
-    fabricCanvas1.add(itext);
+        }
+        fabricCanvas1.add(itext);
+        fabricCanvas1.renderAll();
 }

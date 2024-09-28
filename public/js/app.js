@@ -3045,6 +3045,62 @@ function addShape(polygonData, left, top, fillColor, strokeColor, strokeWidth) {
 
 /***/ }),
 
+/***/ "./resources/js/addText.js":
+/*!*********************************!*\
+  !*** ./resources/js/addText.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _refabric__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./refabric */ "./resources/js/refabric.js");
+
+document.addEventListener('DOMContentLoaded', function () {
+  document.getElementById('add-text').addEventListener('click', function (event) {
+    // const polygonData = event.dataset.polygon;
+
+    var fontColor = document.getElementById('font-color').value;
+    var fontStyle = document.getElementById('font-style').value;
+    var fontSize = document.getElementById('select-font-size').value;
+    var orientation = document.getElementById('select-orientation').value;
+    addText(fontColor, fontStyle, fontSize, orientation, top, left);
+  });
+});
+function addText(fontColor, fontStyle, fontSize, orientation, top, left) {
+  var itext;
+  switch (orientation) {
+    case 'vertical':
+      itext = new fabric.IText('Double Click to edit', {
+        left: left,
+        top: top,
+        fontFamily: fontStyle,
+        fill: fontColor,
+        fontSize: fontSize
+      });
+      itext.on('changed', function () {
+        itext.text = itext.text.split('').join('\n');
+        var newText = this.text.split('').join('\n');
+        _refabric__WEBPACK_IMPORTED_MODULE_0__.fabricCanvas1.renderAll();
+      });
+      break;
+    default:
+      itext = new fabric.IText('Double Click to edit', {
+        left: 0,
+        top: 0,
+        width: 500,
+        height: 400,
+        fontFamily: fontStyle,
+        fill: fontColor,
+        fontSize: 50
+      });
+      break;
+  }
+  _refabric__WEBPACK_IMPORTED_MODULE_0__.fabricCanvas1.add(itext);
+  _refabric__WEBPACK_IMPORTED_MODULE_0__.fabricCanvas1.renderAll();
+}
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -3067,6 +3123,8 @@ __webpack_require__(/*! ./tools */ "./resources/js/tools.js");
 __webpack_require__(/*! ./selectStain */ "./resources/js/selectStain.js");
 __webpack_require__(/*! ./selectPaint */ "./resources/js/selectPaint.js");
 __webpack_require__(/*! ./addShape */ "./resources/js/addShape.js");
+__webpack_require__(/*! ./addText */ "./resources/js/addText.js");
+__webpack_require__(/*! ./uploadImage */ "./resources/js/uploadImage.js");
 document.addEventListener('DOMContentLoaded', function () {});
 
 /***/ }),
@@ -3641,6 +3699,49 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+
+/***/ }),
+
+/***/ "./resources/js/uploadImage.js":
+/*!*************************************!*\
+  !*** ./resources/js/uploadImage.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _refabric__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./refabric */ "./resources/js/refabric.js");
+
+document.addEventListener('DOMContentLoaded', function () {
+  document.getElementById('upload-image').addEventListener('change', function (e) {
+    var reader = new FileReader();
+    reader.onload = function (event) {
+      var image = new Image();
+      image.src = event.target.result;
+      var width = 200;
+      var height = 200;
+      var top = event.dataset.top;
+      var left = event.dataset.left;
+      image.onload = function () {
+        uploadImage(image, top, left, width, height);
+      };
+    };
+    reader.readAsDataURL(e.target.files[0]);
+  });
+});
+function uploadImage(image, top, left, width, height, design) {
+  fabric.Image.fromURL(image, function (loadedImg) {
+    var img = loadedImg;
+    img.set({
+      left: left,
+      top: top,
+      type: design,
+      scaleX: width / loadedImg.width,
+      scaleY: height / loadedImg.height
+    });
+    _refabric__WEBPACK_IMPORTED_MODULE_0__.fabricCanvas1.add(img);
+  });
+}
 
 /***/ }),
 

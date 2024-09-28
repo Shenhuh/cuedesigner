@@ -612,22 +612,28 @@
                                 </h2>
                                 <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        <input type="text" name="" id="add-text" class="form-control">
+                                        <input type="text" name="" id="text-to-add" class="form-control">
                                         <label for="select-font-style" class="form-label mt-3">Font Style:</label>
                                         <select class="form-control form-select" name="" id="select-font-style">
-                                            <option value="engraved">Comic Sans</option>
+                                            <option value="Times New Roman">Times New Roman</option>
                                             <option value="inlay">Calibri</option>
                                         </select>
 
                                         <label for="select-font-size" class="form-label mt-3">Font Size:</label>
-                                        <select class="form-control form-select" name="" id="select-font-Size">
-                                            <option value="engraved">8</option>
-                                            <option value="inlay">12</option>
+                                        <select class="form-control form-select" name="" id="select-font-size">
+                                            <option value="8">8</option>
+                                            <option value="12">12</option>
                                         </select>
                                         
 
-                                        <label for="select-font-color" class="form-label mt-3">Font Color:</label>
-                                        <input type="color" class="form-color form-control" />
+                                        <label for="font-color" class="form-label mt-3">Font Color:</label>
+                                        <input type="color" id="font-color" class="form-color form-control" />
+
+                                        <label for="select-orientation" class="form-label mt-3">Font Color:</label>
+                                        <select class="form-control form-select" name="" id="select-orientation">
+                                            <option value="horizontal">Horizontal</option>
+                                            <option value="vertical">Vertical</option>
+                                        </select>
                                         <button class="btn btn-primary mt-3 w-100" id="add-text">Add Text</button>
                                     </div>
                                    
@@ -648,7 +654,7 @@
                                             <option value="engraved">Engraved</option>
                                             <option value="inlay">Inlay</option>
                                         </select>
-                                        <button class="btn btn-primary mt-3 w-100">Add</button>
+                                        <button class="btn btn-primary mt-3 w-100" id="upload-image">Add</button>
                                     </div>
                                    
                                 </div>

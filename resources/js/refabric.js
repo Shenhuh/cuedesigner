@@ -11,7 +11,8 @@ export var fabricCanvas1;
 var fabricCanvas2;
 let debounceTimer;
 var texture;
-
+export var selectedTextures = [null, null, null, null];
+export var currentPart = { value: null };
 
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize Three.js scene, camera, and renderer

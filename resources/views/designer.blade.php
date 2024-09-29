@@ -154,7 +154,7 @@
                                             <!-- Image 2 -->
                                             <div class="col-4">
                                                 <div class="texture-option">
-                                                    <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Stain 2" class="img-fluid stain">
+                                                    <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Stain 2" class="img-fluid stain" data-id = "2">
                                                     <p class="text-center">Stain 2</p>
                                                 </div>
                                             </div>
@@ -213,14 +213,14 @@
                                             <!-- Image 1 -->
                                             <div class="col-4">
                                                 <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Stain 1" class="img-fluid" onclick="selectTexture('stain1')">
+                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Stain 1" class="img-fluid paint" data-id="1">
                                                     <p class="text-center">Stain 1</p>
                                                 </div>
                                             </div>
                                             <!-- Image 2 -->
                                             <div class="col-4">
                                                 <div class="texture-option">
-                                                    <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Stain 2" class="img-fluid" onclick="selectTexture('stain2')">
+                                                    <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Stain 2" class="img-fluid paint" data-id="2">
                                                     <p class="text-center">sdain 2</p>
                                                 </div>
                                             </div>

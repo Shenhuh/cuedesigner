@@ -3158,7 +3158,7 @@ function addImageToPart(image, width, height, top, left, id, part) {
       });
       _refabric_js__WEBPACK_IMPORTED_MODULE_0__.fabricCanvas1.add(img);
       _refabric_js__WEBPACK_IMPORTED_MODULE_0__.fabricCanvas1.renderAll();
-      console.log(_refabric_js__WEBPACK_IMPORTED_MODULE_0__.fabricCanvas1);
+
       // cloneCanvasWithoutClipPath();
     });
   }, 1000);
@@ -3176,7 +3176,9 @@ function addImageToPart(image, width, height, top, left, id, part) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   cloneCanvasWithoutClipPath: () => (/* binding */ cloneCanvasWithoutClipPath),
-/* harmony export */   fabricCanvas1: () => (/* binding */ fabricCanvas1)
+/* harmony export */   currentPart: () => (/* binding */ currentPart),
+/* harmony export */   fabricCanvas1: () => (/* binding */ fabricCanvas1),
+/* harmony export */   selectedTextures: () => (/* binding */ selectedTextures)
 /* harmony export */ });
 /* harmony import */ var fabric__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! fabric */ "./node_modules/fabric/dist/fabric.js");
 /* harmony import */ var fabric__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(fabric__WEBPACK_IMPORTED_MODULE_0__);
@@ -3197,6 +3199,10 @@ var fabricCanvas1;
 var fabricCanvas2;
 var debounceTimer;
 var texture;
+var selectedTextures = [null, null, null, null];
+var currentPart = {
+  value: null
+};
 document.addEventListener('DOMContentLoaded', function () {
   // Initialize Three.js scene, camera, and renderer
   var scene = new three__WEBPACK_IMPORTED_MODULE_3__.Scene();
@@ -3492,15 +3498,43 @@ function updateTexture() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _designer_addImageToPart_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./designer/addImageToPart.js */ "./resources/js/designer/addImageToPart.js");
+/* harmony import */ var _refabric_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./refabric.js */ "./resources/js/refabric.js");
+
 
 document.addEventListener('DOMContentLoaded', function () {
-  var paint = document.querySelectorAll('.paint');
-  paint.forEach(function (tool) {
+  var paintElements = document.querySelectorAll('.paint');
+  paintElements.forEach(function (tool) {
     tool.addEventListener('click', function () {
-      paint.forEach(function (t) {
-        _designer_addImageToPart_js__WEBPACK_IMPORTED_MODULE_0__.addImageToPart(t.src, 400, 400, 0, 0, 'paint', t.dataset.part);
-        t.style.borderColor = "blue";
+      // Remove 'selected' class from all paint elements
+      paintElements.forEach(function (t) {
+        t.classList.remove('selected');
       });
+
+      // Add 'selected' class to the clicked tool
+      tool.classList.add('selected');
+
+      // Ensure currentPart is being handled properly (currentPart.value if it's an object, currentPart otherwise)
+      switch (_refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPart.value) {
+        case "butt-cap":
+          break;
+        case "butt-sleeve":
+          _refabric_js__WEBPACK_IMPORTED_MODULE_1__.selectedTextures[0] = tool.dataset.id; // Use tool.dataset.id here
+          break;
+        case "butt-wrap":
+          _refabric_js__WEBPACK_IMPORTED_MODULE_1__.selectedTextures[1] = tool.dataset.id;
+          break;
+        case "forearm":
+          _refabric_js__WEBPACK_IMPORTED_MODULE_1__.selectedTextures[2] = tool.dataset.id;
+          break;
+        case "joint-collar":
+          _refabric_js__WEBPACK_IMPORTED_MODULE_1__.selectedTextures[3] = tool.dataset.id;
+          break;
+        default:
+          break;
+      }
+      alert(_refabric_js__WEBPACK_IMPORTED_MODULE_1__.selectedTextures[0]);
+      // Call the addImageToPart function
+      _designer_addImageToPart_js__WEBPACK_IMPORTED_MODULE_0__.addImageToPart(tool.src, 400, 400, 0, 0, 'paint', tool.dataset.part);
     });
   });
 });
@@ -3516,20 +3550,42 @@ document.addEventListener('DOMContentLoaded', function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _designer_addImageToPart_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./designer/addImageToPart.js */ "./resources/js/designer/addImageToPart.js");
+/* harmony import */ var _refabric_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./refabric.js */ "./resources/js/refabric.js");
+
 
 document.addEventListener('DOMContentLoaded', function () {
   var stainElements = document.querySelectorAll('.stain');
   stainElements.forEach(function (tool) {
     tool.addEventListener('click', function () {
-      // Remove 'selected' class from all elements
+      // Remove 'selected' class from all stain elements
       stainElements.forEach(function (t) {
         t.classList.remove('selected');
       });
 
-      // Add 'selected' class to the clicked element
+      // Add 'selected' class to the clicked tool
       tool.classList.add('selected');
 
-      // Call the function for the clicked element only
+      // Ensure currentPart is being handled properly (currentPart.value if it's an object, currentPart otherwise)
+      switch (_refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPart.value) {
+        case "butt-cap":
+          break;
+        case "butt-sleeve":
+          _refabric_js__WEBPACK_IMPORTED_MODULE_1__.selectedTextures[0] = tool.dataset.id; // Use tool.dataset.id here
+          break;
+        case "butt-wrap":
+          _refabric_js__WEBPACK_IMPORTED_MODULE_1__.selectedTextures[1] = tool.dataset.id;
+          break;
+        case "forearm":
+          _refabric_js__WEBPACK_IMPORTED_MODULE_1__.selectedTextures[2] = tool.dataset.id;
+          break;
+        case "joint-collar":
+          _refabric_js__WEBPACK_IMPORTED_MODULE_1__.selectedTextures[3] = tool.dataset.id;
+          break;
+        default:
+          break;
+      }
+      alert(_refabric_js__WEBPACK_IMPORTED_MODULE_1__.selectedTextures[0]);
+      // Call the addImageToPart function
       _designer_addImageToPart_js__WEBPACK_IMPORTED_MODULE_0__.addImageToPart(tool.src, 400, 400, 0, 0, 'stain', tool.dataset.part);
     });
   });
@@ -3546,6 +3602,8 @@ document.addEventListener('DOMContentLoaded', function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _designer_addImageToPart_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./designer/addImageToPart.js */ "./resources/js/designer/addImageToPart.js");
+/* harmony import */ var _refabric_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./refabric.js */ "./resources/js/refabric.js");
+
 
 document.addEventListener('DOMContentLoaded', function () {
   var tools = document.querySelectorAll('.side-tools');
@@ -3677,22 +3735,27 @@ document.addEventListener('DOMContentLoaded', function () {
       case "butt-cap":
         document.getElementById('butt-sleeve').style.display = "none";
         document.getElementById('butt-cap').style.display = "block";
+        _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPart.value = null;
         break;
       case "butt-sleeve":
         document.getElementById('butt-cap').style.display = "none";
         document.getElementById('butt-sleeve').style.display = "block";
+        _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPart.value = "butt-sleeve";
         break;
       case "butt-wrap":
         document.getElementById('butt-cap').style.display = "none";
         document.getElementById('butt-sleeve').style.display = "block";
+        _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPart.value = "butt-wrap";
         break;
       case "forearm":
         document.getElementById('butt-cap').style.display = "none";
         document.getElementById('butt-sleeve').style.display = "block";
+        _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPart.value = "forearm";
         break;
       case "joint-collar":
         document.getElementById('butt-cap').style.display = "none";
         document.getElementById('butt-sleeve').style.display = "block";
+        _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPart.value = "joint-collar";
         break;
       default:
         break;

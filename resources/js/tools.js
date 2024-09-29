@@ -1,6 +1,5 @@
 import * as addImageToPart from './designer/addImageToPart.js';
-
-
+import { currentPart } from './refabric.js';
 
 document.addEventListener('DOMContentLoaded', function () {
     const tools = document.querySelectorAll('.side-tools');
@@ -143,22 +142,27 @@ document.addEventListener('DOMContentLoaded', function () {
             case "butt-cap":
                 document.getElementById('butt-sleeve').style.display = "none";
                 document.getElementById('butt-cap').style.display = "block";
+                currentPart.value = null;
                 break;
             case "butt-sleeve":
                 document.getElementById('butt-cap').style.display = "none";
                 document.getElementById('butt-sleeve').style.display = "block";
+                currentPart.value = "butt-sleeve";
                 break;
             case "butt-wrap":
                 document.getElementById('butt-cap').style.display = "none";
                 document.getElementById('butt-sleeve').style.display = "block";
+                currentPart.value = "butt-wrap";
                 break;
             case "forearm":
                 document.getElementById('butt-cap').style.display = "none";
                 document.getElementById('butt-sleeve').style.display = "block";
+                currentPart.value = "forearm";
                 break;
             case "joint-collar":
                 document.getElementById('butt-cap').style.display = "none";
                 document.getElementById('butt-sleeve').style.display = "block";
+                currentPart.value = "joint-collar";
                 break;
             default:
                 break;

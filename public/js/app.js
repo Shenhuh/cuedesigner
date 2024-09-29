@@ -3158,8 +3158,6 @@ function addImageToPart(image, width, height, top, left, id, part) {
       });
       _refabric_js__WEBPACK_IMPORTED_MODULE_0__.fabricCanvas1.add(img);
       _refabric_js__WEBPACK_IMPORTED_MODULE_0__.fabricCanvas1.renderAll();
-
-      // cloneCanvasWithoutClipPath();
     });
   }, 1000);
 }
@@ -3503,38 +3501,43 @@ __webpack_require__.r(__webpack_exports__);
 
 document.addEventListener('DOMContentLoaded', function () {
   var paintElements = document.querySelectorAll('.paint');
+  var stainElements = document.querySelectorAll('.stain');
   paintElements.forEach(function (tool) {
     tool.addEventListener('click', function () {
       // Remove 'selected' class from all paint elements
       paintElements.forEach(function (t) {
-        t.classList.remove('selected');
+        return t.classList.remove('selected');
       });
-
+      stainElements.forEach(function (t) {
+        return t.classList.remove('selected');
+      });
       // Add 'selected' class to the clicked tool
       tool.classList.add('selected');
 
-      // Ensure currentPart is being handled properly (currentPart.value if it's an object, currentPart otherwise)
-      switch (_refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPart.value) {
-        case "butt-cap":
-          break;
-        case "butt-sleeve":
-          _refabric_js__WEBPACK_IMPORTED_MODULE_1__.selectedTextures[0] = tool.dataset.id; // Use tool.dataset.id here
-          break;
-        case "butt-wrap":
-          _refabric_js__WEBPACK_IMPORTED_MODULE_1__.selectedTextures[1] = tool.dataset.id;
-          break;
-        case "forearm":
-          _refabric_js__WEBPACK_IMPORTED_MODULE_1__.selectedTextures[2] = tool.dataset.id;
-          break;
-        case "joint-collar":
-          _refabric_js__WEBPACK_IMPORTED_MODULE_1__.selectedTextures[3] = tool.dataset.id;
-          break;
-        default:
-          break;
+      // Use tool.dataset.id once
+      var id = tool.dataset.id;
+
+      // Update selectedTextures based on currentPart.value
+      var textureIndex = {
+        "butt-sleeve": 0,
+        "butt-wrap": 1,
+        "forearm": 2,
+        "joint-collar": 3
+      }[_refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPart.value];
+      if (textureIndex !== undefined) {
+        _refabric_js__WEBPACK_IMPORTED_MODULE_1__.selectedTextures[textureIndex] = id; // Only set if currentPart.value matches
       }
-      alert(_refabric_js__WEBPACK_IMPORTED_MODULE_1__.selectedTextures[0]);
+
+      // Remove objects with matching IDs for both 'stain' and 'paint'
+      var objectsToRemove = _refabric_js__WEBPACK_IMPORTED_MODULE_1__.fabricCanvas1.getObjects().filter(function (object) {
+        return object.id === "".concat(_refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPart.value, "stain") || object.id === "".concat(_refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPart.value, "paint");
+      });
+      objectsToRemove.forEach(function (object) {
+        return _refabric_js__WEBPACK_IMPORTED_MODULE_1__.fabricCanvas1.remove(object);
+      });
+
       // Call the addImageToPart function
-      _designer_addImageToPart_js__WEBPACK_IMPORTED_MODULE_0__.addImageToPart(tool.src, 400, 400, 0, 0, 'paint', tool.dataset.part);
+      _designer_addImageToPart_js__WEBPACK_IMPORTED_MODULE_0__.addImageToPart(tool.src, 400, 400, 0, 0, "".concat(_refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPart.value, "paint"), tool.dataset.part);
     });
   });
 });
@@ -3555,38 +3558,44 @@ __webpack_require__.r(__webpack_exports__);
 
 document.addEventListener('DOMContentLoaded', function () {
   var stainElements = document.querySelectorAll('.stain');
+  var paintElements = document.querySelectorAll('.paint');
   stainElements.forEach(function (tool) {
     tool.addEventListener('click', function () {
       // Remove 'selected' class from all stain elements
       stainElements.forEach(function (t) {
-        t.classList.remove('selected');
+        return t.classList.remove('selected');
+      });
+      paintElements.forEach(function (t) {
+        return t.classList.remove('selected');
       });
 
       // Add 'selected' class to the clicked tool
       tool.classList.add('selected');
 
-      // Ensure currentPart is being handled properly (currentPart.value if it's an object, currentPart otherwise)
-      switch (_refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPart.value) {
-        case "butt-cap":
-          break;
-        case "butt-sleeve":
-          _refabric_js__WEBPACK_IMPORTED_MODULE_1__.selectedTextures[0] = tool.dataset.id; // Use tool.dataset.id here
-          break;
-        case "butt-wrap":
-          _refabric_js__WEBPACK_IMPORTED_MODULE_1__.selectedTextures[1] = tool.dataset.id;
-          break;
-        case "forearm":
-          _refabric_js__WEBPACK_IMPORTED_MODULE_1__.selectedTextures[2] = tool.dataset.id;
-          break;
-        case "joint-collar":
-          _refabric_js__WEBPACK_IMPORTED_MODULE_1__.selectedTextures[3] = tool.dataset.id;
-          break;
-        default:
-          break;
+      // Use tool.dataset.id once
+      var id = tool.dataset.id;
+
+      // Update selectedTextures based on currentPart.value
+      var textureIndex = {
+        "butt-sleeve": 0,
+        "butt-wrap": 1,
+        "forearm": 2,
+        "joint-collar": 3
+      }[_refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPart.value];
+      if (textureIndex !== undefined) {
+        _refabric_js__WEBPACK_IMPORTED_MODULE_1__.selectedTextures[textureIndex] = id; // Only set if currentPart.value matches
       }
-      alert(_refabric_js__WEBPACK_IMPORTED_MODULE_1__.selectedTextures[0]);
+
+      // Remove objects with matching IDs for both 'stain' and 'paint'
+      var objectsToRemove = _refabric_js__WEBPACK_IMPORTED_MODULE_1__.fabricCanvas1.getObjects().filter(function (object) {
+        return object.id === "".concat(_refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPart.value, "stain") || object.id === "".concat(_refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPart.value, "paint");
+      });
+      objectsToRemove.forEach(function (object) {
+        return _refabric_js__WEBPACK_IMPORTED_MODULE_1__.fabricCanvas1.remove(object);
+      });
+
       // Call the addImageToPart function
-      _designer_addImageToPart_js__WEBPACK_IMPORTED_MODULE_0__.addImageToPart(tool.src, 400, 400, 0, 0, 'stain', tool.dataset.part);
+      _designer_addImageToPart_js__WEBPACK_IMPORTED_MODULE_0__.addImageToPart(tool.src, 400, 400, 0, 0, "".concat(_refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPart.value, "stain"), tool.dataset.part);
     });
   });
 });

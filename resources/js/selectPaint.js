@@ -1,41 +1,41 @@
 import * as addImageToPart from './designer/addImageToPart.js';
-import { selectedTextures, currentPart } from './refabric.js';
+import { selectedTextures, currentPart, fabricCanvas1 } from './refabric.js';
 
 document.addEventListener('DOMContentLoaded', function () {
     const paintElements = document.querySelectorAll('.paint');
-    
+    const stainElements = document.querySelectorAll('.stain');
     paintElements.forEach(tool => {
         tool.addEventListener('click', () => {
             // Remove 'selected' class from all paint elements
-            paintElements.forEach(t => {
-                t.classList.remove('selected');
-            });
-
+            paintElements.forEach(t => t.classList.remove('selected'));
+            stainElements.forEach(t => t.classList.remove('selected'));
             // Add 'selected' class to the clicked tool
             tool.classList.add('selected');
 
-            // Ensure currentPart is being handled properly (currentPart.value if it's an object, currentPart otherwise)
-            switch (currentPart.value) { 
-                case "butt-cap":
-                    break;
-                case "butt-sleeve":
-                    selectedTextures[0] = tool.dataset.id;  // Use tool.dataset.id here
-                    break;
-                case "butt-wrap":
-                    selectedTextures[1] = tool.dataset.id;
-                    break;
-                case "forearm":
-                    selectedTextures[2] = tool.dataset.id;
-                    break;
-                case "joint-collar":
-                    selectedTextures[3] = tool.dataset.id;
-                    break;
-                default:
-                    break;
+            // Use tool.dataset.id once
+            const id = tool.dataset.id;
+
+            // Update selectedTextures based on currentPart.value
+            const textureIndex = {
+                "butt-sleeve": 0,
+                "butt-wrap": 1,
+                "forearm": 2,
+                "joint-collar": 3
+            }[currentPart.value];
+
+            if (textureIndex !== undefined) {
+                selectedTextures[textureIndex] = id; // Only set if currentPart.value matches
             }
-            alert(selectedTextures[0])
+
+            // Remove objects with matching IDs for both 'stain' and 'paint'
+            const objectsToRemove = fabricCanvas1.getObjects().filter(object => {
+                return object.id === `${currentPart.value}stain` || object.id === `${currentPart.value}paint`;
+            });
+
+            objectsToRemove.forEach(object => fabricCanvas1.remove(object));
+
             // Call the addImageToPart function
-            addImageToPart.addImageToPart(tool.src, 400, 400, 0, 0, 'paint', tool.dataset.part);
+            addImageToPart.addImageToPart(tool.src, 400, 400, 0, 0, `${currentPart.value}paint`, tool.dataset.part);
         });
     });
 });

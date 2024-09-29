@@ -19,8 +19,7 @@ export function addImageToPart(image, width, height, top, left, id, part){
 
             fabricCanvas1.add(img);
             fabricCanvas1.renderAll();
-   
-            // cloneCanvasWithoutClipPath();
+
         });
     }, 1000);
 }

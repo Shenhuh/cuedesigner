@@ -3518,13 +3518,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _designer_addImageToPart_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./designer/addImageToPart.js */ "./resources/js/designer/addImageToPart.js");
 
 document.addEventListener('DOMContentLoaded', function () {
-  var stain = document.querySelectorAll('.stain');
-  stain.forEach(function (tool) {
+  var stainElements = document.querySelectorAll('.stain');
+  stainElements.forEach(function (tool) {
     tool.addEventListener('click', function () {
-      stain.forEach(function (t) {
-        _designer_addImageToPart_js__WEBPACK_IMPORTED_MODULE_0__.addImageToPart(t.src, 400, 400, 0, 0, 'stain', t.dataset.part);
-        t.style.borderColor = "blue";
+      // Remove 'selected' class from all elements
+      stainElements.forEach(function (t) {
+        t.classList.remove('selected');
       });
+
+      // Add 'selected' class to the clicked element
+      tool.classList.add('selected');
+
+      // Call the function for the clicked element only
+      _designer_addImageToPart_js__WEBPACK_IMPORTED_MODULE_0__.addImageToPart(tool.src, 400, 400, 0, 0, 'stain', tool.dataset.part);
     });
   });
 });
@@ -3676,10 +3682,30 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('butt-cap').style.display = "none";
         document.getElementById('butt-sleeve').style.display = "block";
         break;
+      case "butt-wrap":
+        document.getElementById('butt-cap').style.display = "none";
+        document.getElementById('butt-sleeve').style.display = "block";
+        break;
+      case "forearm":
+        document.getElementById('butt-cap').style.display = "none";
+        document.getElementById('butt-sleeve').style.display = "block";
+        break;
+      case "joint-collar":
+        document.getElementById('butt-cap').style.display = "none";
+        document.getElementById('butt-sleeve').style.display = "block";
+        break;
       default:
         break;
     }
+    clearToolInputs();
   });
+  function clearToolInputs() {
+    document.getElementById('upload-clipart').value = '';
+    var stain = document.querySelectorAll('.stain');
+    stain.forEach(function (t) {
+      return t.style.border = "2px solid #ccc";
+    });
+  }
   document.getElementById('butt-cap-material').addEventListener('change', function (event) {
     var stainSection = document.getElementById('butt-cap-stain');
     var paintSection = document.getElementById('butt-cap-paint');

@@ -25,7 +25,9 @@
         transform: scale(1.05);
         border-color: #000;
     }
-
+    .selected {
+        border: 3px solid #007bff !important; /* Blue border when selected */
+    }
  
 </style>
 
@@ -87,8 +89,9 @@
                     <select class="form-select form-control" id="select-part">
                         <option value="butt-cap">Butt Cap</option>
                         <option value="butt-sleeve">Butt Sleeve</option>
-                        <option>Butt Wrap</option>
-                        <option>Forearm</option>
+                        <option value="butt-wrap">Butt Wrap</option>
+                        <option value="forearm">Forearm</option>
+                        <option value="joint-collar">Joint Collar</option>
         
                     </select>
                 </div>
@@ -151,7 +154,7 @@
                                             <!-- Image 2 -->
                                             <div class="col-4">
                                                 <div class="texture-option">
-                                                    <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Stain 2" class="img-fluid" onclick="selectTexture('stain2')">
+                                                    <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Stain 2" class="img-fluid stain">
                                                     <p class="text-center">Stain 2</p>
                                                 </div>
                                             </div>
@@ -647,7 +650,7 @@
                                 </h2>
                                 <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        <input type="file" name="" id="upload-clipart" class="form-control">
+                                        <input type="file" id="upload-clipart" class="form-control" accept=".png, .jpg, .jpeg">
                                         <label for="select-clipart-type" class="form-label mt-3">Select Type of design:</label>
                                         <select class="form-control form-select" name="" id="select-clipart-type">
                                             <option value="engraved">Engraved</option>

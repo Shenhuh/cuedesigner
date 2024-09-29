@@ -148,10 +148,29 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('butt-cap').style.display = "none";
                 document.getElementById('butt-sleeve').style.display = "block";
                 break;
+            case "butt-wrap":
+                document.getElementById('butt-cap').style.display = "none";
+                document.getElementById('butt-sleeve').style.display = "block";
+                break;
+            case "forearm":
+                document.getElementById('butt-cap').style.display = "none";
+                document.getElementById('butt-sleeve').style.display = "block";
+                break;
+            case "joint-collar":
+                document.getElementById('butt-cap').style.display = "none";
+                document.getElementById('butt-sleeve').style.display = "block";
+                break;
             default:
                 break;
         }
+        clearToolInputs();
     });
+
+    function clearToolInputs(){
+        document.getElementById('upload-clipart').value = '';
+        var stain = document.querySelectorAll('.stain');
+        stain.forEach(t => t.style.border = "2px solid #ccc");
+    }
 
     document.getElementById('butt-cap-material').addEventListener('change', function(event){
         const stainSection = document.getElementById('butt-cap-stain');

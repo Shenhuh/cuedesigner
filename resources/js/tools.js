@@ -177,6 +177,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('butt-cap').style.display = "none";
                 document.getElementById('butt-sleeve').style.display = "block";
                 currentPart.value = "joint-collar";
+                currentPosition.y = 800;
+                currentDimension.w = 447;
+                currentDimension.h = 200;
                 
                 break;
             default:

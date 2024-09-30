@@ -3822,6 +3822,9 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('butt-cap').style.display = "none";
         document.getElementById('butt-sleeve').style.display = "block";
         _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPart.value = "joint-collar";
+        _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPosition.y = 800;
+        _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentDimension.w = 447;
+        _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentDimension.h = 200;
         break;
       default:
         break;

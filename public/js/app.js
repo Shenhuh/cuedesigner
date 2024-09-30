@@ -3124,8 +3124,40 @@ __webpack_require__(/*! ./selectStain */ "./resources/js/selectStain.js");
 __webpack_require__(/*! ./selectPaint */ "./resources/js/selectPaint.js");
 __webpack_require__(/*! ./addShape */ "./resources/js/addShape.js");
 __webpack_require__(/*! ./addText */ "./resources/js/addText.js");
+__webpack_require__(/*! ./buttCapMaterial */ "./resources/js/buttCapMaterial.js");
 __webpack_require__(/*! ./uploadImage */ "./resources/js/uploadImage.js");
 document.addEventListener('DOMContentLoaded', function () {});
+
+/***/ }),
+
+/***/ "./resources/js/buttCapMaterial.js":
+/*!*****************************************!*\
+  !*** ./resources/js/buttCapMaterial.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _designer_addImageToPart_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./designer/addImageToPart.js */ "./resources/js/designer/addImageToPart.js");
+/* harmony import */ var _refabric_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./refabric.js */ "./resources/js/refabric.js");
+/* harmony import */ var _public_assets_black_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../public/assets/black.png */ "./public/assets/black.png");
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  document.getElementById('butt-cap-material').addEventListener("change", function (event) {
+    switch (event.target.value) {
+      case "black":
+        _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPosition.y = 3990;
+        _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentDimension.w = 447;
+        _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentDimension.h = 100;
+        _designer_addImageToPart_js__WEBPACK_IMPORTED_MODULE_0__.addImageToPart(_public_assets_black_png__WEBPACK_IMPORTED_MODULE_2__["default"], _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentDimension.w, _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentDimension.h, _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPosition.y, _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPosition.x, "butt-cap", 'butt-cap');
+        break;
+      default:
+        break;
+    }
+  });
+});
 
 /***/ }),
 
@@ -3158,6 +3190,7 @@ function addImageToPart(image, width, height, top, left, id, part) {
       });
       _refabric_js__WEBPACK_IMPORTED_MODULE_0__.fabricCanvas1.add(img);
       _refabric_js__WEBPACK_IMPORTED_MODULE_0__.fabricCanvas1.renderAll();
+      console.log(_refabric_js__WEBPACK_IMPORTED_MODULE_0__.currentDimension.w);
     });
   }, 1000);
 }
@@ -3174,7 +3207,9 @@ function addImageToPart(image, width, height, top, left, id, part) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   cloneCanvasWithoutClipPath: () => (/* binding */ cloneCanvasWithoutClipPath),
+/* harmony export */   currentDimension: () => (/* binding */ currentDimension),
 /* harmony export */   currentPart: () => (/* binding */ currentPart),
+/* harmony export */   currentPosition: () => (/* binding */ currentPosition),
 /* harmony export */   fabricCanvas1: () => (/* binding */ fabricCanvas1),
 /* harmony export */   selectedTextures: () => (/* binding */ selectedTextures)
 /* harmony export */ });
@@ -3200,6 +3235,14 @@ var texture;
 var selectedTextures = [null, null, null, null];
 var currentPart = {
   value: null
+};
+var currentPosition = {
+  x: null,
+  y: null
+};
+var currentDimension = {
+  w: null,
+  h: null
 };
 document.addEventListener('DOMContentLoaded', function () {
   // Initialize Three.js scene, camera, and renderer
@@ -3595,7 +3638,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
 
       // Call the addImageToPart function
-      _designer_addImageToPart_js__WEBPACK_IMPORTED_MODULE_0__.addImageToPart(tool.src, 400, 400, 0, 0, "".concat(_refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPart.value, "stain"), tool.dataset.part);
+      _designer_addImageToPart_js__WEBPACK_IMPORTED_MODULE_0__.addImageToPart(tool.src, _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentDimension.w, _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentDimension.h, _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPosition.y, _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPosition.x, "".concat(_refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPart.value, "stain"), tool.dataset.part);
     });
   });
 });
@@ -3744,22 +3787,36 @@ document.addEventListener('DOMContentLoaded', function () {
       case "butt-cap":
         document.getElementById('butt-sleeve').style.display = "none";
         document.getElementById('butt-cap').style.display = "block";
-        _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPart.value = null;
+        _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPart.value = "butt-cap";
+        // currentPosition.x = 480;
+        // currentPosition.y = 3590;
+        // currentDimension.w = 447;
+        // currentDimension.h = 200;
         break;
       case "butt-sleeve":
         document.getElementById('butt-cap').style.display = "none";
         document.getElementById('butt-sleeve').style.display = "block";
         _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPart.value = "butt-sleeve";
+        // currentPosition.x = 480;
+        _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPosition.y = 3390;
+        _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentDimension.w = 447;
+        _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentDimension.h = 600;
         break;
       case "butt-wrap":
         document.getElementById('butt-cap').style.display = "none";
         document.getElementById('butt-sleeve').style.display = "block";
         _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPart.value = "butt-wrap";
+        _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPosition.y = 2190;
+        _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentDimension.w = 447;
+        _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentDimension.h = 1200;
         break;
       case "forearm":
         document.getElementById('butt-cap').style.display = "none";
         document.getElementById('butt-sleeve').style.display = "block";
         _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPart.value = "forearm";
+        _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPosition.y = 990;
+        _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentDimension.w = 447;
+        _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentDimension.h = 1200;
         break;
       case "joint-collar":
         document.getElementById('butt-cap').style.display = "none";
@@ -41718,6 +41775,21 @@ fabric.util.object.extend(fabric.IText.prototype, /** @lends fabric.IText.protot
 })();
 
 
+
+/***/ }),
+
+/***/ "./public/assets/black.png":
+/*!*********************************!*\
+  !*** ./public/assets/black.png ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/black.png?f8ca5f6305e3364e295949e4bbc608fc");
 
 /***/ }),
 

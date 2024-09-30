@@ -1,5 +1,5 @@
 import * as addImageToPart from './designer/addImageToPart.js';
-import { currentPart } from './refabric.js';
+import { currentDimension, currentPart, currentPosition } from './refabric.js';
 
 document.addEventListener('DOMContentLoaded', function () {
     const tools = document.querySelectorAll('.side-tools');
@@ -142,27 +142,42 @@ document.addEventListener('DOMContentLoaded', function () {
             case "butt-cap":
                 document.getElementById('butt-sleeve').style.display = "none";
                 document.getElementById('butt-cap').style.display = "block";
-                currentPart.value = null;
+                currentPart.value = "butt-cap";
+                // currentPosition.x = 480;
+                // currentPosition.y = 3590;
+                // currentDimension.w = 447;
+                // currentDimension.h = 200;
                 break;
             case "butt-sleeve":
                 document.getElementById('butt-cap').style.display = "none";
                 document.getElementById('butt-sleeve').style.display = "block";
                 currentPart.value = "butt-sleeve";
+                // currentPosition.x = 480;
+                currentPosition.y = 3390;
+                currentDimension.w = 447;
+                currentDimension.h = 600;
                 break;
             case "butt-wrap":
                 document.getElementById('butt-cap').style.display = "none";
                 document.getElementById('butt-sleeve').style.display = "block";
                 currentPart.value = "butt-wrap";
+                currentPosition.y = 2190;
+                currentDimension.w = 447;
+                currentDimension.h = 1200;
                 break;
             case "forearm":
                 document.getElementById('butt-cap').style.display = "none";
                 document.getElementById('butt-sleeve').style.display = "block";
                 currentPart.value = "forearm";
+                currentPosition.y = 990;
+                currentDimension.w = 447;
+                currentDimension.h = 1200;
                 break;
             case "joint-collar":
                 document.getElementById('butt-cap').style.display = "none";
                 document.getElementById('butt-sleeve').style.display = "block";
                 currentPart.value = "joint-collar";
+                
                 break;
             default:
                 break;

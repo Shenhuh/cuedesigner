@@ -7,8 +7,8 @@
 
     #renderer {
         border: 1px solid black;
-        width: 100vh;
-        height: 100vh;
+        width: 1024px;
+        height: 1024px;
         position: relative;
     }
     .canvas-container:nth-of-type(2) {
@@ -109,8 +109,8 @@
     
                         <h4>Butt Cap</h4>
                         <label for="design" class="form-label">Choose Design/Material:</label>
-                        <select class="form-select">
-                            <option>Black</option>
+                        <select class="form-select" id="butt-cap-material">
+                            <option value="black">Black</option>
                             <option>White</option>
                             <option>Bone</option>
                             <option>Stainless Steel</option>

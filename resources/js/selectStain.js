@@ -1,5 +1,5 @@
 import * as addImageToPart from './designer/addImageToPart.js';
-import { selectedTextures, currentPart, fabricCanvas1 } from './refabric.js';
+import { selectedTextures, currentPart, fabricCanvas1, currentPosition, currentDimension } from './refabric.js';
 
 document.addEventListener('DOMContentLoaded', function () {
     const stainElements = document.querySelectorAll('.stain');
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
             objectsToRemove.forEach(object => fabricCanvas1.remove(object));
 
             // Call the addImageToPart function
-            addImageToPart.addImageToPart(tool.src, 400, 400, 0, 0, `${currentPart.value}stain`, tool.dataset.part);
+            addImageToPart.addImageToPart(tool.src, currentDimension.w, currentDimension.h, currentPosition.y, currentPosition.x, `${currentPart.value}stain`, tool.dataset.part);
         });
     });
 });

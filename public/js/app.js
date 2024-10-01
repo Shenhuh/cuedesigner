@@ -3337,18 +3337,17 @@ document.addEventListener('DOMContentLoaded', function () {
     img = loadedImg;
     img.set({
       left: -480,
-      top: 0,
-      scaleX: 1,
-      scaleY: 1,
+      // top: -100,
+
       id: 's',
       selectable: false,
       flipY: true
     });
     var clipRect = new fabric__WEBPACK_IMPORTED_MODULE_0__.fabric.Rect({
       left: 0,
-      top: 0,
+      top: 800,
       width: 447,
-      height: 4096,
+      height: 3990,
       absolutePositioned: true
     });
 

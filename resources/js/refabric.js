@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const scene = new THREE.Scene();
     fabricCanvas1 = new fabric.Canvas('canvas1');
     fabricCanvas2 = new fabric.Canvas('canvas2');
+
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({
 		antialias: true
@@ -114,9 +115,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         img.set({
             left: -480,
-            top: 0,
-            scaleX: 1,
-            scaleY: 1,
+            // top: -100,
+        
             id: 's',
             selectable: false,
             flipY: true
@@ -124,9 +124,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const clipRect = new fabric.Rect({
             left: 0,
-            top: 0,
+            top: 800,
             width: 447,
-            height: 4096,
+            height: 3990,
             absolutePositioned: true
         });
 

@@ -10,6 +10,7 @@ require('./selectStain');
 require('./selectPaint');
 require('./addShape');
 require('./addText');
+require('./buttCapText');
 require('./buttCapMaterial');
 require('./uploadImage');
 document.addEventListener('DOMContentLoaded', function(){

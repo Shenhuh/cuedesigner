@@ -7,8 +7,8 @@
 
     #renderer {
         border: 1px solid black;
-        width: 1024px;
-        height: 1024px;
+        width: 100vh;
+        height: 100vh;
         position: relative;
     }
     .canvas-container:nth-of-type(2) {
@@ -117,10 +117,24 @@
     
                         </select>
     
-                        <label for="engrave-text" class="mt-3">Engrave Text</label>
-                        <input type="text" name="" id="engrave-text" class="form-control" />
+                        <label for="select-font-style" class="form-label mt-3">Font Style:</label>
+                        <select class="form-control form-select" name="" id="butt-cap-font-style">
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="inlay">Calibri</option>
+                        </select>
 
-                        <button class="btn btn-primary mt-3 w-100">Add</button>
+                        <label for="select-font-size" class="form-label mt-3">Font Size:</label>
+                        <select class="form-control form-select" name="" id="butt-cap-font-size">
+                            <option value="8">8</option>
+                            <option value="12">12</option>
+                        </select>
+                        
+
+                        <label for="font-color" class="form-label mt-3">Font Color:</label>
+                        <input type="color" id="butt-cap-font-color" class="form-color form-control" />
+
+                        <button class="btn btn-primary mt-3 w-100" id="butt-cap-add-text">Add Text Engraving</button>
+
                     </div>
                     <div id="butt-sleeve" class="content" style="display: none;">
                         

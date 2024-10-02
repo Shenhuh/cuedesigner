@@ -1,4 +1,4 @@
-import { fabricCanvas1 } from "./refabric";
+import { currentPosition, fabricCanvas1 } from "./refabric";
 
 
 document.addEventListener('DOMContentLoaded', function(){
@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', function(){
     var fontStyle = document.getElementById('font-style').value;
     const fontSize = document.getElementById('select-font-size').value;
     var orientation  = document.getElementById('select-orientation').value;
-    
+    var top = currentPosition.y;
+    var left = currentPosition.x;
     addText(fontColor, fontStyle, fontSize, orientation, top, left);
     
   });

@@ -11,6 +11,7 @@ export function addImageToPart(image, width, height, top, left, id, part){
                 top: top,
                 id: id,
                 part: part,
+                selectable: false,
                 // width: 447,
                 // height: 200,
                 scaleX: width / loadedImg.width,

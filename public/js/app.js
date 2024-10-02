@@ -3063,6 +3063,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var fontStyle = document.getElementById('font-style').value;
     var fontSize = document.getElementById('select-font-size').value;
     var orientation = document.getElementById('select-orientation').value;
+    var top = _refabric__WEBPACK_IMPORTED_MODULE_0__.currentPosition.y;
+    var left = _refabric__WEBPACK_IMPORTED_MODULE_0__.currentPosition.x;
     addText(fontColor, fontStyle, fontSize, orientation, top, left);
   });
 });
@@ -3124,6 +3126,7 @@ __webpack_require__(/*! ./selectStain */ "./resources/js/selectStain.js");
 __webpack_require__(/*! ./selectPaint */ "./resources/js/selectPaint.js");
 __webpack_require__(/*! ./addShape */ "./resources/js/addShape.js");
 __webpack_require__(/*! ./addText */ "./resources/js/addText.js");
+__webpack_require__(/*! ./buttCapText */ "./resources/js/buttCapText.js");
 __webpack_require__(/*! ./buttCapMaterial */ "./resources/js/buttCapMaterial.js");
 __webpack_require__(/*! ./uploadImage */ "./resources/js/uploadImage.js");
 document.addEventListener('DOMContentLoaded', function () {});
@@ -3161,6 +3164,43 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /***/ }),
 
+/***/ "./resources/js/buttCapText.js":
+/*!*************************************!*\
+  !*** ./resources/js/buttCapText.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _refabric__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./refabric */ "./resources/js/refabric.js");
+
+document.addEventListener('DOMContentLoaded', function () {
+  document.getElementById('butt-cap-add-text').addEventListener('click', function (event) {
+    // const polygonData = event.dataset.polygon;
+
+    var fontColor = document.getElementById('butt-cap-font-color').value;
+    var fontStyle = document.getElementById('butt-cap-font-style').value;
+    var fontSize = document.getElementById('butt-cap-font-size').value;
+    var top = _refabric__WEBPACK_IMPORTED_MODULE_0__.currentPosition.y;
+    var left = _refabric__WEBPACK_IMPORTED_MODULE_0__.currentPosition.x;
+    addButtCapText(fontColor, fontStyle, fontSize, top, left);
+  });
+});
+function addButtCapText(fontColor, fontStyle, fontSize, top, left) {
+  var itext;
+  itext = new fabric.IText('Double Click to edit', {
+    left: left,
+    top: top,
+    fontFamily: fontStyle,
+    fill: fontColor,
+    fontSize: fontSize
+  });
+  _refabric__WEBPACK_IMPORTED_MODULE_0__.fabricCanvas1.add(itext);
+  _refabric__WEBPACK_IMPORTED_MODULE_0__.fabricCanvas1.renderAll();
+}
+
+/***/ }),
+
 /***/ "./resources/js/designer/addImageToPart.js":
 /*!*************************************************!*\
   !*** ./resources/js/designer/addImageToPart.js ***!
@@ -3183,6 +3223,7 @@ function addImageToPart(image, width, height, top, left, id, part) {
         top: top,
         id: id,
         part: part,
+        selectable: false,
         // width: 447,
         // height: 200,
         scaleX: width / loadedImg.width,
@@ -3211,6 +3252,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   currentPart: () => (/* binding */ currentPart),
 /* harmony export */   currentPosition: () => (/* binding */ currentPosition),
 /* harmony export */   fabricCanvas1: () => (/* binding */ fabricCanvas1),
+/* harmony export */   modelPosition: () => (/* binding */ modelPosition),
 /* harmony export */   selectedTextures: () => (/* binding */ selectedTextures)
 /* harmony export */ });
 /* harmony import */ var fabric__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! fabric */ "./node_modules/fabric/dist/fabric.js");
@@ -3237,8 +3279,13 @@ var currentPart = {
   value: null
 };
 var currentPosition = {
+  x: 0,
+  y: 3890
+};
+var modelPosition = {
   x: null,
-  y: null
+  y: null,
+  z: null
 };
 var currentDimension = {
   w: null,

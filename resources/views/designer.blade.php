@@ -688,6 +688,9 @@
             </div>
         </div>
       
+        <div id="floatingDiv" class="bg-primary text-white fixed-top">
+            I will be positioned based on the reference div.
+        </div>
         <div class="bg-light" id="canvas-div" style="flex-grow: 1; overflow-y: auto; height: 100vh; overflow-x:hidden;">
             <canvas id="canvas1" class="border" height="4096" width="447"></canvas>
         </div>
@@ -703,5 +706,4 @@
 
 
 <canvas id="canvas2" height="4096" width="4096" style="display:none;"></canvas>
-
 @endsection

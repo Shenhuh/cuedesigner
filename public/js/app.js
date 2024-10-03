@@ -3129,7 +3129,14 @@ __webpack_require__(/*! ./addText */ "./resources/js/addText.js");
 __webpack_require__(/*! ./buttCapText */ "./resources/js/buttCapText.js");
 __webpack_require__(/*! ./buttCapMaterial */ "./resources/js/buttCapMaterial.js");
 __webpack_require__(/*! ./uploadImage */ "./resources/js/uploadImage.js");
-document.addEventListener('DOMContentLoaded', function () {});
+document.addEventListener('DOMContentLoaded', function () {
+  var referenceDiv = document.getElementById('canvas1');
+  var floatingDiv = document.getElementById('floatingDiv');
+
+  // Get the referenceDiv's position
+  var rect = referenceDiv.getBoundingClientRect();
+  floatingDiv.style.left = rect.left + 'px';
+});
 
 /***/ }),
 

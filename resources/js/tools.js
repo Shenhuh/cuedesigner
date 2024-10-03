@@ -1,5 +1,6 @@
 import * as addImageToPart from './designer/addImageToPart.js';
-import { currentDimension, currentPart, currentPosition } from './refabric.js';
+import { currentDimension, currentPart, currentPosition, moveCamera, moveModel } from './refabric.js';
+import { moveScroll } from './canvasScroll.js';
 
 document.addEventListener('DOMContentLoaded', function () {
     const tools = document.querySelectorAll('.side-tools');
@@ -144,7 +145,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('butt-cap').style.display = "block";
                 currentPart.value = "butt-cap";
                 // currentPosition.x = 480;
-                // currentPosition.y = 3590;
+                moveModel(0, 2.7, 0);
+                moveCamera(0, 0, 0.7);
+                currentPosition.y = 3590;
+                moveScroll(2600);
                 // currentDimension.w = 447;
                 // currentDimension.h = 200;
                 break;
@@ -153,6 +157,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('butt-sleeve').style.display = "block";
                 currentPart.value = "butt-sleeve";
                 // currentPosition.x = 480;
+                moveModel(0, 2.5, 0);
+                moveCamera(0, 0, 0.7);
+                moveScroll(2300);
                 currentPosition.y = 3390;
                 currentDimension.w = 447;
                 currentDimension.h = 600;
@@ -161,6 +168,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('butt-cap').style.display = "none";
                 document.getElementById('butt-sleeve').style.display = "block";
                 currentPart.value = "butt-wrap";
+                moveModel(0, 1.9, 0);
+                moveCamera(0, 0, 0.7);
+                moveScroll(1300);
                 currentPosition.y = 2190;
                 currentDimension.w = 447;
                 currentDimension.h = 1200;
@@ -169,6 +179,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('butt-cap').style.display = "none";
                 document.getElementById('butt-sleeve').style.display = "block";
                 currentPart.value = "forearm";
+                moveModel(0, 1.05, 0);
+                moveCamera(0, 0, 0.7);
+                moveScroll(180);
                 currentPosition.y = 990;
                 currentDimension.w = 447;
                 currentDimension.h = 1200;
@@ -177,6 +190,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('butt-cap').style.display = "none";
                 document.getElementById('butt-sleeve').style.display = "block";
                 currentPart.value = "joint-collar";
+                moveModel(0, 0.5, 0);
+                moveCamera(0, 0, 0.7);
+                moveScroll(0);
                 currentPosition.y = 800;
                 currentDimension.w = 447;
                 currentDimension.h = 200;

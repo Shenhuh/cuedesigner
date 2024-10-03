@@ -14,16 +14,17 @@ var texture;
 export var selectedTextures = [null, null, null, null];
 export var currentPart = { value: null };
 export var currentPosition = { x: 0, y: 3890 };
-export var modelPosition = { x: null, y: null, z: null };
-export var currentDimension = { w: null, h: null };
 
+export var currentDimension = { w: null, h: null };
+var model;
+var camera;
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize Three.js scene, camera, and renderer
     const scene = new THREE.Scene();
     fabricCanvas1 = new fabric.Canvas('canvas1');
     fabricCanvas2 = new fabric.Canvas('canvas2');
 
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({
 		antialias: true
 	});
@@ -53,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Load the GLTF model
     loader.load('assets/supppp-orig.glb', function(gltf) {
-        const model = gltf.scene;
+        model = gltf.scene;
         model.position.set(0, 0, 0);
         model.scale.set(4, 4, 4);
         // model.rotation.z = 120 * (Math.PI / 180); // Convert degrees to radians
@@ -74,6 +75,9 @@ document.addEventListener('DOMContentLoaded', function() {
         scene.add(model);
         animate();
     });
+
+
+   
 
 
     // Add OrbitControls
@@ -273,6 +277,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
 });
 
+export  function moveModel(x, y, z){
+    model.position.set(x,y,z);
+}
+
+export  function moveCamera(x, y, z){
+    camera.position.set(x,y,z);
+}
 
 function debounce(func, wait) {
     return function(...args) {

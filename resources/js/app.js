@@ -13,6 +13,7 @@ require('./addText');
 require('./buttCapText');
 require('./buttCapMaterial');
 require('./uploadImage');
+
 document.addEventListener('DOMContentLoaded', function(){
   
 })

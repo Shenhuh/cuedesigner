@@ -1,4 +1,4 @@
-import { fabricCanvas1, cloneCanvasWithoutClipPath, currentDimension } from '../refabric.js';
+import { fabricCanvas1, currentDimension } from '../refabric.js';
 
 
 export function addImageToPart(image, width, height, top, left, id, part){
@@ -20,7 +20,7 @@ export function addImageToPart(image, width, height, top, left, id, part){
 
             fabricCanvas1.add(img);
             fabricCanvas1.renderAll();
-            console.log(currentDimension.w)
+         
         });
     }, 1000);
 }

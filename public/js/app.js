@@ -3201,6 +3201,24 @@ function addButtCapText(fontColor, fontStyle, fontSize, top, left) {
 
 /***/ }),
 
+/***/ "./resources/js/canvasScroll.js":
+/*!**************************************!*\
+  !*** ./resources/js/canvasScroll.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   moveScroll: () => (/* binding */ moveScroll)
+/* harmony export */ });
+function moveScroll(position) {
+  var scrollDiv = document.getElementById('canvas-div');
+  scrollDiv.scrollTop = position;
+}
+
+/***/ }),
+
 /***/ "./resources/js/designer/addImageToPart.js":
 /*!*************************************************!*\
   !*** ./resources/js/designer/addImageToPart.js ***!
@@ -3231,7 +3249,6 @@ function addImageToPart(image, width, height, top, left, id, part) {
       });
       _refabric_js__WEBPACK_IMPORTED_MODULE_0__.fabricCanvas1.add(img);
       _refabric_js__WEBPACK_IMPORTED_MODULE_0__.fabricCanvas1.renderAll();
-      console.log(_refabric_js__WEBPACK_IMPORTED_MODULE_0__.currentDimension.w);
     });
   }, 1000);
 }
@@ -3252,7 +3269,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   currentPart: () => (/* binding */ currentPart),
 /* harmony export */   currentPosition: () => (/* binding */ currentPosition),
 /* harmony export */   fabricCanvas1: () => (/* binding */ fabricCanvas1),
-/* harmony export */   modelPosition: () => (/* binding */ modelPosition),
+/* harmony export */   moveCamera: () => (/* binding */ moveCamera),
+/* harmony export */   moveModel: () => (/* binding */ moveModel),
 /* harmony export */   selectedTextures: () => (/* binding */ selectedTextures)
 /* harmony export */ });
 /* harmony import */ var fabric__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! fabric */ "./node_modules/fabric/dist/fabric.js");
@@ -3282,21 +3300,18 @@ var currentPosition = {
   x: 0,
   y: 3890
 };
-var modelPosition = {
-  x: null,
-  y: null,
-  z: null
-};
 var currentDimension = {
   w: null,
   h: null
 };
+var model;
+var camera;
 document.addEventListener('DOMContentLoaded', function () {
   // Initialize Three.js scene, camera, and renderer
   var scene = new three__WEBPACK_IMPORTED_MODULE_3__.Scene();
   fabricCanvas1 = new fabric__WEBPACK_IMPORTED_MODULE_0__.fabric.Canvas('canvas1');
   fabricCanvas2 = new fabric__WEBPACK_IMPORTED_MODULE_0__.fabric.Canvas('canvas2');
-  var camera = new three__WEBPACK_IMPORTED_MODULE_3__.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  camera = new three__WEBPACK_IMPORTED_MODULE_3__.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
   var renderer = new three__WEBPACK_IMPORTED_MODULE_3__.WebGLRenderer({
     antialias: true
   });
@@ -3325,7 +3340,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Load the GLTF model
   loader.load('assets/supppp-orig.glb', function (gltf) {
-    var model = gltf.scene;
+    model = gltf.scene;
     model.position.set(0, 0, 0);
     model.scale.set(4, 4, 4);
     // model.rotation.z = 120 * (Math.PI / 180); // Convert degrees to radians
@@ -3532,6 +3547,12 @@ document.addEventListener('DOMContentLoaded', function () {
   //     });
   // }, 1000);
 });
+function moveModel(x, y, z) {
+  model.position.set(x, y, z);
+}
+function moveCamera(x, y, z) {
+  camera.position.set(x, y, z);
+}
 function debounce(func, wait) {
   return function () {
     var _this = this;
@@ -3701,6 +3722,8 @@ document.addEventListener('DOMContentLoaded', function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _designer_addImageToPart_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./designer/addImageToPart.js */ "./resources/js/designer/addImageToPart.js");
 /* harmony import */ var _refabric_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./refabric.js */ "./resources/js/refabric.js");
+/* harmony import */ var _canvasScroll_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./canvasScroll.js */ "./resources/js/canvasScroll.js");
+
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -3835,7 +3858,10 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('butt-cap').style.display = "block";
         _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPart.value = "butt-cap";
         // currentPosition.x = 480;
-        // currentPosition.y = 3590;
+        (0,_refabric_js__WEBPACK_IMPORTED_MODULE_1__.moveModel)(0, 2.7, 0);
+        (0,_refabric_js__WEBPACK_IMPORTED_MODULE_1__.moveCamera)(0, 0, 0.7);
+        _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPosition.y = 3590;
+        (0,_canvasScroll_js__WEBPACK_IMPORTED_MODULE_2__.moveScroll)(2600);
         // currentDimension.w = 447;
         // currentDimension.h = 200;
         break;
@@ -3844,6 +3870,9 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('butt-sleeve').style.display = "block";
         _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPart.value = "butt-sleeve";
         // currentPosition.x = 480;
+        (0,_refabric_js__WEBPACK_IMPORTED_MODULE_1__.moveModel)(0, 2.5, 0);
+        (0,_refabric_js__WEBPACK_IMPORTED_MODULE_1__.moveCamera)(0, 0, 0.7);
+        (0,_canvasScroll_js__WEBPACK_IMPORTED_MODULE_2__.moveScroll)(2300);
         _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPosition.y = 3390;
         _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentDimension.w = 447;
         _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentDimension.h = 600;
@@ -3852,6 +3881,9 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('butt-cap').style.display = "none";
         document.getElementById('butt-sleeve').style.display = "block";
         _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPart.value = "butt-wrap";
+        (0,_refabric_js__WEBPACK_IMPORTED_MODULE_1__.moveModel)(0, 1.9, 0);
+        (0,_refabric_js__WEBPACK_IMPORTED_MODULE_1__.moveCamera)(0, 0, 0.7);
+        (0,_canvasScroll_js__WEBPACK_IMPORTED_MODULE_2__.moveScroll)(1300);
         _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPosition.y = 2190;
         _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentDimension.w = 447;
         _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentDimension.h = 1200;
@@ -3860,6 +3892,9 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('butt-cap').style.display = "none";
         document.getElementById('butt-sleeve').style.display = "block";
         _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPart.value = "forearm";
+        (0,_refabric_js__WEBPACK_IMPORTED_MODULE_1__.moveModel)(0, 1.05, 0);
+        (0,_refabric_js__WEBPACK_IMPORTED_MODULE_1__.moveCamera)(0, 0, 0.7);
+        (0,_canvasScroll_js__WEBPACK_IMPORTED_MODULE_2__.moveScroll)(180);
         _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPosition.y = 990;
         _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentDimension.w = 447;
         _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentDimension.h = 1200;
@@ -3868,6 +3903,9 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('butt-cap').style.display = "none";
         document.getElementById('butt-sleeve').style.display = "block";
         _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPart.value = "joint-collar";
+        (0,_refabric_js__WEBPACK_IMPORTED_MODULE_1__.moveModel)(0, 0.5, 0);
+        (0,_refabric_js__WEBPACK_IMPORTED_MODULE_1__.moveCamera)(0, 0, 0.7);
+        (0,_canvasScroll_js__WEBPACK_IMPORTED_MODULE_2__.moveScroll)(0);
         _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentPosition.y = 800;
         _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentDimension.w = 447;
         _refabric_js__WEBPACK_IMPORTED_MODULE_1__.currentDimension.h = 200;
@@ -3927,7 +3965,7 @@ document.addEventListener('DOMContentLoaded', function () {
     reader.onload = function (event) {
       var width = 200;
       var height = 200;
-      var top = 0;
+      var top = _refabric__WEBPACK_IMPORTED_MODULE_0__.currentPosition.y;
       var left = 0;
 
       // Use the data URL directly

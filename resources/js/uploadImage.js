@@ -1,4 +1,4 @@
-import { fabricCanvas1 } from "./refabric";
+import { currentPosition, fabricCanvas1 } from "./refabric";
 
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('upload-image').addEventListener('click', function (e) {
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
         reader.onload = function(event) {
             var width = 200;
             var height = 200;
-            var top = 0;
+            var top = currentPosition.y;
             var left = 0;
 
             // Use the data URL directly

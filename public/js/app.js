@@ -3130,12 +3130,20 @@ __webpack_require__(/*! ./buttCapText */ "./resources/js/buttCapText.js");
 __webpack_require__(/*! ./buttCapMaterial */ "./resources/js/buttCapMaterial.js");
 __webpack_require__(/*! ./uploadImage */ "./resources/js/uploadImage.js");
 document.addEventListener('DOMContentLoaded', function () {
-  var referenceDiv = document.getElementById('canvas1');
+  var referenceDiv = document.getElementById('renderer');
   var floatingDiv = document.getElementById('floatingDiv');
 
   // Get the referenceDiv's position
   var rect = referenceDiv.getBoundingClientRect();
-  floatingDiv.style.left = rect.left + 'px';
+  floatingDiv.style.left = rect.left + 20 + 'px';
+  document.querySelectorAll('input[name="radioOption"]').forEach(function (radio) {
+    radio.addEventListener('change', function () {
+      document.querySelectorAll('.active-option').forEach(function (active) {
+        active.classList.remove('active-option');
+      });
+      this.parentElement.classList.add('active-option');
+    });
+  });
 });
 
 /***/ }),
@@ -3736,126 +3744,23 @@ __webpack_require__.r(__webpack_exports__);
 document.addEventListener('DOMContentLoaded', function () {
   var tools = document.querySelectorAll('.side-tools');
   var panelTools = document.getElementById('panel-tools');
-
-  // A mapping of tools to their respective loading functions
-  var toolActions = {
-    'textures-button': loadTexturesContent,
-    'shapes-button': loadShapesContent
-    // Add more tools and their corresponding functions here
-  };
-
-  // Function to clear and load new content into 'panel-tools'
-  function loadTexturesContent() {
-    clearPanel();
-    var header = document.createElement('h3');
-    header.textContent = 'Textures';
-    var description = document.createElement('p');
-    description.textContent = 'Choose a texture for your design:';
-    // Create a label element
-    var materialLabel = document.createElement('label');
-    materialLabel.textContent = 'Choose Material:';
-    materialLabel.setAttribute('for', 'material-select'); // Associate the label with the select element
-
-    // Create a select element
-    var material = document.createElement('select');
-    material.setAttribute('id', 'material-select'); // Set the id so that the label can reference it
-
-    // Add some options to the select element
-    var option1 = document.createElement('option');
-    option1.value = 'wood';
-    option1.textContent = 'Wood';
-    var option2 = document.createElement('option');
-    option2.value = 'leather';
-    option2.textContent = 'Leather';
-
-    // Append options to the select element
-    material.appendChild(option1);
-    material.appendChild(option2);
-    var list = document.createElement('ul');
-    var textures = [{
-      name: 'Wood',
-      imgSrc: '/images/welcome-bg.jpg'
-    }, {
-      name: 'Metal',
-      imgSrc: 'path/to/metal.png'
-    }, {
-      name: 'Leather',
-      imgSrc: 'path/to/leather.png'
-    }, {
-      name: 'Fabric',
-      imgSrc: 'path/to/fabric.png'
-    }];
-    textures.forEach(function (texture) {
-      var listItem = document.createElement('li');
-
-      // Create an image element
-      var img = document.createElement('img');
-      img.src = texture.imgSrc; // Set the image source
-      img.alt = texture.name; // Set alt text for accessibility
-      img.classList.add('texture-image'); // Optional: Add a class for styling
-      img.width = 200;
-      img.height = 200;
-      // Set a data-id attribute for the list item
-      img.setAttribute('data-id', texture.name);
-      listItem.classList.add('clickable'); // Add a class for styling and interactivity
-
-      // Append the image to the list item
-      listItem.appendChild(img);
-
-      // Add a click event listener to handle clicks
-      listItem.addEventListener('click', function (event) {
-        alert(event.target.src);
-        _designer_addImageToPart_js__WEBPACK_IMPORTED_MODULE_0__.addImageToPart(event.target.src, 447, 200, 3887, 0, 'sd');
-      });
-      list.appendChild(listItem);
-    });
-    panelTools.appendChild(header);
-    panelTools.appendChild(description);
-    panelTools.appendChild(materialLabel);
-    panelTools.appendChild(material);
-    panelTools.appendChild(list);
-  }
-  function loadShapesContent() {
-    clearPanel();
-    var header = document.createElement('h3');
-    header.textContent = 'Shapes';
-    var description = document.createElement('p');
-    description.textContent = 'Choose a shape for your design:';
-    var shapes = ['Circle', 'Square', 'Triangle', 'Polygon'];
-    var shapeContainer = document.createElement('div');
-    shapes.forEach(function (shape) {
-      var button = document.createElement('button');
-      button.textContent = shape;
-      button.classList.add('shape-btn'); // Add a class for styling and interactivity
-      shapeContainer.appendChild(button);
-    });
-    panelTools.appendChild(header);
-    panelTools.appendChild(description);
-    panelTools.appendChild(shapeContainer);
-  }
-  function clearPanel() {
-    // Clear the panel content efficiently
-    while (panelTools.firstChild) {
-      panelTools.removeChild(panelTools.firstChild);
-    }
-  }
+  var sidePanels = document.querySelectorAll('.side-panel');
 
   // Loop through each tool element
   tools.forEach(function (tool) {
-    tool.addEventListener('click', function () {
-      // Remove 'active' class from all tools
-      tools.forEach(function (t) {
-        return t.classList.remove('active');
+    tool.addEventListener('click', function (event) {
+      tools.forEach(function (item) {
+        return item.classList.remove('active');
+      });
+      event.target.classList.add('active');
+      // Hide all panels
+      sidePanels.forEach(function (panel) {
+        panel.style.display = "none";
       });
 
-      // Add 'active' class to the clicked tool
-      tool.classList.add('active');
-
-      // Check if the clicked tool has a corresponding action
-      var action = toolActions[tool.id];
-      if (action) {
-        action(); // Call the corresponding function to load content
-      }
+      // Show the specific panel based on the tool's data-id
+      document.getElementById(tool.dataset.id).style.display = "block";
+      console.log(tool.dataset.id);
     });
   });
   document.getElementById('select-part').addEventListener('change', function (event) {

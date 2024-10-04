@@ -40,13 +40,13 @@
         </a>
         <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
             <li class="nav-item">
-                <a href="#" class="nav-link active py-3 border-bottom side-tools" id="textures-button" aria-current="page" title="Home" data-bs-toggle="tooltip" data-bs-placement="right">
-                <i class="bi bi-card-image"></i>
+                <a href="#" class="nav-link active py-3 border-bottom side-tools" data-id="panel-tools" aria-current="page" title="Design" data-bs-toggle="tooltip" data-bs-placement="right">
+                  <i class="bi bi-brush"></i> 
                 </a>
             </li>
             <li>
-                <a href="#" class="nav-link py-3 border-bottom side-tools" title="Dashboard" data-bs-toggle="tooltip" data-bs-placement="right">
-                    <svg class="bi" width="24" height="24" role="img" aria-label="Dashboard"><use xlink:href="#speedometer2"/></svg>
+                <a href="#" class="nav-link py-3 border-bottom side-tools" title="Pool Cue Setup" data-id="pool-cue-setup" data-bs-toggle="tooltip" data-bs-placement="right">
+                <i class="bi bi-sliders2"></i>
                 </a>
             </li>
             <li>
@@ -81,7 +81,7 @@
 
     <div class="d-flex">
 
-        <div class="bg-white" id="panel-tools" style="width: 25rem; ">
+        <div class="bg-white side-panel" id="panel-tools" style="width: 25rem;">
             <div class="container m-2">
                 <div class="panel">
 
@@ -139,13 +139,13 @@
                     <div id="butt-sleeve" class="content" style="display: none;">
                         
                         <h4>Butt Sleeve</h4>
-                      
+                    
     
                         <div class="accordion" id="accordionExample">
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                   Material
+                                Material
                                 </button>
                                 </h2>
                                 <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
@@ -290,7 +290,7 @@
                                         </div>
                                     </div>
 
-                           
+                        
                                 </div>
 
                             </div>
@@ -652,7 +652,7 @@
                                         </select>
                                         <button class="btn btn-primary mt-3 w-100" id="add-text">Add Text</button>
                                     </div>
-                                   
+                                
                                 </div>
                             </div>
 
@@ -672,7 +672,7 @@
                                         </select>
                                         <button class="btn btn-primary mt-3 w-100" id="upload-image">Add</button>
                                     </div>
-                                   
+                                
                                 </div>
                             </div>
                         </div>
@@ -687,9 +687,78 @@
                 </div>
             </div>
         </div>
-      
-        <div id="floatingDiv" class="bg-primary text-white fixed-top">
-            I will be positioned based on the reference div.
+
+
+        <div class="bg-white side-panel" id="pool-cue-setup" style="width: 25rem; display:none;">
+            <div class="container m-2">
+                <h4>Pool Cue Configuration</h4>
+
+                <label for="select-part" class="form-label">Cue Weight:</label>
+                <select class="form-select form-control" id="select-part">
+                    <option value="butt-cap">1/2 oz</option>
+                    <option value="butt-sleeve">18 oz</option>
+                    <option value="butt-wrap">19 oz</option>
+                    <option value="forearm">20 oz</option>
+                    <option value="joint-collar">Joint Collar</option>
+                </select>
+
+                <label for="select-part" class="form-label">Select Wood:</label>
+                <select class="form-select form-control" id="select-part">
+                    <option value="butt-cap">Maple</option>
+                    <option value="butt-sleeve">Birds Eye Maple</option>
+                    <option value="butt-wrap">Zebrawood</option>
+                    <option value="forearm">Bocote</option>
+                    <option value="joint-collar">Brown Burl</option>
+                </select>
+
+                <div class="container mt-4">
+                    <label class="form-label">Select Joint:</label>
+                    <div class="row">
+                        <div class="col-3">
+                        <label class="d-block text-center">
+                            <input type="radio" name="radioOption" value="1" class="d-none">
+                            <img src="https://via.placeholder.com/300" class="img-fluid img-thumbnail" alt="Option 1">
+                            <p>3/8"-10 Standard</p>
+                        </label>
+                        </div>
+                        <div class="col-3">
+                        <label class="d-block text-center">
+                            <input type="radio" name="radioOption" value="2" class="d-none">
+                            <img src="https://via.placeholder.com/300" class="img-fluid img-thumbnail" alt="Option 2">
+                            <p>McDermott Quick Release</p>
+                        </label>
+                        </div>
+                        <div class="col-3">
+                        <label class="d-block text-center">
+                            <input type="radio" name="radioOption" value="3" class="d-none">
+                            <img src="https://via.placeholder.com/300" class="img-fluid img-thumbnail" alt="Option 3">
+                            <p>Radial </p>
+                        </label>
+                        </div>
+                        <div class="col-3">
+                        <label class="d-block text-center">
+                            <input type="radio" name="radioOption" value="4" class="d-none">
+                            <img src="https://via.placeholder.com/300" class="img-fluid img-thumbnail" alt="Option 4">
+                            <p>Uni-Loc</p>
+                        </label>
+                        </div>
+                    </div>
+                </div>
+
+                <label for="select-part" class="form-label">Cue Tip Diameter:</label>
+                <select class="form-select form-control" id="select-part">
+                    <option value="butt-cap">0.25mm</option>
+                    <option value="butt-sleeve">11.75mm</option>
+                    <option value="butt-wrap">13.75mm</option>
+                    
+                </select>
+            </div>
+        </div>
+    
+        <div id="floatingDiv" class="rounded-bottom fixed-top price d-flex justify-content-between align-items-center">
+            <label class="form-label mt-2 ms-3" for="price"><strong>Price:</strong> <span id="price">$200</span></label>
+            <button class="btn btn-success me-3">Save</button>
+            
         </div>
         <div class="bg-light" id="canvas-div" style="flex-grow: 1; overflow-y: auto; height: 100vh; overflow-x:hidden;">
             <canvas id="canvas1" class="border" height="4096" width="447"></canvas>

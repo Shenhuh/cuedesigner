@@ -2,3 +2,39 @@
 .canvas-container{
     top: -800px !important;
 }
+
+.price{
+    height: 3rem;
+    background-color: white;
+    width: 50vh;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.active-option img {
+    border: 3px solid green;
+}
+
+label{
+    font-weight: 500;
+}
+::-webkit-scrollbar {
+    width: 10px;
+    /* Set the width of the scrollbar */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    /* Set the background color of the track */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #888;
+    /* Set the color of the thumb */
+    border-radius: 6px;
+    /* Set the border-radius to make it rounder */
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+    /* Set the color of the thumb on hover */
+  }

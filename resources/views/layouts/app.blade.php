@@ -127,7 +127,7 @@
 
 
         <!-- Main Content Area -->
-        <main class="py-4 w-100" style="height:100vh;">
+        <main class="py-4 w-100" style="height:100vh; overflow-y: auto;">
             @yield('content')
         </main>
     </div>

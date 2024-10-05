@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.designer')
 @section('content')
 <style>
     #canvas1 {

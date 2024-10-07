@@ -12063,3 +12063,16 @@ i{
 .table-modern tbody tr:hover {
   background-color: #f1f1f1;
 }
+
+.sidebar {
+    max-width: 240px;
+    transition: width 0.4s ease, opacity 0.4s ease;
+    overflow: hidden;
+}
+
+.sidebar.collapsed {
+    max-width: 0;
+    opacity: 0;
+    transition: width 0.4s ease, opacity 0.4s ease;
+}
+

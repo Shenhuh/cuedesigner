@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/admin.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -25,7 +25,7 @@
 
 <div id="app" class="d-flex" style="height: 100vh;">
     <!-- Sidebar -->
-    <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-white" style="width: 240px; height: 100vh;">
+    <div class="sidebar d-flex flex-column flex-shrink-0 p-3 text-white bg-white" id="sidebar" style="height: 100vh;">
         <div class="d-flex justify-content-center align-items-center mb-3 mb-md-0 text-black text-decoration-none">
             <img src="https://github.com/mdo.png" alt="" width="48" height="48" class="rounded-circle me-3">
             <div class="d-flex flex-column text-center">
@@ -35,15 +35,9 @@
         </div>
 
         <hr>
-        <ul class="nav nav-pills admin-nav flex-column mb-auto">
+        <ul class="nav nav-pills admin-nav flex-column mb-auto">           
             <li class="nav-item mb-2">
-                <a href="#" class="nav-link active" aria-current="page">
-                    <i class="bi bi-house me-4"></i> 
-                    Home
-                </a>
-            </li>
-            <li class="nav-item mb-2">
-                <a href="#" class="nav-link text-black">
+                <a href="#" class="nav-link active">
                     <i class="bi bi-kanban me-4"></i>
                     Dashboard
                 </a>
@@ -56,14 +50,38 @@
             </li>
             <li class="nav-item mb-2">
                 <a href="#" class="nav-link text-black">
-                    <i class="bi bi-box-seam me-4"></i>
-                    Products
+                    <i class="bi bi-brush me-4"></i>
+                    Saved Designs
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="#" class="nav-link text-black">
+                    <i class="bi bi-easel2 me-4"></i>
+                    Designer Settings
                 </a>
             </li>
             <li class="nav-item mb-2">
                 <a href="#" class="nav-link text-black">
                     <i class="bi bi-people me-4"></i>
-                    Customers
+                    Users
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="#" class="nav-link text-black">
+                    <i class="bi bi-archive me-4"></i>
+                    Archives
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="#" class="nav-link text-black">
+                    <i class="bi bi-gear me-4"></i>
+                    Settings
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="#" class="nav-link text-black">
+                    <i class="bi bi-info-circle me-4"></i>
+                    About
                 </a>
             </li>
         </ul>
@@ -83,10 +101,14 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <!-- Left side: Dashboard Title -->
+            <a href="#" id="toggleSidebar" class="me-3">
+                <i id="toggleSidebarIcon" class="bi bi-x-lg"></i>
+            </a>
             <div class="d-flex flex-column">
                 <strong class="text-black" style="font-size:16px;">Dashboard</strong>
                 <span class="text-black" style="font-size:12px;">October 12, 2024</span>
             </div>
+
             
             <!-- Centered Search Bar -->
             <div class="d-flex mx-auto" style="width: 50%;">

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container" style="">
+<div class="container">
     <div class="dashboard-container m-3"> 
         <div class="row g-4">
             <div class="col-md-2">
@@ -186,7 +186,7 @@
                     </div>     
                 </div>
             </div>
-            <div class="col-md-4 mt-4"> <!-- Side card section -->
+            <div class="col-md-4 mt-4 mb-4"> <!-- Side card section -->
                 <div class="card box rounded-3 dashboard-top-card h-100 d-flex flex-column"> <!-- Card with rounded corners -->
                     <div class="card-body d-flex flex-column">
                         <h6 class="card-title">

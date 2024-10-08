@@ -9,23 +9,23 @@ import Chart from 'chart.js/auto';
 document.addEventListener('DOMContentLoaded', function(){
 
 
-  var toggleButton = document.getElementById('toggleSidebar');
-  var toggleIcon = document.getElementById('toggleSidebarIcon');
-  var sidebar = document.getElementById('sidebar');
 
-  toggleButton.addEventListener('click', function() {
-    sidebar.classList.toggle('d-none');  
-    sidebar.classList.toggle('collapsed');
-    
+    const toggleSidebar = document.getElementById('toggleSidebar');
+    const sidebar = document.getElementById('sidebar');
 
-    if (sidebar.classList.contains('collapsed')) {
-        toggleIcon.classList.remove('bi-x-lg'); // Change back to list icon when expanding
-        toggleIcon.classList.add('bi-list');
-    } else {
-        toggleIcon.classList.remove('bi-list');
-        toggleIcon.classList.add('bi-x-lg');
-    }
-  });
+    // Toggle the sidebar when the toggle button is clicked
+    toggleSidebar.addEventListener('click', function (e) {
+        e.stopPropagation(); // Prevent the click event from bubbling up
+        sidebar.classList.toggle('collapsed');
+    });
+
+    // Close the sidebar if the user clicks outside of it
+    document.addEventListener("click", function (e) {
+        // Check if the clicked element is not the sidebar or the toggle button
+        if (!sidebar.contains(e.target) && !toggleSidebar.contains(e.target)) {
+            sidebar.classList.add('collapsed');
+        }
+    });
 
 
 

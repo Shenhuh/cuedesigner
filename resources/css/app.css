@@ -1,109 +1,156 @@
-
-.canvas-container{
-    top: -800px !important;
+html, body {
+  height: 100%; /* Set height to 100% */
+  margin: 0; /* Remove default margins */
+  overflow: hidden; /* Prevent body scroll */
+}
+body {
+  display: flex;
+  flex-direction: column; /* Arrange children vertically */
+}
+.canvas-container {
+  top: -800px !important;
 }
 
-.price{
-    height: 3rem;
-    background-color: white;
-    width: 50vh;
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+.price {
+  height: 3rem;
+  background-color: white;
+  width: 50vh;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
 .active-option img {
-    border: 3px solid green;
+  border: 3px solid green;
 }
 
-label{
-    font-weight: 500;
+label {
+  font-weight: 500;
 }
+
 ::-webkit-scrollbar {
   width: 10px;
-  /* Set the width of the scrollbar */
 }
 
 ::-webkit-scrollbar-track {
   background-color: #f1f1f1;
-  /* Set the background color of the track */
 }
 
 ::-webkit-scrollbar-thumb {
   background-color: #888;
-  /* Set the color of the thumb */
   border-radius: 6px;
-  /* Set the border-radius to make it rounder */
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: #555;
-  /* Set the color of the thumb on hover */
 }
 
 .admin-nav .nav-link.active {
   background-color: #36382e !important;
-  border-color:#36382e;
-  color: white; /* Optional: Adjust text color */
-  
+  border-color: #36382e;
+  color: white;
 }
 
 .admin-nav .nav-link.active i {
- 
-  color: white !important; /* Optional: Adjust text color */
-  
-}
-main{
-  background: #f8f9f9;
-}
-.nav-link {
-  margin-bottom: 10px; /* Adjust value as needed */
+  color: white !important;
 }
 
+main {
+  background: #f8f9f9;
+}
+
+.nav-link {
+  margin-bottom: 10px;
+}
 
 .dashboard-search {
   background: #f8f9f9 !important;
   border-radius: 0 !important;
-  border-left:none !important;
-  border-right: none !important;
-  border-top: none !important;
+  border: none !important;
   border-bottom: 2px solid black !important;
   transition: border 1s ease, border-radius 1s ease;
 }
+
 .dashboard-search:focus {
-  border: 2px solid #36382e !important; /* Darker border on focus */
+  border: 2px solid #36382e !important;
   border-radius: 5rem !important;
- 
-  box-shadow: none !important; /* Optional: remove the default focus shadow */
+  box-shadow: none !important;
 }
 
-i{
+i {
   color: #36382e !important;
   font-size: 20px;
 }
 
-.dashboard-top-card{
+.dashboard-top-card {
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   border: none !important;
 }
-.dashboard-top-card i{
-  color:#36382e;
+
+.dashboard-top-card i {
+  color: #36382e;
 }
 
 .table-modern thead {
   background-color: #343a40;
   color: white;
 }
+
 .table-modern tbody tr:hover {
   background-color: #f1f1f1;
 }
 
 .sidebar {
-    max-width: 240px;
-    transition: width 0.4s ease, opacity 0.4s ease;
-    overflow: hidden;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 3000;
+  width: 250px;
+  background-color: white;
+  transition: transform 0.3s ease;
+  overflow-y: auto;
 }
 
 .sidebar.collapsed {
-    max-width: 0;
-    opacity: 0;
-    transition: width 0.4s ease, opacity 0.4s ease;
+  max-width: 0;
+  display: none !important;
+  transition: width 0.4s ease, opacity 0.4s ease;
+  overflow: hidden;
+}
+
+#toggleSidebar {
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .dashboard-search {
+      width: 100%;
+  }
+
+  .sidebar {
+      display: none; /* Hide sidebar by default on mobile */
+  }
+
+  .sidebar.collapsed {
+      display: block; /* Show sidebar when expanded */
+  }
+
+  .flex-nowrap {
+      flex-direction: column; /* Stack layout vertically on mobile */
+  }
+
+  #toggleSidebar {
+      display: inline; /* Show sidebar toggle button */
+  }
+
+  #toggleSidebarIcon {
+      font-size: 30px; /* Increase icon size for better visibility */
+  }
+}
+@media (max-width: 576px) { /* Adjust according to your needs */
+  .navbar-nav {
+      flex-direction: row; /* Ensures items are displayed in a row */
+  }
+  .nav-item {
+      margin-left: 10px; /* Adjust spacing between items */
+  }
 }

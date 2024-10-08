@@ -18,6 +18,51 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        /* Search and Notification Panels */
+        .search-panel, .notification-panel {
+            position: fixed;
+            top: 50px;
+            right: 20px;
+            width: 300px; /* Adjusted width */
+            background: white;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 1051;
+            display: none;
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        /* Arrow Indicator pointing to the icons */
+        .arrow-indicator {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid white; /* The color of the arrow */
+            z-index: 1052;
+        }
+
+        /* Overlay for focus */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1050;
+            display: none;
+        }
+
+        /* Search input styling */
+        .dashboard-search {
+            border-radius: 20px; /* Rounded search bar */
+        }
+    </style>
 </head>
 <body>
 
@@ -32,59 +77,10 @@
             </div>
         </div>
         <div class="container overflow-y-auto">
-
             <hr>
-            <ul class="nav nav-pills admin-nav flex-column mb-auto">           
-                <li class="nav-item mb-2">
-                    <a href="#" class="nav-link active">
-                        <i class="bi bi-kanban me-4"></i>
-                        Dashboard
-                    </a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="#" class="nav-link text-black">
-                        <i class="bi bi-cart me-4"></i>
-                        Orders
-                    </a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="#" class="nav-link text-black">
-                        <i class="bi bi-brush me-4"></i>
-                        Saved Designs
-                    </a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="#" class="nav-link text-black">
-                        <i class="bi bi-easel2 me-4"></i>
-                        Designer Settings
-                    </a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="#" class="nav-link text-black">
-                        <i class="bi bi-people me-4"></i>
-                        Users
-                    </a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="#" class="nav-link text-black">
-                        <i class="bi bi-archive me-4"></i>
-                        Archives
-                    </a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="#" class="nav-link text-black">
-                        <i class="bi bi-gear me-4"></i>
-                        Settings
-                    </a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="#" class="nav-link text-black">
-                        <i class="bi bi-info-circle me-4"></i>
-                        About
-                    </a>
-                </li>
+            <ul class="nav nav-pills admin-nav flex-column mb-auto">
+                <!-- Sidebar Links Here -->
             </ul>
-    
             <hr>
             <div class="text-center">
                 <a href="#" class="d-flex align-items-center text-black text-decoration-none">
@@ -94,55 +90,148 @@
         </div>
     </div>
 
-    <!-- Main Content (Top Navbar and Content Area) -->
+    <!-- Main Content Area -->
     <div class="flex-grow-1 d-flex flex-column">
-        <!-- Top Navbar inside the content area -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <a href="#" id="toggleSidebar" class="me-3 d-lg-none">
-                    <i id="toggleSidebarIcon" class="bi bi-list"></i>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
+    <div class="container-fluid">
+        <!-- Sidebar Toggle Icon -->
+        <a href="#" id="toggleSidebar" class="me-3">
+            <i id="toggleSidebarIcon" class="bi bi-list"></i>
+        </a>
+
+        <!-- Dashboard and Date -->
+        <div class="d-none d-lg-flex flex-column flex-grow-1">
+            <strong class="text-black" style="font-size:16px;">Dashboard</strong>
+            <span class="text-black" style="font-size:12px;">October 12, 2024</span>
+        </div>
+
+        <!-- Centered Logo -->
+        <div class="mx-auto text-center">
+            <a href="#">
+                <img src="path_to_your_logo.png" alt="Logo" style="height: 40px;"> <!-- Adjust height as needed -->
+            </a>
+        </div>
+
+        <!-- Navbar Icons (Search, Bell) -->
+        <ul class="navbar-nav ms-auto d-flex flex-row">
+            <!-- Search Icon -->
+            <li class="nav-item me-2">
+                <a class="nav-link position-relative" href="#">
+                    <i class="bi bi-search" id="searchToggle"></i>
                 </a>
-                <div class="d-flex flex-column flex-grow-1">
-                    <strong class="text-black" style="font-size:16px;">Dashboard</strong>
-                    <span class="text-black" style="font-size:12px;">October 12, 2024</span>
-                </div>
-                
-                <!-- Centered Search Bar -->
-                <div class="d-none d-lg-block mx-auto" style="width: 50%;">
-                    <form class="d-flex w-100" role="search">
-                        <input class="form-control me-2 dashboard-search" type="search" placeholder="Search" aria-label="Search">
-                    </form>
-                </div>
+            </li>
+            <!-- Bell Icon -->
+            <li class="nav-item me-2">
+                <a class="nav-link position-relative" href="#">
+                    <i class="bi bi-bell" id="notificationToggle"></i>
+                    <span class="position-absolute translate-middle p-1 bg-danger border border-light rounded-circle" style="top: 57%; left: 67%;">
+                        <span class="visually-hidden">New alerts</span>
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-                <ul class="navbar-nav ms-auto d-flex flex-row">
-                    <li class="nav-item me-2">
-                        <a class="nav-link position-relative" href="#">
-                            <i class="bi bi-bell"></i>
-                            <span class="position-absolute translate-middle p-1 bg-danger border border-light rounded-circle" style="top: 57%; left:67%;">
-                                <span class="visually-hidden">New alerts</span>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav-item me-2">
-                        <a class="nav-link position-relative" href="#">
-                            <i class="bi bi-bell"></i>
-                            <span class="position-absolute translate-middle p-1 bg-danger border border-light rounded-circle" style="top: 57%; left:67%;">
-                                <span class="visually-hidden">New alerts</span>
-                            </span>
-                        </a>
-                    </li>
-                </ul>
 
-            </div>
-        </nav>
+        <!-- Wider Search Panel with Arrow Indicator -->
+        <div class="arrow-indicator" id="indicator"></div> <!-- Arrow pointing to the search icon -->
+        <div class="search-panel" id="searchPanel">
+            <form class="d-flex w-100" role="search">
+                <input class="form-control me-2 dashboard-search" type="search" placeholder="Search" aria-label="Search">
+            </form>
+        </div>
+
+        <div class="notification-panel" id="notificationPanel">
+            <h6>Notifications</h6>
+            <ul class="list-group">
+                <li class="list-group-item">Notification 1</li>
+                <li class="list-group-item">Notification 2</li>
+                <li class="list-group-item">Notification 3</li>
+            </ul>
+        </div>
+
+        <!-- Overlay -->
+        <div class="overlay" id="overlay"></div>
 
         <!-- Main Content Area -->
-        
+        <main class="py-4 w-100" style="height: calc(100vh - 50px); overflow-y: auto;">
+            @yield('content')
+        </main>
     </div>
-    <main class="py-4 w-100" style="height: 100vh; overflow-y: auto;">
-        @yield('content')
-    </main>
 </div>
+
+<!-- JavaScript -->
+<script>
+    function positionArrow(arrow, icon) {
+        const iconRect = icon.getBoundingClientRect();
+        const arrowWidth = 20; // Width of the arrow (10px left and right)
+        const arrowHeight = 10; // Height of the arrow
+        
+        // Position the arrow above the icon
+        arrow.style.top = `${iconRect.top + 24}px`;
+        arrow.style.left = `${iconRect.left}px`;
+        console.log(arrow.style.left)
+    }
+
+    // Toggle search panel and overlay
+    document.getElementById('searchToggle').addEventListener('click', function() {
+        const searchPanel = document.getElementById('searchPanel');
+        const notificationPanel = document.getElementById('notificationPanel');
+        const overlay = document.getElementById('overlay');
+        const isVisible = searchPanel.style.display === 'block';
+
+        // Hide notification panel if it's open
+        notificationPanel.style.display = 'none';
+
+        // Toggle search panel
+        if (!isVisible) {
+            searchPanel.style.display = 'block';
+            document.getElementById('indicator').style.display = 'block';
+            overlay.style.display = 'block';
+            positionArrow(document.getElementById('indicator'), document.getElementById('searchToggle'));
+        } else {
+            searchPanel.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+    });
+
+    // Toggle notification panel and overlay
+    document.getElementById('notificationToggle').addEventListener('click', function() {
+        const notificationPanel = document.getElementById('notificationPanel');
+        const searchPanel = document.getElementById('searchPanel');
+        const overlay = document.getElementById('overlay');
+        const isVisible = notificationPanel.style.display === 'block';
+
+        // Hide search panel if it's open
+        searchPanel.style.display = 'none';
+
+        // Toggle notification panel
+        if (!isVisible) {
+            notificationPanel.style.display = 'block';
+            document.getElementById('indicator').style.display = 'block';
+            overlay.style.display = 'block';
+            positionArrow(document.getElementById('indicator'), document.getElementById('notificationToggle'));
+        } else {
+            notificationPanel.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+    });
+
+    // Hide both panels when overlay is clicked
+    document.getElementById('overlay').addEventListener('click', function() {
+        document.getElementById('searchPanel').style.display = 'none';
+        document.getElementById('notificationPanel').style.display = 'none';
+        document.getElementById('overlay').style.display = 'none';
+        document.getElementById('indicator').style.display = 'none';
+    });
+
+    // // Toggle sidebar visibility
+    // document.getElementById('toggleSidebar').addEventListener('click', function() {
+    //     const sidebar = document.getElementById('sidebar');
+    //     sidebar.classList.toggle('d-none');
+    // });
+</script>
 
 </body>
 </html>

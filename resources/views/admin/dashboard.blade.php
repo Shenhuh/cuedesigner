@@ -172,7 +172,7 @@
                                             <i class="bi bi-megaphone me-2"></i>
                                             Add Announcement
                                         </h6>
-                                        <button class="btn btn-primary ms-2"><i class="bi bi-plus" style="color:white !important;"></i>Announce</button> <!-- Button at the same level -->
+                                        <button class="btn btn-primary ms-2">Announce</button> <!-- Button at the same level -->
                                     </div>
                                     <div class="d-flex flex-column text-center card-text mt-4">
                                         <div class="form-floating">

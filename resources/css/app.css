@@ -51,14 +51,23 @@ label {
 
 .admin-nav .nav-link.active i {
   color: white !important;
+
 }
 
 main {
   background: #f8f9f9;
 }
 
-.nav-link {
+.sidebar .nav-link {
   margin-bottom: 10px;
+  text-decoration: none;
+  color: black;
+}
+
+.sidebar .nav-link.active {
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: white !important;
 }
 
 .dashboard-search {
@@ -75,13 +84,17 @@ main {
   box-shadow: none !important;
 }
 
+.shadow{
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
 i {
   color: #36382e !important;
   font-size: 20px;
 }
 
 .dashboard-top-card {
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  /* box-shadow: 0 3px 10px rgb(0 0 0 / 0.2); */
   border: none !important;
 }
 
@@ -100,10 +113,10 @@ i {
 
 .sidebar {
   height: 100vh;
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 3000;
+  /* position: fixed; */
+  /* left: 0;
+  top: 0; */
+  /* z-index: 3000; */
   width: 250px;
   background-color: white;
   transition: transform 0.3s ease;
@@ -117,40 +130,20 @@ i {
   overflow: hidden;
 }
 
-#toggleSidebar {
-  cursor: pointer;
+
+/* For mobile devices (max width of 576px) */
+@media (max-width: 576px) {
+  .z-index-mobile {
+    z-index: 1000; /* Set your desired z-index value */
+    position: absolute;
+  }
 }
 
-@media (max-width: 768px) {
-  .dashboard-search {
-      width: 100%;
-  }
-
-  .sidebar {
-      display: none; /* Hide sidebar by default on mobile */
-  }
-
-  .sidebar.collapsed {
-      display: block; /* Show sidebar when expanded */
-  }
-
-  .flex-nowrap {
-      flex-direction: column; /* Stack layout vertically on mobile */
-  }
-
-  #toggleSidebar {
-      display: inline; /* Show sidebar toggle button */
-  }
-
-  #toggleSidebarIcon {
-      font-size: 30px; /* Increase icon size for better visibility */
+/* For tablets (between 576px and 1024px) */
+@media (min-width: 577px) and (max-width: 1024px) {
+  .z-index-mobile {
+    z-index: 1000; /* Set your desired z-index value */
+    position: absolute;
   }
 }
-@media (max-width: 576px) { /* Adjust according to your needs */
-  .navbar-nav {
-      flex-direction: row; /* Ensures items are displayed in a row */
-  }
-  .nav-item {
-      margin-left: 10px; /* Adjust spacing between items */
-  }
-}
+

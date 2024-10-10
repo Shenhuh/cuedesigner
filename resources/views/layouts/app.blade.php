@@ -67,8 +67,8 @@
 <body>
 
 <div id="app" class="d-flex flex-nowrap" style="height: 100vh;">
-    <!-- Sidebar -->
-    <div class="sidebar d-flex flex-column flex-shrink-0 p-3 text-black bg-white" id="sidebar">
+                        <!-- Sidebar -->
+ <div class="sidebar d-flex flex-column flex-shrink-0 p-3 text-black bg-white z-index-mobile" id="sidebar">
         <div class="d-flex justify-content-center align-items-center mb-3 mb-md-0 text-black text-decoration-none">
             <img src="https://github.com/mdo.png" alt="" width="48" height="48" class="rounded-circle me-3">
             <div class="d-flex flex-column text-center">
@@ -79,7 +79,48 @@
         <div class="container overflow-y-auto">
             <hr>
             <ul class="nav nav-pills admin-nav flex-column mb-auto">
-                <!-- Sidebar Links Here -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" aria-current="page">
+                        <i class="bi bi-file-bar-graph me-2"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" aria-current="page">
+                        <i class="bi bi-cart2 me-2"></i>
+                        Orders
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" aria-current="page">
+                        <i class="bi bi-easel2 me-2"></i>
+                        Designer Settings
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" aria-current="page">
+                        <i class="bi bi-floppy me-2"></i>
+                        Saved Designs
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" aria-current="page">
+                        <i class="bi bi-archive me-2"></i>
+                        Archives
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" aria-current="page">
+                        <i class="bi bi-gear me-2"></i>
+                        Settings
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" aria-current="page">
+                        <i class="bi bi-info-circle me-2"></i>
+                        About
+                    </a>
+                </li>
             </ul>
             <hr>
             <div class="text-center">
@@ -88,19 +129,19 @@
                 </a>            
             </div>
         </div>
-    </div>
-
+</div>
     <!-- Main Content Area -->
     <div class="flex-grow-1 d-flex flex-column">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
-    <div class="container-fluid">
+        
+       <nav class="navbar navbar-expand-lg navbar-light bg-light top-nav">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
         <!-- Sidebar Toggle Icon -->
-        <a href="#" id="toggleSidebar" class="me-3">
+        <a href="#" class="toggle-sidebar me-3" id="toggleSidebar">
             <i id="toggleSidebarIcon" class="bi bi-list"></i>
         </a>
 
         <!-- Dashboard and Date -->
-        <div class="d-none d-lg-flex flex-column flex-grow-1">
+        <div class="d-flex flex-column text-start dashboard-text">
             <strong class="text-black" style="font-size:16px;">Dashboard</strong>
             <span class="text-black" style="font-size:12px;">October 12, 2024</span>
         </div>
@@ -108,12 +149,12 @@
         <!-- Centered Logo -->
         <div class="mx-auto text-center">
             <a href="#">
-                <img src="path_to_your_logo.png" alt="Logo" style="height: 40px;"> <!-- Adjust height as needed -->
+                <img src="{{ asset('./images/shenhuh.png') }}" alt="Logo" style="height: 40px;"> <!-- Adjust height as needed -->
             </a>
         </div>
 
         <!-- Navbar Icons (Search, Bell) -->
-        <ul class="navbar-nav ms-auto d-flex flex-row">
+        <ul class="navbar-nav d-flex flex-row gap-4">
             <!-- Search Icon -->
             <li class="nav-item me-2">
                 <a class="nav-link position-relative" href="#">
@@ -132,6 +173,8 @@
         </ul>
     </div>
 </nav>
+
+
 
 
         <!-- Wider Search Panel with Arrow Indicator -->
@@ -153,7 +196,43 @@
 
         <!-- Overlay -->
         <div class="overlay" id="overlay"></div>
+        <button id="load-content1">Load Dynamic Content 1</button>
+    <button id="load-content2">Load Dynamic Content 2</button>
+    <div id="content-panel"></div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Function to load content based on type
+            function loadContent(contentType) {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', '{{ url('/dynamic-content') }}/' + contentType, true);
+
+                xhr.onload = function() {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        document.getElementById('content-panel').innerHTML = xhr.responseText;
+                    } else {
+                        console.error('Request failed. Status:', xhr.status);
+                    }
+                };
+
+                xhr.onerror = function() {
+                    console.error('Network Error');
+                };
+
+                xhr.send();
+            }
+
+            // Event listener for the first button
+            document.getElementById('load-content1').addEventListener('click', function() {
+                loadContent('content1'); // Load first content
+            });
+
+            // Event listener for the second button
+            document.getElementById('load-content2').addEventListener('click', function() {
+                loadContent('content2'); // Load second content
+            });
+        });
+    </script>
         <!-- Main Content Area -->
         <main class="py-4 w-100" style="height: calc(100vh - 50px); overflow-y: auto;">
             @yield('content')
@@ -231,6 +310,8 @@
     //     const sidebar = document.getElementById('sidebar');
     //     sidebar.classList.toggle('d-none');
     // });
+
+
 </script>
 
 </body>

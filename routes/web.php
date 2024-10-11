@@ -29,7 +29,7 @@ Auth::routes();
 //     return view('dashboard'); // Create a dashboard view
 // })->middleware('auth');
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin/home', [AdminController::class, 'index'])->name('admin.home');
     Route::get('/admin/users', [AdminController::class, 'manageUsers'])->name('admin.users.index');
     Route::get('/admin/users/create', [AdminController::class, 'createUser'])->name('admin.users.create');
     Route::post('/admin/users', [AdminController::class, 'storeUser'])->name('admin.users.store');

@@ -8,11 +8,21 @@ class ContentController extends Controller
 {
     public function getDynamicContent($type)
     {
-        // Return a different view based on the type parameter
-        if ($type === 'content1') {
-            return view('dynamic-content1'); // View for the first content
-        } elseif ($type === 'content2') {
-            return view('dynamic-content2'); // View for the second content
+
+        if ($type === 'dashboard') {
+            return view('admin.partials.dashboard'); 
+        } elseif ($type === 'orders') {
+            return view('admin.partials.orders'); 
+        } elseif ($type === 'designer-settings') {
+            return view('admin.partials.designer-settings'); 
+        } elseif ($type === 'saved-designs') {
+            return view('admin.partials.saved-designs');
+        } elseif ($type === 'archives') {
+            return view('admin.partials.archives'); 
+        } elseif ($type === 'settings') {
+            return view('admin.partials.settings'); 
+        } elseif ($type === 'about') {
+            return view('admin.partials.about'); 
         }
 
         return response()->json(['error' => 'Content not found'], 404);

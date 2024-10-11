@@ -39,7 +39,7 @@ class LoginController extends Controller
     {
         // Check if the user is an admin
         if ($user->isAdmin()) {
-            return redirect()->route('admin.dashboard'); // Redirect to the admin dashboard
+            return redirect()->route('admin.home'); // Redirect to the admin dashboard
         }
 
         // Redirect to the default home for regular users

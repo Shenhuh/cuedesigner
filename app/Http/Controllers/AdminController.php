@@ -11,7 +11,7 @@ class AdminController extends Controller
     public function index()
     {
         $users = User::all(); 
-        return view('admin.dashboard', compact('users')); // Create this view
+        return view('admin.home', compact('users')); // Create this view
     }
 
     // Manage users (List, create, edit, delete)

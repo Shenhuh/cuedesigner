@@ -9,23 +9,9 @@ import Chart from 'chart.js/auto';
 document.addEventListener('DOMContentLoaded', function(){
 
 
+    var myChart;
 
-    // const toggleSidebar = document.getElementById('toggleSidebar');
-    // const sidebar = document.getElementById('sidebar');
 
-    // // Toggle the sidebar when the toggle button is clicked
-    // toggleSidebar.addEventListener('click', function (e) {
-    //     e.stopPropagation(); // Prevent the click event from bubbling up
-    //     sidebar.classList.toggle('collapsed');
-    // });
-
-    // Close the sidebar if the user clicks outside of it
-    // Function to toggle the click event based on viewport size
-
-  
-
-    // Media query to check if the screen width is below or equal to 1024px
-    // const isMobile = window.matchMedia('(max-width: 1024px)').matches;
     function closeSidebarOnClick(e) {
         const sidebar = document.querySelector('.sidebar-mobile');
         const toggleSidebar = document.querySelector('.toggle-sidebar-mobile');
@@ -73,18 +59,19 @@ document.addEventListener('DOMContentLoaded', function(){
             // Remove the toggle button event listener when not in mobile view
             toggleSidebarButton.removeEventListener("click", toggleSidebarOnMobile);
         }
-
-        myChart.options.aspectRatio = getAspectRatio();
-        myChart.update();
-        console.log(getAspectRatio())
+        setTimeout(() => {
+            
+            myChart.options.aspectRatio = getAspectRatio();
+            myChart.update();
+            console.log(getAspectRatio())
+        }, 1000);
     }
     
-    // Initial check when the script loads
+
     
     
-    // Add a resize event listener to update behavior when resizing
+    
     window.addEventListener('resize', handleResize);
-    
     
 
 
@@ -99,45 +86,103 @@ document.addEventListener('DOMContentLoaded', function(){
         return  val; // 768px is commonly used as a breakpoint for desktop
     }
 
-  const ctx = document.getElementById('myChart').getContext('2d');
-  const myChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-          datasets: [{
-              label: '# of Votes',
-              data: [12, 19, 3, 5, 2, 3],
-              backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                  'rgba(153, 102, 255, 0.2)',
-                  'rgba(255, 159, 64, 0.2)'
-              ],
-              borderColor: [
-                  'rgba(255, 99, 132, 1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                  'rgba(153, 102, 255, 1)',
-                  'rgba(255, 159, 64, 1)'
-              ],
-              borderWidth: 1
-          }]
-      },
-      options: {
-        responsive: true,
-        aspectRatio: getAspectRatio(),
-        scales: {
-            y: {
-                beginAtZero: true
+
+    function loadChart(data) {
+        setTimeout(() => {
+            var ctx;
+            if (document.getElementById('myChart')) {
+                ctx = document.getElementById('myChart').getContext('2d'); // Ensure 'myChart' matches the ID of your canvas
+                
             }
-        }
-      }
-  });
+            // Destroy existing chart instance if it exists
+            if (myChart) {
+                myChart.destroy();
+            }
+
+            if(ctx){
+
+                myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: data.labels, 
+                        datasets: [{
+                            label: 'My Dataset',
+                            data: data.values, // Your chart data
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                    responsive: true,
+                    aspectRatio: getAspectRatio(),
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
+        }, 1000);
+    }
+    const chartData = {
+        labels: ['Label 1', 'Label 2', 'Label 3'], 
+        values: [12, 19, 3] 
+    };
+    loadChart(chartData); 
+  
+    function loadContent(contentType) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', `${window.baseUrl}/${contentType}`, true); // Use the base URL
+    
+        xhr.onload = function() {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                document.getElementById('content-panel').innerHTML = xhr.responseText;
+    
+                // Assuming the response contains chart data
+                const chartData = {
+                    labels: ['Label 1', 'Label 2', 'Label 3'], // Replace with your labels
+                    values: [12, 19, 3] // Replace with your values
+                };
+                loadChart(chartData); // Call loadChart with the data
+            } else {
+                console.error('Request failed. Status:', xhr.status);
+            }
+        };
+    
+        xhr.onerror = function() {
+            console.error('Network Error');
+        };
+    
+        xhr.send();
+    }
+    
+   
+    var sidebarItems = document.querySelectorAll('.sidebar-link');
+
+// Function to remove active class from all sidebar items
+function removeActiveClass() {
+    sidebarItems.forEach(function(item) {
+        item.classList.remove('active'); // Adjust this class name as per your CSS
+    });
+}
+
+// Add click event listeners to sidebar items
+sidebarItems.forEach(function(item) {
+    item.addEventListener('click', function() {
+        // Remove active class from all items
+        removeActiveClass();
+
+        // Add active class to the clicked item
+        item.classList.add('active'); // Adjust this class name as per your CSS
+        
+        // Load the content for the clicked item
+        loadContent(item.dataset.id);
+    });
+});
 
   
-  handleResize();
+    handleResize();
 
 })

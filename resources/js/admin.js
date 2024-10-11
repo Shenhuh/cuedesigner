@@ -1,14 +1,19 @@
 // require('./bootstrap');
 
-import 'bootstrap/dist/css/bootstrap.css';
 import * as bootstrap from 'bootstrap/dist/js/bootstrap'
-import 'bootstrap-icons/font/bootstrap-icons.css';
 import Chart from 'chart.js/auto';
+import DataTable from 'datatables.net-bs5';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import 'datatables.net-bs5/css/dataTables.bootstrap5.css'; // Bootstrap 5 styling
+ 
 
 
 document.addEventListener('DOMContentLoaded', function(){
 
-
+    let ongoingOrders = new DataTable('#ongoing-orders', {
+        responsive: true
+    });
     var myChart;
 
 
@@ -146,6 +151,14 @@ document.addEventListener('DOMContentLoaded', function(){
                     values: [12, 19, 3] // Replace with your values
                 };
                 loadChart(chartData); // Call loadChart with the data
+                ongoingOrders = new DataTable('#ongoing-orders', {
+                    responsive: true
+                });
+                
+                let orders = new DataTable('#orders', {
+                    responsive: true
+                });
+                
             } else {
                 console.error('Request failed. Status:', xhr.status);
             }
@@ -181,6 +194,7 @@ sidebarItems.forEach(function(item) {
         loadContent(item.dataset.id);
     });
 });
+
 
   
     handleResize();

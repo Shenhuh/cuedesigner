@@ -1,3 +1,4 @@
+
 html, body {
   height: 100%; /* Set height to 100% */
   margin: 0; /* Remove default margins */
@@ -110,7 +111,9 @@ i {
 .table-modern tbody tr:hover {
   background-color: #f1f1f1;
 }
-
+.box{
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
 .sidebar {
   height: 100vh;
   /* position: fixed; */

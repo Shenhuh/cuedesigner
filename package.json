@@ -25,6 +25,10 @@
         "bootstrap": "^5.3.3",
         "bootstrap-icons": "^1.11.3",
         "chart.js": "^4.4.4",
+        "datatables.net": "^2.1.8",
+        "datatables.net-bs5": "^2.1.8",
+        "datatables.net-dt": "^2.1.8",
+        "datatables.net-responsive-dt": "^3.0.3",
         "fabric": "^5.3.1",
         "three": "^0.168.0"
     }

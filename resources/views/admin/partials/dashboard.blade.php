@@ -78,7 +78,7 @@
                     Ongoing Orders
                 </h6>
                 <div class="table-responsive">
-                    <table class="table table-modern table-hover">
+                    <table class="table table-modern table-hover table-striped" id="ongoing-orders">
                     <thead>
                         <tr>
                         <th scope="col">Order ID#</th>

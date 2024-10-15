@@ -12118,4 +12118,21 @@ i {
   }
 }
 
+.designer-settings-tab .nav-item .nav-link{
+   text-decoration: none;
+   color: black; 
+   border: none;
+   transition: color 0.3s, border-bottom 0.3s;
+}
 
+.designer-settings-tab .nav-item .nav-link.active{
+  border-bottom: 2px solid black;
+}
+
+.modal-footer{
+  border:none !important;
+}
+
+.modal-header{
+  border:none !important;
+}

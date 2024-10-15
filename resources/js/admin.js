@@ -11,7 +11,15 @@ import 'datatables.net-bs5/css/dataTables.bootstrap5.css'; // Bootstrap 5 stylin
 
 document.addEventListener('DOMContentLoaded', function(){
 
+    let ongoingOrdersDashboard = new DataTable('#ongoing-orders-dashboard', {
+        responsive: true
+    });
+
     let ongoingOrders = new DataTable('#ongoing-orders', {
+        responsive: true
+    });
+
+    let completedOrders = new DataTable('#completed-orders', {
         responsive: true
     });
     var myChart;
@@ -151,7 +159,15 @@ document.addEventListener('DOMContentLoaded', function(){
                     values: [12, 19, 3] // Replace with your values
                 };
                 loadChart(chartData); // Call loadChart with the data
+                ongoingOrdersDashboard = new DataTable('#ongoing-orders-dashboard', {
+                    responsive: true
+                });
+
                 ongoingOrders = new DataTable('#ongoing-orders', {
+                    responsive: true
+                });
+
+                completedOrders = new DataTable('#completed-orders', {
                     responsive: true
                 });
                 

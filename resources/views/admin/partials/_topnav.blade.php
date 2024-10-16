@@ -14,8 +14,9 @@
         <!-- Centered Logo -->
         <div class="mx-auto text-center">
             <a href="#">
-                <img src="{{ asset('./images/shenhuh.png') }}" alt="Logo" style="height: 40px;"> <!-- Adjust height as needed -->
-            </a>
+                <img src="{{ asset('./images/shenhuh.png') }}" alt="Logo" style="height: 40px;"> <!-- Adjust height as needed --> 
+                </a>
+                Shenhuh
         </div>
 
         <!-- Navbar Icons (Search, Bell) -->

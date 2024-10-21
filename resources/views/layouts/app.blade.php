@@ -66,6 +66,7 @@
 </head>
 <body>
 
+
 <div id="app" class="d-flex flex-nowrap" style="height: 100vh;">
     <!-- Sidebar -->
     @include('admin.partials._sidebar')
@@ -95,6 +96,9 @@
 </div>
 <script>
     window.baseUrl = '{{ url("/dynamic-content") }}';
+</script>
+<script>
+    window.texturesStoreUrl = "{{ route('textures.store') }}";
 </script>
 
 <!-- JavaScript -->

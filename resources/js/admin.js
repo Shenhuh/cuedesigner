@@ -8,7 +8,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'datatables.net-bs5/css/dataTables.bootstrap5.css'; // Bootstrap 5 styling
  
 
-
+require('./addTexture');
 document.addEventListener('DOMContentLoaded', function(){
 
     let ongoingOrdersDashboard = new DataTable('#ongoing-orders-dashboard', {
@@ -190,27 +190,26 @@ document.addEventListener('DOMContentLoaded', function(){
    
     var sidebarItems = document.querySelectorAll('.sidebar-link');
 
-// Function to remove active class from all sidebar items
-function removeActiveClass() {
+    // Function to remove active class from all sidebar items
+    function removeActiveClass() {
+        sidebarItems.forEach(function(item) {
+            item.classList.remove('active'); // Adjust this class name as per your CSS
+        });
+    }
+
+    // Add click event listeners to sidebar items
     sidebarItems.forEach(function(item) {
-        item.classList.remove('active'); // Adjust this class name as per your CSS
+        item.addEventListener('click', function() {
+            // Remove active class from all items
+            removeActiveClass();
+
+            // Add active class to the clicked item
+            item.classList.add('active'); // Adjust this class name as per your CSS
+            
+            // Load the content for the clicked item
+            loadContent(item.dataset.id);
+        });
     });
-}
-
-// Add click event listeners to sidebar items
-sidebarItems.forEach(function(item) {
-    item.addEventListener('click', function() {
-        // Remove active class from all items
-        removeActiveClass();
-
-        // Add active class to the clicked item
-        item.classList.add('active'); // Adjust this class name as per your CSS
-        
-        // Load the content for the clicked item
-        loadContent(item.dataset.id);
-    });
-});
-
 
   
     handleResize();

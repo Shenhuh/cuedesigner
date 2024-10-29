@@ -38,10 +38,12 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::put('/admin/users/{user}', [AdminController::class, 'updateUser'])->name('admin.users.update');
     Route::delete('/admin/users/{user}', [AdminController::class, 'destroyUser'])->name('admin.users.destroy');
     Route::get('/dynamic-content/{type}', [ContentController::class, 'getDynamicContent'])->name('dynamic.content');
+    Route::post('/admin/textures', [TextureController::class, 'store'])->name('textures.store'); // Store new texture
 
-    Route::resource('textures', TextureController::class);
-
+    
 });
+
+
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

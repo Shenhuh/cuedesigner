@@ -27,7 +27,7 @@
 
     <div class="tab-content overflow-auto" id="myTabContent">
         <div class="tab-pane fade show active" id="texture" role="tabpanel" aria-labelledby="texture-tab">
-            @include('admin.partials._texture')
+            @include('admin.partials._texture', ['textures' => $textures])
         </div>
         <div class="tab-pane fade" id="cliparts" role="tabpanel" aria-labelledby="cliparts-tab">
             @include('admin.partials._cliparts')

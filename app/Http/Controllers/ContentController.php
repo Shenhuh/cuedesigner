@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Texture;
 use Illuminate\Http\Request;
 
 class ContentController extends Controller
@@ -14,7 +14,8 @@ class ContentController extends Controller
         } elseif ($type === 'orders') {
             return view('admin.partials.orders'); 
         } elseif ($type === 'designer-settings') {
-            return view('admin.partials.designer-settings'); 
+            $textures = Texture::all(); // Fetching all textures
+            return view('admin.partials.designer-settings', compact('textures')); 
         } elseif ($type === 'saved-designs') {
             return view('admin.partials.saved-designs');
         } elseif ($type === 'archives') {

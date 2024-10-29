@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-between align-items-start mt-4 m-3">
-    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus me-2 text-white"></i>Add Texture</button>
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#textureModal"><i class="bi bi-plus me-2 text-white"></i>Add Texture</button>
     <p class="d-sm-block d-none"><i class="bi bi-info-circle me-2"></i>Textures are only applied for Butt Sleeve and Forearm</p>
 </div>
 
@@ -10,42 +10,30 @@
         <table class="table table-modern table-hover" id="completed-orders">
             <thead>
                 <tr>
-                    <th scope="col">Texture ID#</th>
+                    <th scope="col">ID#</th>
                     <th scope="col">Name</th>
                     <th scope="col">Image</th>
                     <th scope="col">Design Type</th>
                     <th scope="col">Price</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">#13424</th>
-                    <td>John Doe</td>
-                    <td><img src="{{ asset('/assets/welcome-bg.jpg') }}" width="90" height="90"></td>
-                    <td>Engraved</td>
-                    <td>84$</td>
-                </tr>
-                <tr>
-                    <th scope="row">#24343</th>
-                    <td>Jane Smith</td>
-                    <td><img src="{{ asset('/assets/welcome-bg.jpg') }}" width="90" height="90"></td>
-                    <td>Engraved</td>
-                    <td>30$</td>
-                </tr>
-                <tr>
-                    <th scope="row">#34534</th>
-                    <td>Mark Johnson</td>
-                    <td><img src="{{ asset('/assets/welcome-bg.jpg') }}" width="90" height="90"></td>
-                    <td>Engraved</td>
-                    <td>20$</td>
-                </tr>
-                <tr>
-                    <th scope="row">#45453</th>
-                    <td>Emily Davis</td>
-                    <td><img src="{{ asset('/assets/welcome-bg.jpg') }}" width="90" height="90"></td>
-                    <td>Stain</td>
-                    <td>10$</td>
-                </tr>
+            <tbody style="height:300px !important;">
+                @if($textures->isEmpty())
+                    <p>No textures found.</p>
+                @else
+                @foreach($textures as $texture)
+                    <tr>
+                        <td scope="row">{{ $texture->id }}</td>
+                        <td>{{ $texture->name }}</td>
+                        <td>
+                            <img src="{{ asset('storage/' . $texture->imagePath) }}" width="90" height="90" alt="{{ $texture->name }}">
+                        </td>
+                        <td>{{ $texture->type }}</td>
+                        <td>${{ $texture->price }}</td>
+                    </tr>
+                @endforeach
+
+                @endif
             </tbody>
         </table>
     </div>
@@ -53,12 +41,12 @@
 
 
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="add-texture" aria-hidden="true">
+<div class="modal fade" id="textureModal" tabindex="-1" aria-labelledby="add-texture" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="add-texture">Add Texture</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" id="texture-modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <p><i class="bi bi-info-circle me-2"></i>Only <strong>PNG</strong> and <strong>JPG</strong> files are accepted, and the file size must not exceed <strong>2MB</strong>.</p>

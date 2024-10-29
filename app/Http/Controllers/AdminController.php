@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User; // Import your User model
-
+use App\Models\Texture;
 class AdminController extends Controller
 {
     // Display the admin dashboard
     public function index()
     {
         $users = User::all(); 
+  
         return view('admin.home', compact('users')); // Create this view
     }
 

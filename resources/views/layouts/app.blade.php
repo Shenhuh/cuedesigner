@@ -97,9 +97,7 @@
 <script>
     window.baseUrl = '{{ url("/dynamic-content") }}';
 </script>
-<script>
-    window.texturesStoreUrl = "{{ route('textures.store') }}";
-</script>
+
 
 <!-- JavaScript -->
 <script>

@@ -1,4 +1,5 @@
 // require('./bootstrap');
+const $ = require('jquery');
 
 import * as bootstrap from 'bootstrap/dist/js/bootstrap'
 import Chart from 'chart.js/auto';
@@ -9,6 +10,9 @@ import 'datatables.net-bs5/css/dataTables.bootstrap5.css'; // Bootstrap 5 stylin
 const Swal = require('sweetalert2');
 
 require('./addTexture');
+
+
+
 document.addEventListener('DOMContentLoaded', function(){
 
     let ongoingOrdersDashboard = new DataTable('#ongoing-orders-dashboard', {
@@ -22,6 +26,12 @@ document.addEventListener('DOMContentLoaded', function(){
     let completedOrders = new DataTable('#completed-orders', {
         responsive: true
     });
+
+    let textures = new DataTable('#textures', {
+        responsive: true
+    });
+
+                
     var myChart;
 
 
@@ -170,11 +180,18 @@ document.addEventListener('DOMContentLoaded', function(){
                 completedOrders = new DataTable('#completed-orders', {
                     responsive: true
                 });
+
+                textures = new DataTable('#textures', {
+                    responsive: true
+                });
                 
                 let orders = new DataTable('#orders', {
                     responsive: true
                 });
-                
+              
+                require('./textureTableAction');
+                require('./deleteTexture')
+               
             } else {
                 console.error('Request failed. Status:', xhr.status);
             }

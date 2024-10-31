@@ -39,6 +39,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::delete('/admin/users/{user}', [AdminController::class, 'destroyUser'])->name('admin.users.destroy');
     Route::get('/dynamic-content/{type}', [ContentController::class, 'getDynamicContent'])->name('dynamic.content');
     Route::post('/admin/textures', [TextureController::class, 'store'])->name('textures.store'); // Store new texture
+    Route::put('/admin/textures/{id}', [TextureController::class, 'update']);
+    Route::delete('/admin/textures/{id}', [TextureController::class, 'destroy']);
 
     
 });

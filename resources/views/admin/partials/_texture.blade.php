@@ -89,29 +89,30 @@
       <div class="modal-header">
       <h5 class="modal-title" id="edit-texture">Edit Texture #<span id="texture-id"></span></h5>
 
-        <button type="button" class="btn-close" id="texture-modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" id="edit-texture-modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+        <input type="hidden" id="texture-id-hidden">
         <p><i class="bi bi-info-circle me-2"></i>Only <strong>PNG</strong> and <strong>JPG</strong> files are accepted, and the file size must not exceed <strong>2MB</strong>.</p>
         <div class="mb-3">
-            <label for="texture-ing" class="form-label">Change Image Texture</label>
-            <input class="form-control texture-image" type="file">
+            <label for="edit-texture-image" class="form-label">Change Image Texture</label>
+            <input id="edit-texture-image" class="form-control texture-image" type="file">
         </div>
         <div class="mb-3">
-            <label for="texture-name" class="form-label">Edit Texture Name</label>
-            <input type="text" class="form-control texture-name">
+            <label for="edit-texture-name" class="form-label">Edit Texture Name</label>
+            <input type="text" id="edit-texture-name" class="form-control texture-name">
         </div>
         <div class="mb-3">
-            <label for="texture-type" class="form-label">Edit Texture Type</label>
-            <select class="form-select texture-type" aria-label="Default select example">
+            <label for="edit texture-type" class="form-label">Edit Texture Type</label>
+            <select id="edit-texture-type" class="form-select texture-type" aria-label="Default select example">
                 <option value="stain" selected>Stain</option>
                 <option value="paint">Paint</option>
             </select>    
         </div>
-        <label for="texture-amount" class="form-label">Edit Texture Amount</label>
+        <label for="edit-texture-amount" class="form-label">Edit Texture Amount</label>
         <div class="input-group mb-3">
             <span class="input-group-text bg-white"><i class="bi bi-currency-dollar"></i></span>
-            <input id="texture-amount" type="number" class="form-control texture-amount" aria-label="Amount (to the nearest dollar)">
+            <input id="edit-texture-amount" type="number" class="form-control texture-amount" aria-label="Amount (to the nearest dollar)">
             
         </div>
     
@@ -119,7 +120,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
         <button type="button" class="btn btn-danger" id="delete-texture" data-bs-dismiss="modal">Delete</button>
-        <button type="button" class="btn btn-primary" id="save-texture">Update</button>
+        <button type="button" class="btn btn-primary" id="update-texture">Update</button>
       </div>
     </div>
   </div>

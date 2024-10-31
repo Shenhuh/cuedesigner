@@ -45,6 +45,11 @@ async function addTexture() {
         textureClose.click();
         console.log('Texture added:', data);
     } catch (error) {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something went wrong!",
+        });
         console.error('Error adding texture:', error);
     }
 }

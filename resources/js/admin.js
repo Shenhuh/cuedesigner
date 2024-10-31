@@ -190,7 +190,9 @@ document.addEventListener('DOMContentLoaded', function(){
                 });
               
                 require('./textureTableAction');
-                require('./deleteTexture')
+                require('./deleteTexture');
+                require('./updateTexture');
+                require('./deleteTexture');
                
             } else {
                 console.error('Request failed. Status:', xhr.status);

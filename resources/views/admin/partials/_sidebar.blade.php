@@ -22,7 +22,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link sidebar-link" data-id="designer-settings" aria-current="page">
+                <a href="#" id="designer-settings" class="nav-link sidebar-link" data-id="designer-settings" aria-current="page">
                     <i class="bi bi-easel2 me-2"></i>
                     Designer Settings
                 </a>

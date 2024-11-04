@@ -10,7 +10,7 @@ import 'datatables.net-bs5/css/dataTables.bootstrap5.css'; // Bootstrap 5 stylin
 const Swal = require('sweetalert2');
 
 require('./addTexture');
-
+require('./addClipart');
 
 
 document.addEventListener('DOMContentLoaded', function(){

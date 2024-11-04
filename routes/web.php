@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\TextureController;
+use App\Http\Controllers\ClipartController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,9 +39,17 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::put('/admin/users/{user}', [AdminController::class, 'updateUser'])->name('admin.users.update');
     Route::delete('/admin/users/{user}', [AdminController::class, 'destroyUser'])->name('admin.users.destroy');
     Route::get('/dynamic-content/{type}', [ContentController::class, 'getDynamicContent'])->name('dynamic.content');
+   
+    //Textures
     Route::post('/admin/textures', [TextureController::class, 'store'])->name('textures.store'); // Store new texture
     Route::put('/admin/textures/{id}', [TextureController::class, 'update']);
     Route::delete('/admin/textures/{id}', [TextureController::class, 'destroy']);
+
+
+    //Cliparts
+    Route::post('/admin/cliparts', [ClipartController::class, 'store'])->name('cliparts.store'); // Store new texture
+    Route::put('/admin/cliparts/{id}', [ClipartController::class, 'update']);
+    Route::delete('/admin/cliparts/{id}', [ClipartController::class, 'destroy']);
 
     
 });

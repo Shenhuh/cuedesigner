@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Clipart;
 use App\Models\Texture;
 use Illuminate\Http\Request;
 
@@ -14,8 +16,9 @@ class ContentController extends Controller
         } elseif ($type === 'orders') {
             return view('admin.partials.orders'); 
         } elseif ($type === 'designer-settings') {
-            $textures = Texture::all(); // Fetching all textures
-            return view('admin.partials.designer-settings', compact('textures')); 
+            $textures = Texture::all(); 
+            $cliparts = Clipart::all();
+            return view('admin.partials.designer-settings', compact('textures', 'cliparts')); 
         } elseif ($type === 'saved-designs') {
             return view('admin.partials.saved-designs');
         } elseif ($type === 'archives') {

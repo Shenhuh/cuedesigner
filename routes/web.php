@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\TextureController;
 use App\Http\Controllers\ClipartController;
+use App\Http\Controllers\WrapController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,6 +51,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/admin/cliparts', [ClipartController::class, 'store'])->name('cliparts.store'); // Store new texture
     Route::put('/admin/cliparts/{id}', [ClipartController::class, 'update']);
     Route::delete('/admin/cliparts/{id}', [ClipartController::class, 'destroy']);
+
+    Route::post('/admin/wraps', [WrapController::class, 'store'])->name('wraps.store'); // Store new texture
 
     
 });

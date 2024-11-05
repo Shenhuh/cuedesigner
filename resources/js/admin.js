@@ -11,7 +11,7 @@ const Swal = require('sweetalert2');
 
 require('./addTexture');
 require('./addClipart');
-
+require('./addWrap');
 
 document.addEventListener('DOMContentLoaded', function(){
 
@@ -192,7 +192,10 @@ document.addEventListener('DOMContentLoaded', function(){
                 require('./textureTableAction');
                 require('./deleteTexture');
                 require('./updateTexture');
-                require('./deleteTexture');
+                
+                require('./clipartTableAction');
+                require('./updateClipart');
+                require('./deleteClipart');
                
             } else {
                 console.error('Request failed. Status:', xhr.status);

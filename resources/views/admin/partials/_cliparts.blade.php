@@ -80,3 +80,47 @@
     </div>
   </div>
 </div>
+
+
+<div class="modal fade" id="editClipartModal" tabindex="-1" aria-labelledby="edit-clipart" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+      <h5 class="modal-title" id="edit-clipart">Edit Clipart #<span id="clipart-id"></span></h5>
+
+        <button type="button" class="btn-close" id="edit-clipart-modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="clipart-id-hidden">
+        <p><i class="bi bi-info-circle me-2"></i>Only <strong>PNG</strong> and <strong>JPG</strong> files are accepted, and the file size must not exceed <strong>2MB</strong>.</p>
+        <div class="mb-3">
+            <label for="edit-clipart-image" class="form-label">Change Image Clipart</label>
+            <input id="edit-clipart-image" class="form-control clipart-image" type="file">
+        </div>
+        <div class="mb-3">
+            <label for="edit-clipart-name" class="form-label">Edit clipart Name</label>
+            <input type="text" id="edit-clipart-name" class="form-control Clipart-name">
+        </div>
+        <div class="mb-3">
+            <label for="edit clipart-type" class="form-label">Edit Clipart Type</label>
+            <select id="edit-clipart-type" class="form-select clipart-type" aria-label="Default select example">
+                <option value="engraving" selected>Engraving</option>
+                <option value="inlay">Inlay</option>
+            </select>    
+        </div>
+        <label for="edit-clipart-amount" class="form-label">Edit Clipart Amount</label>
+        <div class="input-group mb-3">
+            <span class="input-group-text bg-white"><i class="bi bi-currency-dollar"></i></span>
+            <input id="edit-clipart-amount" type="number" class="form-control clipart-amount" aria-label="Amount (to the nearest dollar)">
+            
+        </div>
+    
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-danger" id="delete-clipart" data-bs-dismiss="modal">Delete</button>
+        <button type="button" class="btn btn-primary" id="update-clipart">Update</button>
+      </div>
+    </div>
+  </div>
+</div>

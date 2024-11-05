@@ -33,7 +33,7 @@
             @include('admin.partials._cliparts', ['cliparts' => $cliparts])
         </div>
         <div class="tab-pane fade" id="wrap" role="tabpanel" aria-labelledby="wrap-tab">
-            @include('admin.partials._wrap')
+            @include('admin.partials._wrap', ['wraps' => $wraps])
         </div>
         <div class="tab-pane fade" id="wood" role="tabpanel" aria-labelledby="wood-tab">
             @include('admin.partials._wood')

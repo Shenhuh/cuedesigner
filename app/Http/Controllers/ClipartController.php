@@ -51,7 +51,7 @@ class ClipartController extends Controller
     {
         try {
             // Find the texture by ID
-            $texture = Clipart::findOrFail($id);
+            $clipart = Clipart::findOrFail($id);
 
             // Validate the request data, ignoring 'image' if it’s not provided
             $validatedData = $request->validate([
@@ -64,24 +64,24 @@ class ClipartController extends Controller
             // Check if an image was uploaded
             if ($request->hasFile('image')) {
                 // Delete the old image if it exists
-                if ($texture->imagePath) {
-                    Storage::disk('public')->delete($texture->imagePath);
+                if ($clipart->imagePath) {
+                    Storage::disk('public')->delete($clipart->imagePath);
                 }
 
                 // Store the new image and update the image path in validated data
-                $validatedData['imagePath'] = $request->file('image')->store('textures', 'public');
+                $validatedData['imagePath'] = $request->file('image')->store('cliparts', 'public');
             } else {
                 // Keep the existing image path if no new image is uploaded
-                $validatedData['imagePath'] = $texture->imagePath;
+                $validatedData['imagePath'] = $clipart->imagePath;
             }
 
             // Update the texture in the database
-            $texture->update($validatedData);
+            $clipart->update($validatedData);
 
             // Return JSON response for AJAX
             return response()->json([
                 'message' => 'Clipart updated successfully!',
-                'data' => $texture
+                'data' => $clipart
             ], 200);
 
         } catch (\Exception $e) {
@@ -100,10 +100,10 @@ class ClipartController extends Controller
     {
         try {
             // Find the texture by ID
-            $texture = Clipart::findOrFail($id);
+            $clipart = Clipart::findOrFail($id);
             
             // Soft delete the texture
-            $texture->delete(); // This will set the 'deleted_at' column
+            $clipart->delete(); // This will set the 'deleted_at' column
             
             return response()->json(['message' => 'Clipart deleted successfully!'], 200);
         } catch (\Exception $e) {

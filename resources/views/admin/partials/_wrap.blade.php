@@ -19,34 +19,22 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">#13424</th>
-                    <td>John Doe</td>
-                    <td><img src="{{ asset('/assets/welcome-bg.jpg') }}" width="90" height="90"></td>
-                    <td>Leather</td>
-                    <td>84$</td>
-                </tr>
-                <tr>
-                    <th scope="row">#24343</th>
-                    <td>Jane Smith</td>
-                    <td><img src="{{ asset('/assets/welcome-bg.jpg') }}" width="90" height="90"></td>
-                    <td>Leather</td>
-                    <td>30$</td>
-                </tr>
-                <tr>
-                    <th scope="row">#34534</th>
-                    <td>Mark Johnson</td>
-                    <td><img src="{{ asset('/assets/welcome-bg.jpg') }}" width="90" height="90"></td>
-                    <td>Leather</td>
-                    <td>20$</td>
-                </tr>
-                <tr>
-                    <th scope="row">#45453</th>
-                    <td>Emily Davis</td>
-                    <td><img src="{{ asset('/assets/welcome-bg.jpg') }}" width="90" height="90"></td>
-                    <td>Linen</td>
-                    <td>10$</td>
-                </tr>
+                @if($wraps->isEmpty())
+                    <p>No wrap found.</p>
+                @else
+                @foreach($wraps as $wrap)
+                    <tr data-id="{{ $wrap->id }}" class="wrapData">
+                        <td scope="row">{{ $wrap->id }}</td>
+                        <td>{{ $wrap->name }}</td>
+                        <td>
+                            <img src="{{ asset('storage/' . $wrap->imagePath) }}" width="90" height="90" alt="{{ $wrap->name }}">
+                        </td>
+                        <td>{{ $wrap->material_type }}</td>
+                        <td>${{ $wrap->price }}</td>
+                    </tr>
+                @endforeach
+
+                @endif
             </tbody>
         </table>
     </div>
@@ -134,36 +122,32 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="add-wrap">Add Wrap</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" id="wrap-modal-close" aria-label="Close"></button>
       </div>
       <div class="modal-body">
       <p><i class="bi bi-info-circle me-2"></i>Only <strong>PNG</strong> and <strong>JPG</strong> files are accepted, and the file size must not exceed <strong>2MB</strong>.</p>
         <div class="mb-3">
             <label for="formFile" class="form-label">Upload Image of Wrap</label>
-            <input class="form-control" type="file" id="formFile">
+            <input class="form-control wrap-image" type="file" id="formFile">
         </div>
         <div class="mb-3 mt-3">
-            <label for="exampleFormControlInput1" class="form-label">Wrap Name</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1">
+            <label for="wrap-name" class="form-label">Wrap Name</label>
+            <input type="text" class="form-control wrap-name" id="wrap-name">
         </div>
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Material Type</label>
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Linen</option>
-                <option value="1">Leather</option>
-            </select>    
+        <div class="mb-3 mt-3">
+            <label for="material-type" class="form-label">Material Type</label>
+            <input type="text" class="form-control wrap-type" id="material-type">
         </div>
         <label for="wrap-amount" class="form-label">Wrap Price</label>
         <div class="input-group mb-3">
             <span class="input-group-text bg-white"><i class="bi bi-currency-dollar"></i></span>
-            <input id="wrap-amount" type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
-            
+            <input id="wrap-amount" type="number" class="form-control wrap-amount" aria-label="Amount (to the nearest dollar)">
         </div>
         
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Add</button>
+        <button type="button" class="btn btn-primary" id="save-wrap">Add</button>
       </div>
     </div>
   </div>

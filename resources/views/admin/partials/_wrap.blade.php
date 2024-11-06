@@ -8,7 +8,7 @@
 
 <div class="container mt-4 mb-4" style="overflow-y: auto;">
     <div class="table-responsive">
-        <table class="table table-modern table-hover" id="completed-orders">
+        <table class="table table-modern table-hover" id="wraps">
             <thead>
                 <tr>
                     <th scope="col">Wrap ID#</th>
@@ -148,6 +148,47 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
         <button type="button" class="btn btn-primary" id="save-wrap">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="editWrapModal" tabindex="-1" aria-labelledby="edit-wrap" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+      <h5 class="modal-title" id="edit-wrap">Edit Wrap #<span id="wrap-id"></span></h5>
+
+        <button type="button" class="btn-close" id="edit-wrap-modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="wrap-id-hidden">
+        <p><i class="bi bi-info-circle me-2"></i>Only <strong>PNG</strong> and <strong>JPG</strong> files are accepted, and the file size must not exceed <strong>2MB</strong>.</p>
+        <div class="mb-3">
+            <label for="edit-wrap-image" class="form-label">Change Image Wrap</label>
+            <input id="edit-wrap-image" class="form-control wrap-image" type="file">
+        </div>
+        <div class="mb-3">
+            <label for="edit-wrap-name" class="form-label">Edit Wrap Name</label>
+            <input type="text" id="edit-wrap-name" class="form-control wrap-name">
+        </div>
+        <div class="mb-3">
+            <label for="edit-wrap-type" class="form-label">Edit Wrap Name</label>
+            <input type="text" id="edit-wrap-type" class="form-control wrap-type">
+        </div>
+        <label for="edit-wrap-amount" class="form-label">Edit Wrap Amount</label>
+        <div class="input-group mb-3">
+            <span class="input-group-text bg-white"><i class="bi bi-currency-dollar"></i></span>
+            <input id="edit-wrap-amount" type="number" class="form-control wrap-amount" aria-label="Amount (to the nearest dollar)">
+            
+        </div>
+    
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-danger" id="delete-wrap" data-bs-dismiss="modal">Delete</button>
+        <button type="button" class="btn btn-primary" id="update-wrap">Update</button>
       </div>
     </div>
   </div>

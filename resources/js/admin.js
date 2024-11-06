@@ -188,6 +188,10 @@ document.addEventListener('DOMContentLoaded', function(){
                 let orders = new DataTable('#orders', {
                     responsive: true
                 });
+
+                let wraps = new DataTable('#wraps', {
+                    responsive: true
+                });
               
                 require('./textureTableAction');
                 require('./deleteTexture');
@@ -196,6 +200,10 @@ document.addEventListener('DOMContentLoaded', function(){
                 require('./clipartTableAction');
                 require('./updateClipart');
                 require('./deleteClipart');
+
+                require('./wrapTableAction');
+                require('./updateWrap');
+                require('./deleteWrap');
                
             } else {
                 console.error('Request failed. Status:', xhr.status);

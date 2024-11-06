@@ -32,7 +32,9 @@ document.addEventListener('click', function(e){
                     var clipartClose = document.getElementById('edit-clipart-modal-close');
                     clipartClose.click();
                     document.getElementById('designer-settings').click();
-                    document.getElementById('cliparts-tab').click();
+                    setTimeout(() => {                        
+                        document.getElementById('cliparts-tab').click();
+                    }, 2000);
                     Swal.fire({
                         position: "center",
                         icon: "success",

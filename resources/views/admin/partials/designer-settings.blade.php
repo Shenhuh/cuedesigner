@@ -12,7 +12,7 @@
         role="tab" aria-controls="cliparts" aria-selected="false">Clip Arts</button>
     </li>
     <li class="nav-item" role="presentation">
-        <button class="nav-link" id="wrap-tab" data-bs-toggle="tab" data-bs-target="#wrap" type="button" 
+        <button class="nav-link" id="wraps-tab" data-bs-toggle="tab" data-bs-target="#wrap" type="button" 
         role="tab" aria-controls="wrap" aria-selected="false">Wrap</button>
     </li>
     <li class="nav-item" role="presentation">

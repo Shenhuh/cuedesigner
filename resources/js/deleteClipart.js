@@ -25,7 +25,9 @@ document.addEventListener('click', function(e){
                 if (xhr.status === 200) {
                     let response = JSON.parse(xhr.responseText);
                     document.getElementById('designer-settings').click();
-                    document.getElementById('cliparts-tab').click();
+                    setTimeout(() => {
+                      document.getElementById('cliparts-tab').click();
+                    }, 2000);
                     Swal.fire({
                       title: "Deleted!",
                       text: "Texture has been deleted.",

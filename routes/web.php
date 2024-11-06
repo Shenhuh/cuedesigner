@@ -53,7 +53,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::delete('/admin/cliparts/{id}', [ClipartController::class, 'destroy']);
 
     Route::post('/admin/wraps', [WrapController::class, 'store'])->name('wraps.store'); // Store new texture
-
+    Route::put('/admin/wraps/{id}', [WrapController::class, 'update']);
+    Route::delete('/admin/wraps/{id}', [WrapController::class, 'destroy']);
     
 });
 

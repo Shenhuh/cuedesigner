@@ -6,6 +6,8 @@ use App\Http\Controllers\ContentController;
 use App\Http\Controllers\TextureController;
 use App\Http\Controllers\ClipartController;
 use App\Http\Controllers\WrapController;
+use App\Http\Controllers\WoodController;
+use App\Http\Controllers\JointController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,15 +48,25 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::put('/admin/textures/{id}', [TextureController::class, 'update']);
     Route::delete('/admin/textures/{id}', [TextureController::class, 'destroy']);
 
-
     //Cliparts
     Route::post('/admin/cliparts', [ClipartController::class, 'store'])->name('cliparts.store'); // Store new texture
     Route::put('/admin/cliparts/{id}', [ClipartController::class, 'update']);
     Route::delete('/admin/cliparts/{id}', [ClipartController::class, 'destroy']);
 
+    //Wraps
     Route::post('/admin/wraps', [WrapController::class, 'store'])->name('wraps.store'); // Store new texture
     Route::put('/admin/wraps/{id}', [WrapController::class, 'update']);
     Route::delete('/admin/wraps/{id}', [WrapController::class, 'destroy']);
+
+    //Woods
+    Route::post('/admin/woods', [WoodController::class, 'store'])->name('woods.store'); // Store new texture
+    Route::put('/admin/woods/{id}', [WoodController::class, 'update']);
+    Route::delete('/admin/woods/{id}', [WoodController::class, 'destroy']);
+
+    //Joint
+    Route::post('/admin/joints', [JointController::class, 'store'])->name('joints.store'); // Store new texture
+    Route::put('/admin/joints/{id}', [JointController::class, 'update']);
+    Route::delete('/admin/joints/{id}', [JointController::class, 'destroy']);
     
 });
 

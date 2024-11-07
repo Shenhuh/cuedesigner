@@ -31,7 +31,7 @@ document.addEventListener('click', function(e){
                     }, 2000);
                     Swal.fire({
                       title: "Deleted!",
-                      text: "Texture has been deleted.",
+                      text: "Wrap has been deleted.",
                       icon: "success"
                     });
                 } else {

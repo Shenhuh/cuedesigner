@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Clipart;
 use App\Models\Texture;
 use App\Models\Wrap;
+use App\Models\Wood;
+use App\Models\Joint;
 use Illuminate\Http\Request;
 
 class ContentController extends Controller
@@ -20,7 +22,9 @@ class ContentController extends Controller
             $textures = Texture::all();
             $cliparts = Clipart::all();
             $wraps = Wrap::all();
-            return view('admin.partials.designer-settings', compact('textures', 'wraps', 'cliparts'));
+            $woods = Wood::all();
+            $joints = Joint::all();
+            return view('admin.partials.designer-settings', compact('textures', 'wraps', 'woods', 'joints', 'cliparts'));
         } elseif ($type === 'saved-designs') {
             return view('admin.partials.saved-designs');
         } elseif ($type === 'archives') {

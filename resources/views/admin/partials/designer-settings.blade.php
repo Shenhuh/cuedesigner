@@ -16,7 +16,7 @@
         role="tab" aria-controls="wrap" aria-selected="false">Wrap</button>
     </li>
     <li class="nav-item" role="presentation">
-        <button class="nav-link" id="wood-tab" data-bs-toggle="tab" data-bs-target="#wood" type="button" 
+        <button class="nav-link" id="woods-tab" data-bs-toggle="tab" data-bs-target="#wood" type="button" 
         role="tab" aria-controls="wood" aria-selected="false">Wood</button>
     </li>
     <li class="nav-item" role="presentation">
@@ -36,10 +36,10 @@
             @include('admin.partials._wrap', ['wraps' => $wraps])
         </div>
         <div class="tab-pane fade" id="wood" role="tabpanel" aria-labelledby="wood-tab">
-            @include('admin.partials._wood')
+            @include('admin.partials._wood', ['woods' => $woods])
         </div>
         <div class="tab-pane fade" id="joints" role="tabpanel" aria-labelledby="joints-tab">
-            @include('admin.partials._joints')
+            @include('admin.partials._joints', ['joints' => $joints])
         </div>
     </div>
 </div>

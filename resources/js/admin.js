@@ -12,6 +12,8 @@ const Swal = require('sweetalert2');
 require('./addTexture');
 require('./addClipart');
 require('./addWrap');
+require('./addWood');
+require('./addJoint');
 
 document.addEventListener('DOMContentLoaded', function(){
 
@@ -192,6 +194,14 @@ document.addEventListener('DOMContentLoaded', function(){
                 let wraps = new DataTable('#wraps', {
                     responsive: true
                 });
+
+                let woods = new DataTable('#woods', {
+                    responsive: true
+                });
+
+                let joints = new DataTable('#joint', {
+                    responsive: true
+                });
               
                 require('./textureTableAction');
                 require('./deleteTexture');
@@ -204,6 +214,14 @@ document.addEventListener('DOMContentLoaded', function(){
                 require('./wrapTableAction');
                 require('./updateWrap');
                 require('./deleteWrap');
+
+                require('./woodTableAction');
+                require('./updateWood');
+                require('./deleteWood');
+
+                require('./jointTableAction');
+                require('./updateJoint');
+                require('./deleteJoint');
                
             } else {
                 console.error('Request failed. Status:', xhr.status);

@@ -8,6 +8,7 @@ use App\Http\Controllers\ClipartController;
 use App\Http\Controllers\WrapController;
 use App\Http\Controllers\WoodController;
 use App\Http\Controllers\JointController;
+use App\Http\Controllers\DesignerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,9 +25,10 @@ Route::get('/', function () {
 });
 
 
-Route::get('/designer', function () {
-    return view('designer');
-});
+// Route::get('/designer', function () {
+//     return view('designer');
+// });
+Route::get('/designer', [DesignerController::class, 'index']);
 
 Auth::routes();
 

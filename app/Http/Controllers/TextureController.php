@@ -10,6 +10,29 @@ use Illuminate\Support\Facades\Storage;
 class TextureController extends Controller
 {
 
+    public function index()
+    {
+        try {
+            // Retrieve all textures from the database
+            $textures = Texture::all();
+
+            // Return the textures as a JSON response
+            return response()->json([
+                'message' => 'Textures retrieved successfully!',
+                'data' => $textures
+            ], 200);
+
+        } catch (\Exception $e) {
+            // Log the error for debugging
+            Log::error('Error retrieving textures: ' . $e->getMessage());
+
+            // Return a JSON response with error details
+            return response()->json([
+                'error' => 'Unable to retrieve textures.',
+                'details' => $e->getMessage()
+            ], 500);
+        }
+    }
 
     public function store(Request $request)
     {

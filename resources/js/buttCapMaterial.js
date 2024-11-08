@@ -4,8 +4,8 @@ import black from '../../public/assets/black.png';
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('butt-cap-material').addEventListener("change", function(event){
-     
+    document.getElementById('butt-sleeve-material').addEventListener("change", function(event){
+
             switch (event.target.value) {
                 case "black":
                     currentPosition.y = 3990;

@@ -2,6 +2,7 @@ import { fabricCanvas1, currentDimension } from '../refabric.js';
 
 
 export function addImageToPart(image, width, height, top, left, id, part){
+
     setTimeout(() => {
         fabric.Image.fromURL(image, function(loadedImg) {
             var img = loadedImg;

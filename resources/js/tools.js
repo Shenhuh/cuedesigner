@@ -101,17 +101,17 @@ document.addEventListener('DOMContentLoaded', function () {
         stain.forEach(t => t.style.border = "2px solid #ccc");
     }
 
-    document.getElementById('butt-cap-material').addEventListener('change', function(event){
-        const stainSection = document.getElementById('butt-cap-stain');
-        const paintSection = document.getElementById('butt-cap-paint');
-    
+    document.getElementById('butt-sleeve-material').addEventListener('change', function(event){
+        const stainSection = document.getElementById('butt-sleeve-stain');
+        const paintSection = document.getElementById('butt-sleeve-paint');
+     
         switch (event.target.value) {
-            case "butt-cap-stain":
+            case "butt-sleeve-stain":
                 paintSection.classList.add('d-none');
                 stainSection.classList.remove('d-none');
                 stainSection.classList.add('d-block');
                 break;
-            case "butt-cap-paint":
+            case "butt-sleeve-paint":
                 stainSection.classList.add('d-none');
                 paintSection.classList.remove('d-none');
                 paintSection.classList.add('d-flex');

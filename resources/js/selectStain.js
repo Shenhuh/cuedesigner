@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
             objectsToRemove.forEach(object => fabricCanvas1.remove(object));
             
             // Call the addImageToPart function
-            addImageToPart.addImageToPart(tool.src, currentDimension.w, currentDimension.h, currentPosition.y, currentPosition.x, `${currentPart.value}stain`, tool.dataset.part);
+            addImageToPart.addImageToPart(tool.src, currentDimension.w, currentDimension.h, currentPosition.y, currentPosition.x, `${currentPart.value}stain`, tool.dataset.part, false);
         });
     });
 });

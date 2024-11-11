@@ -1,7 +1,7 @@
 import { fabricCanvas1, currentDimension } from '../refabric.js';
 
 
-export function addImageToPart(image, width, height, top, left, id, part){
+export function addImageToPart(image, width, height, top, left, id, part, selectable){
 
     setTimeout(() => {
         fabric.Image.fromURL(image, function(loadedImg) {
@@ -12,7 +12,7 @@ export function addImageToPart(image, width, height, top, left, id, part){
                 top: top,
                 id: id,
                 part: part,
-                selectable: false,
+                selectable: selectable,
                 // width: 447,
                 // height: 200,
                 scaleX: width / loadedImg.width,

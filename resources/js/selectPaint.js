@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
       
             // Call the addImageToPart function
 
-            addImageToPart.addImageToPart(tool.src, currentDimension.w, currentDimension.h, currentPosition.y, currentPosition.x, `${currentPart.value}paint`, tool.dataset.part);
+            addImageToPart.addImageToPart(tool.src, currentDimension.w, currentDimension.h, currentPosition.y, currentPosition.x, `${currentPart.value}paint`, tool.dataset.part, false);
         });
     });
 });

@@ -111,9 +111,9 @@
                         <label for="design" class="form-label">Choose Design/Material:</label>
                         <select class="form-select" id="butt-cap-material">
                             <option value="black">Black</option>
-                            <option>White</option>
-                            <option>Bone</option>
-                            <option>Stainless Steel</option>
+                            <option value="white">White</option>
+                            <option value="bone">Bone</option>
+                            <option value="stainless">Stainless Steel</option>
     
                         </select>
     
@@ -149,20 +149,20 @@
                                 </button>
                                 </h2>
                                 <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-    <label for="design" class="form-label">Choose Design/Material:</label>
-    <select id="butt-sleeve-material" class="form-control form-select mr-4">
-        <option value="butt-sleeve-stain">Stain</option>
-        <option value="butt-sleeve-paint">Paint</option>
-    </select>
-                                </div>
+                                    <div class="accordion-body">
+                                        <label for="design" class="form-label">Choose Design/Material:</label>
+                                        <select id="butt-sleeve-material" class="form-control form-select mr-4">
+                                            <option value="butt-sleeve-stain">Stain</option>
+                                            <option value="butt-sleeve-paint">Paint</option>
+                                        </select>
+                                    </div>
 
                                 <div class="container mt-4">
                                     <!-- Include the Stain Partial -->
-                                    @include('partials.stain', ['textures' => $texture])
+                                    @include('partials.stain', ['textures' => $textures])
 
                                     <!-- Include the Paint Partial -->
-                                    @include('partials.paint', ['textures' => $texture])
+                                    @include('partials.paint', ['textures' => $textures])
                                 </div>
 
 
@@ -217,137 +217,7 @@
                                         
                                     </div>
                                     <div class="container">
-                                        <div id="butt-cap-stain" class="row load-stain d-flex overflow-y-auto" style="height: 350px;">
-                                            <!-- Image 1 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Stain 1" class="img-fluid" onclick="selectTexture('stain1')">
-                                                    <p class="text-center">Stain 1</p>
-                                                </div>
-                                            </div>
-                                            <!-- Image 2 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                    <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Stain 2" class="img-fluid" onclick="selectTexture('stain2')">
-                                                    <p class="text-center">Stain 2</p>
-                                                </div>
-                                            </div>
-                                            <!-- Image 3 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Stain 3" class="img-fluid" onclick="selectTexture('stain3')">
-                                                    <p class="text-center">Stain 3</p>
-                                                </div>
-                                            </div>
-                                            <!-- Image 4 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Paint 1" class="img-fluid" onclick="selectTexture('paint1')">
-                                                    <p class="text-center">Paint 1</p>
-                                                </div>
-                                            </div>
-                                            <!-- Image 5 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Paint 2" class="img-fluid" onclick="selectTexture('paint2')">
-                                                    <p class="text-center">Paint 2</p>
-                                                </div>
-                                            </div>
-                                            <!-- Image 6 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Paint 3" class="img-fluid" onclick="selectTexture('paint3')">
-                                                    <p class="text-center">Paint 3</p>
-                                                </div>
-                                            </div>
-                                            <!-- Image 7 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Custom 1" class="img-fluid" onclick="selectTexture('custom1')">
-                                                    <p class="text-center">Custom 1</p>
-                                                </div>
-                                            </div>
-                                            <!-- Image 8 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Custom 2" class="img-fluid" onclick="selectTexture('custom2')">
-                                                    <p class="text-center">Custom 2</p>
-                                                </div>
-                                            </div>
-                                            <!-- Image 9 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Custom 3" class="img-fluid" onclick="selectTexture('custom3')">
-                                                    <p class="text-center">Custom 3</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div id="butt-cap-paint" class="row load-paint d-none overflow-y-auto mt-4" style="height: 350px;">
-                                            <!-- Image 1 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Stain 1" class="img-fluid" onclick="selectTexture('stain1')">
-                                                    <p class="text-center">Stain 1</p>
-                                                </div>
-                                            </div>
-                                            <!-- Image 2 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                    <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Stain 2" class="img-fluid" onclick="selectTexture('stain2')">
-                                                    <p class="text-center">sdain 2</p>
-                                                </div>
-                                            </div>
-                                            <!-- Image 3 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Stain 3" class="img-fluid" onclick="selectTexture('stain3')">
-                                                    <p class="text-center">Stdin 3</p>
-                                                </div>
-                                            </div>
-                                            <!-- Image 4 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Paint 1" class="img-fluid" onclick="selectTexture('paint1')">
-                                                    <p class="text-center">Paint 1</p>
-                                                </div>
-                                            </div>
-                                            <!-- Image 5 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Paint 2" class="img-fluid" onclick="selectTexture('paint2')">
-                                                    <p class="text-center">Paint 2</p>
-                                                </div>
-                                            </div>
-                                            <!-- Image 6 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Paint 3" class="img-fluid" onclick="selectTexture('paint3')">
-                                                    <p class="text-center">Paint 3</p>
-                                                </div>
-                                            </div>
-                                            <!-- Image 7 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Custom 1" class="img-fluid" onclick="selectTexture('custom1')">
-                                                    <p class="text-center">Custom 1</p>
-                                                </div>
-                                            </div>
-                                            <!-- Image 8 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Custom 2" class="img-fluid" onclick="selectTexture('custom2')">
-                                                    <p class="text-center">Custom 2</p>
-                                                </div>
-                                            </div>
-                                            <!-- Image 9 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Custom 3" class="img-fluid" onclick="selectTexture('custom3')">
-                                                    <p class="text-center">Custom 3</p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @include('partials.engravings', ['cliparts' => $cliparts])                                    
                                     </div>
                                 </div>
                             </div>
@@ -360,140 +230,9 @@
                                 </h2>
                                 <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    
                                     </div>
                                     <div class="container">
-                                        <div id="butt-cap-stain" class="row load-stain d-flex overflow-y-auto" style="height: 350px;">
-                                            <!-- Image 1 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Stain 1" class="img-fluid" onclick="selectTexture('stain1')">
-                                                    <p class="text-center">Stain 1</p>
-                                                </div>
-                                            </div>
-                                            <!-- Image 2 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                    <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Stain 2" class="img-fluid" onclick="selectTexture('stain2')">
-                                                    <p class="text-center">Stain 2</p>
-                                                </div>
-                                            </div>
-                                            <!-- Image 3 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Stain 3" class="img-fluid" onclick="selectTexture('stain3')">
-                                                    <p class="text-center">Stain 3</p>
-                                                </div>
-                                            </div>
-                                            <!-- Image 4 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Paint 1" class="img-fluid" onclick="selectTexture('paint1')">
-                                                    <p class="text-center">Paint 1</p>
-                                                </div>
-                                            </div>
-                                            <!-- Image 5 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Paint 2" class="img-fluid" onclick="selectTexture('paint2')">
-                                                    <p class="text-center">Paint 2</p>
-                                                </div>
-                                            </div>
-                                            <!-- Image 6 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Paint 3" class="img-fluid" onclick="selectTexture('paint3')">
-                                                    <p class="text-center">Paint 3</p>
-                                                </div>
-                                            </div>
-                                            <!-- Image 7 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Custom 1" class="img-fluid" onclick="selectTexture('custom1')">
-                                                    <p class="text-center">Custom 1</p>
-                                                </div>
-                                            </div>
-                                            <!-- Image 8 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Custom 2" class="img-fluid" onclick="selectTexture('custom2')">
-                                                    <p class="text-center">Custom 2</p>
-                                                </div>
-                                            </div>
-                                            <!-- Image 9 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Custom 3" class="img-fluid" onclick="selectTexture('custom3')">
-                                                    <p class="text-center">Custom 3</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div id="butt-cap-paint" class="row load-paint d-none overflow-y-auto mt-4" style="height: 350px;">
-                                            <!-- Image 1 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Stain 1" class="img-fluid" onclick="selectTexture('stain1')">
-                                                    <p class="text-center">Stain 1</p>
-                                                </div>
-                                            </div>
-                                            <!-- Image 2 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                    <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Stain 2" class="img-fluid" onclick="selectTexture('stain2')">
-                                                    <p class="text-center">sdain 2</p>
-                                                </div>
-                                            </div>
-                                            <!-- Image 3 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Stain 3" class="img-fluid" onclick="selectTexture('stain3')">
-                                                    <p class="text-center">Stdin 3</p>
-                                                </div>
-                                            </div>
-                                            <!-- Image 4 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Paint 1" class="img-fluid" onclick="selectTexture('paint1')">
-                                                    <p class="text-center">Paint 1</p>
-                                                </div>
-                                            </div>
-                                            <!-- Image 5 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Paint 2" class="img-fluid" onclick="selectTexture('paint2')">
-                                                    <p class="text-center">Paint 2</p>
-                                                </div>
-                                            </div>
-                                            <!-- Image 6 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Paint 3" class="img-fluid" onclick="selectTexture('paint3')">
-                                                    <p class="text-center">Paint 3</p>
-                                                </div>
-                                            </div>
-                                            <!-- Image 7 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Custom 1" class="img-fluid" onclick="selectTexture('custom1')">
-                                                    <p class="text-center">Custom 1</p>
-                                                </div>
-                                            </div>
-                                            <!-- Image 8 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Custom 2" class="img-fluid" onclick="selectTexture('custom2')">
-                                                    <p class="text-center">Custom 2</p>
-                                                </div>
-                                            </div>
-                                            <!-- Image 9 -->
-                                            <div class="col-4">
-                                                <div class="texture-option">
-                                                <img src="{{ asset('./images/welcome-bg.jpg') }}" alt="Custom 3" class="img-fluid" onclick="selectTexture('custom3')">
-                                                    <p class="text-center">Custom 3</p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    @include('partials.inlays', ['cliparts' => $cliparts])      
                                     </div>
                                 </div>
                             </div>

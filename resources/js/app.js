@@ -14,7 +14,7 @@ require('./addText');
 require('./buttCapText');
 require('./buttCapMaterial');
 require('./uploadImage');
-
+require('./displayClipart');
 document.addEventListener('DOMContentLoaded', function(){
     const referenceDiv = document.getElementById('renderer');
     const floatingDiv = document.getElementById('floatingDiv');

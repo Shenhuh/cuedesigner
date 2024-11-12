@@ -11,7 +11,7 @@ require('./selectStain');
 require('./selectPaint');
 require('./addShape');
 require('./addText');
-require('./buttCapText');
+// require('./buttCapText');
 require('./buttCapMaterial');
 require('./uploadImage');
 require('./displayClipart');

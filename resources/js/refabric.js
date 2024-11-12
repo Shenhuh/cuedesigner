@@ -13,7 +13,7 @@ let debounceTimer;
 var texture;
 export var selectedTextures = [null, null, null, null];
 export var currentPart = { value: null };
-export var currentPosition = { x: 0, y: 3890 };
+export var currentPosition = { x: 0, y: 3590 };
 
 export var currentDimension = { w: null, h: null };
 var model;

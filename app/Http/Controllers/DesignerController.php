@@ -8,6 +8,7 @@ use App\Models\Texture;
 use App\Models\Wrap;
 use App\Models\Joint;
 use App\Models\Wood;
+use App\Models\Shapes;
 class DesignerController extends Controller
 {
     public function index()
@@ -17,7 +18,8 @@ class DesignerController extends Controller
         $cliparts = Clipart::all();
         $wraps = Wrap::all();
         $joints = Joint::all();
-        return view('designer', compact('textures', 'joints', 'wraps', 'woods', 'cliparts'));
+        $shapes = Shapes::all();
+        return view('designer', compact('textures', 'joints', 'shapes', 'wraps', 'woods', 'cliparts'));
     }
 
 

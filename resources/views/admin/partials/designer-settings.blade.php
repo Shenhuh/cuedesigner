@@ -23,6 +23,10 @@
         <button class="nav-link" id="joints-tab" data-bs-toggle="tab" data-bs-target="#joints" type="button" 
         role="tab" aria-controls="joints" aria-selected="false">Joints</button>
     </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="shapes-tab" data-bs-toggle="tab" data-bs-target="#shapes" type="button" 
+        role="tab" aria-controls="shapes" aria-selected="false">Shapes</button>
+    </li>
     </ul>
 
     <div class="tab-content overflow-auto" id="myTabContent">
@@ -40,6 +44,9 @@
         </div>
         <div class="tab-pane fade" id="joints" role="tabpanel" aria-labelledby="joints-tab">
             @include('admin.partials._joints', ['joints' => $joints])
+        </div>
+        <div class="tab-pane fade" id="shapes" role="tabpanel" aria-labelledby="shapes-tab">
+            @include('admin.partials._shapes', ['shapes' => $shapes])
         </div>
     </div>
 </div>

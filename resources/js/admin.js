@@ -202,6 +202,10 @@ document.addEventListener('DOMContentLoaded', function(){
                 let joints = new DataTable('#joint', {
                     responsive: true
                 });
+
+                let shapes = new DataTable('#shape', {
+                    responsive: true
+                });
               
                 require('./textureTableAction');
                 require('./deleteTexture');

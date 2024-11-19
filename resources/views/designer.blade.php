@@ -164,11 +164,11 @@
                                 <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         <label for="design" class="form-label">Select a shape:</label>
-                                        <select class="form-select">
-                                            <option>Rectangle</option>
-                                            <option>Circle</option>
-                                            <option>Heart</option>
-                                            <option>Diamond</option>
+                                        <select class="form-select" id="selected-shape">
+                                            
+                                            @foreach ($shapes as $shape)
+                                            <option value="{{ $shape->polygonData }}">{{ $shape->name }}</option>
+                                            @endforeach
                                         </select>
 
 

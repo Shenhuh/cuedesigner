@@ -1,7 +1,7 @@
 import { fabric } from 'fabric';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-
+import { AlignGuidelines } from "fabric-guideline-plugin";
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import myImage from '../../public/images/23.png';
@@ -21,8 +21,21 @@ var camera;
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize Three.js scene, camera, and renderer
     const scene = new THREE.Scene();
-    fabricCanvas1 = new fabric.Canvas('canvas1');
+    fabricCanvas1 = new fabric.Canvas('canvas1',{});
     fabricCanvas2 = new fabric.Canvas('canvas2');
+
+    
+    const guideline = new AlignGuidelines({
+		canvas: fabricCanvas1,
+		aligningOptions: {
+			lineColor: "#1F618D",
+			lineWidth: 2,
+			lineMargin: 2,
+		}
+	});
+      
+    guideline.init();
+    console.log(guideline)
 
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({
@@ -320,5 +333,4 @@ function updateTexture() {
         texture.needsUpdate = true;
     }
 }
-
 

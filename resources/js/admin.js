@@ -14,6 +14,7 @@ require('./addClipart');
 require('./addWrap');
 require('./addWood');
 require('./addJoint');
+require('./addShapeAdmin');
 
 document.addEventListener('DOMContentLoaded', function(){
 
@@ -203,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function(){
                     responsive: true
                 });
 
-                let shapes = new DataTable('#shape', {
+                let shapes = new DataTable('#shapesTable', {
                     responsive: true
                 });
               
@@ -226,6 +227,8 @@ document.addEventListener('DOMContentLoaded', function(){
                 require('./jointTableAction');
                 require('./updateJoint');
                 require('./deleteJoint');
+
+                require('./shapesTableAction');
                
             } else {
                 console.error('Request failed. Status:', xhr.status);

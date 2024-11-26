@@ -7,7 +7,7 @@
 
 <div class="container mt-4 mb-4" style="overflow-y: auto;">
     <div class="table-responsive">
-        <table class="table table-modern table-hover" id="shape">
+        <table class="table table-modern table-hover" id="shapesTable">
             <thead>
                 <tr>
                     <th scope="col">Shape ID#</th>
@@ -48,22 +48,22 @@
         <button type="button" class="btn-close" id="shape-modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <p><i class="bi bi-info-circle me-2"></i>Only <strong>PNG</strong> and <strong>JPG</strong> files are accepted, and the file size must not exceed <strong>2MB</strong>.</p>
-        <div class="mb-3">
-            <label for="formFile" class="form-label">Upload Image of Shape</label>
-            <input class="form-control shape-image" type="file" id="formFile">
-        </div>
+      <p><i class="bi bi-info-circle me-2"></i>Polygon Data is the x and y coordinates to form the shape.</p>
         <div class="mb-3 mt-3">
             <label for="shape-name" class="form-label">Shape Name</label>
             <input type="text" class="form-control shape-name" id="shape-name">
         </div>
-        <label for="shape-amount" class="form-label">Shape Amount</label>
+        <div class="mb-3 mt-3">
+            <label for="shape-data" class="form-label">Polygon Data</label>
+            <input type="text" class="form-control shape-data" id="shape-data">
+        
+      </div>
+      <label for="shape-amount" class="form-label">Shape Amount</label>
         <div class="input-group mb-3">
             <span class="input-group-text bg-white"><i class="bi bi-currency-dollar"></i></span>
             <input id="shape-amount" type="number" class="form-control shape-amount" aria-label="Amount (to the nearest dollar)">
             
         </div>
-      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
         <button type="button" class="btn btn-primary" id="save-shape">Add</button>
@@ -73,7 +73,7 @@
 </div>
 
 
-<div class="modal fade" id="editShapeModal" tabindex="-1" aria-labelledby="edit-shape" aria-hidden="true">
+<div class="modal fade" id="editShapeccModal" tabindex="-1" aria-labelledby="edit-shape" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">

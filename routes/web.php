@@ -9,6 +9,7 @@ use App\Http\Controllers\WrapController;
 use App\Http\Controllers\WoodController;
 use App\Http\Controllers\JointController;
 use App\Http\Controllers\DesignerController;
+use App\Http\Controllers\ShapesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -69,6 +70,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/admin/joints', [JointController::class, 'store'])->name('joints.store'); // Store new texture
     Route::put('/admin/joints/{id}', [JointController::class, 'update']);
     Route::delete('/admin/joints/{id}', [JointController::class, 'destroy']);
+
+    //Shape
+    Route::post('/admin/shapes', [ShapesController::class, 'store'])->name('shapes.store'); // Store new texture
+    Route::put('/admin/shapes/{id}', [ShapesController::class, 'update']);
+    Route::delete('/admin/shapes/{id}', [ShapesController::class, 'destroy']);
     
 });
 

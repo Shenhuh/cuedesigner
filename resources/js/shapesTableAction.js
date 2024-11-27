@@ -1,17 +1,16 @@
-document.querySelectorAll('#shapesTable tbody tr').forEach(function (row) {
-    // Set modal attributes for each row
-    row.setAttribute('data-bs-toggle', 'modal');
-    row.setAttribute('data-bs-target', '#editShapeccModal');
+document.addEventListener("click", function(event) {
+    // Check if a table row in the #shapesTable is clicked
+    const clickedRow = event.target.closest('tr.shapeData');
+    if (clickedRow) {
+        const rowData = Array.from(clickedRow.cells).map(cell => cell.textContent.trim());
 
-    row.addEventListener('click', function () {
-        // // Example of updating modal fields with row data
-        // const rowData = Array.from(this.cells).map(cell => cell.textContent.trim());
+        // Populate the modal fields
+        document.getElementById('shape-id').innerText = rowData[0];
+        document.getElementById('shape-id-hidden').value = rowData[0];
+        document.getElementById('edit-shape-name').value = rowData[1];
+        document.getElementById('edit-shape-data').value = rowData[2];
+        document.getElementById('edit-shape-amount').value = parseFloat(rowData[3].replace('$', '')); // Remove '$' and convert to number
 
-        // document.getElementById('shape-id').innerText = rowData[0];
-        // document.getElementById('shape-id-hidden').value = rowData[0];
-        // document.getElementById('edit-shape-name').value = rowData[1];
-        
-        // const amount = parseFloat(rowData[3].slice(1)); // Assuming rowData[3] is a currency value
-        // document.getElementById('edit-shape-amount').value = amount;
-    });
+        // If you want to update the modal dynamically for more fields, add logic here.
+    }
 });

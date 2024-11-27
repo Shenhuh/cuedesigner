@@ -229,6 +229,8 @@ document.addEventListener('DOMContentLoaded', function(){
                 require('./deleteJoint');
 
                 require('./shapesTableAction');
+                require('./updateShape');
+                require('./deleteShape');
                
             } else {
                 console.error('Request failed. Status:', xhr.status);

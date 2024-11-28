@@ -33,51 +33,7 @@
 
 <div class="d-flex" style="height: 100vh;">
 
-    <div class="d-flex flex-column flex-shrink-0 bg-light" style="width: 4.5rem;">
-        <a href="/" class="d-block p-3 link-dark text-decoration-none" title="Icon-only" data-bs-toggle="tooltip" data-bs-placement="right">
-            <svg class="bi" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-            <span class="visually-hidden">Icon-only</span>
-        </a>
-        <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
-            <li class="nav-item">
-                <a href="#" class="nav-link active py-3 border-bottom side-tools" data-id="panel-tools" aria-current="page" title="Design" data-bs-toggle="tooltip" data-bs-placement="right">
-                  <i class="bi bi-brush"></i> 
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link py-3 border-bottom side-tools" title="Pool Cue Setup" data-id="pool-cue-setup" data-bs-toggle="tooltip" data-bs-placement="right">
-                <i class="bi bi-sliders2"></i>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link py-3 border-bottom side-tools" title="Orders" data-bs-toggle="tooltip" data-bs-placement="right">
-                    <svg class="bi" width="24" height="24" role="img" aria-label="Orders"><use xlink:href="#table"/></svg>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link py-3 border-bottom side-tools" title="Products" data-bs-toggle="tooltip" data-bs-placement="right">
-                    <svg class="bi" width="24" height="24" role="img" aria-label="Products"><use xlink:href="#grid"/></svg>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link py-3 border-bottom side-tools" title="Customers" data-bs-toggle="tooltip" data-bs-placement="right">
-                    <svg class="bi" width="24" height="24" role="img" aria-label="Customers"><use xlink:href="#people-circle"/></svg>
-                </a>
-            </li>
-        </ul>
-        <div class="dropdown border-top">
-            <a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle" id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://github.com/mdo.png" alt="mdo" width="24" height="24" class="rounded-circle">
-            </a>
-            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
-                <li><a class="dropdown-item" href="#">New project...</a></li>
-                <li><a class="dropdown-item" href="#">Settings</a></li>
-                <li><a class="dropdown-item" href="#">Profile</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Sign out</a></li>
-            </ul>
-        </div>  
-    </div>
+    @include('partials.sidebar')
 
     <div class="d-flex">
 
@@ -118,7 +74,7 @@
                         </select>
     
 
-                        <button class="btn btn-primary mt-3 w-100" data-bs-toggle="modal" data-bs-target="#textsModal">Add Text</button>
+                     
 
                     </div>
                     <div id="butt-sleeve" class="content" style="display: none;">
@@ -157,42 +113,6 @@
                             </div>
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    Shapes
-                                </button>
-                                </h2>
-                                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <label for="design" class="form-label">Select a shape:</label>
-                                        <select class="form-select" id="selected-shape">
-                                            
-                                            @foreach ($shapes as $shape)
-                                            <option value="{{ $shape->polygonData }}">{{ $shape->name }}</option>
-                                            @endforeach
-                                        </select>
-
-
-
-                                        <div class="row mt-4">
-                                            <div class="col">
-                                                <label for="stroke-color" class="form-label">Stroke Color</label>
-                                                <input type="color" class="form-control form-control-color" id="stroke-color" value="#CCCCCC">
-                                            </div>
-                                            <div class="col">
-                                                <label for="fill-color" class="form-label">Fill Color</label>
-                                                <input type="color" class="form-control form-control-color" id="fill-color" value="#CCCCCC">
-                                            </div>
-                                        </div>
-                    
-                                        <label for="stroke-width" class="form-label">Stroke Width</label>
-                                        <input type="number" class="form-control form-control" id="stroke-width" value="8">
-                                        
-                                        <button id="add-shape" class="btn btn-primary mt-4 w-100">Add Shape</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                     Engravings
                                 </button>
@@ -223,26 +143,7 @@
                             </div>
                         
 
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                    Upload a clipart
-                                </button>
-                                </h2>
-                                <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <input type="file" id="upload-clipart" class="form-control" accept=".png, .jpg, .jpeg">
-                                        <label for="select-clipart-type" class="form-label mt-3">Select Type of design:</label>
-                                        <select class="form-control form-select" name="" id="select-clipart-type">
-                                            <option value="engraved">Engraved</option>
-                                            <option value="inlay">Inlay</option>
-                                        </select>
-                                        <button class="btn btn-primary mt-3 w-100" id="upload-image">Add</button>
-                                    </div>
-                                
-                                </div>
-                            </div>
-                            <button class="btn btn-primary mt-3 w-100" data-bs-toggle="modal" data-bs-target="#textsModal">Add Text</button>
+    
                         </div>
 
 
@@ -346,4 +247,6 @@
 
 
 @include('partials.text')
+@include('partials.upload')
+@include('partials.shape')
 @endsection

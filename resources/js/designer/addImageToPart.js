@@ -19,9 +19,26 @@ export function addImageToPart(image, width, height, top, left, id, part, select
                 scaleY: height / loadedImg.height
             });
 
-            fabricCanvas1.add(img);
-            fabricCanvas1.renderAll();
+            if(id === 'butt-cap'){
+                const objects = fabricCanvas1.getObjects();
+                const firstImage = objects.find(obj => obj.type === 'butt-cap');
+                if(firstImage){
+
+                    fabricCanvas1.remove(firstImage);
+                }
+
+                fabricCanvas1.add(img);
+                fabricCanvas1.insertAt(img, 0);
+                fabricCanvas1.renderAll();
+            }
+            else{
+                fabricCanvas1.add(img);
+                fabricCanvas1.insertAt(img, 0);
+                fabricCanvas1.renderAll();
+            }
          
         });
     }, 1000);
 }
+
+//canvasx.insertAt(textureImg, 0);

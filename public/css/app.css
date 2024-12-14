@@ -12136,3 +12136,24 @@ i {
 .modal-header{
   border:none !important;
 }
+
+#contextMenu {
+  display: none;
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+#contextMenu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#contextMenu ul li {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+#contextMenu ul li:hover {
+  background-color: #f0f0f0;
+}

@@ -18,24 +18,77 @@ export function addImageToPart(image, width, height, top, left, id, part, select
                 scaleX: width / loadedImg.width,
                 scaleY: height / loadedImg.height
             });
-
+            id = id.slice(0, -5);
+        
             if(id === 'butt-cap'){
                 const objects = fabricCanvas1.getObjects();
-                const firstImage = objects.find(obj => obj.type === 'butt-cap');
+                const firstImage = objects.find(obj => obj.id === 'butt-cap');
                 if(firstImage){
-
+       
                     fabricCanvas1.remove(firstImage);
                 }
+              
 
-                fabricCanvas1.add(img);
-                fabricCanvas1.insertAt(img, 0);
+                // fabricCanvas1.add(img);
+                fabricCanvas1.insertAt(img, 1);
                 fabricCanvas1.renderAll();
             }
-            else{
-                fabricCanvas1.add(img);
-                fabricCanvas1.insertAt(img, 0);
+            else if(id === 'butt-sleeve'){
+                const objects = fabricCanvas1.getObjects();
+
+                const firstImage = objects.find(obj => obj.id === 'butt-sleeve');
+                if(firstImage){
+       
+                    fabricCanvas1.remove(firstImage);
+                }
+              
+
+                // fabricCanvas1.add(img);
+                fabricCanvas1.insertAt(img, 1);
                 fabricCanvas1.renderAll();
             }
+            else if(id === 'butt-wrap'){
+                const objects = fabricCanvas1.getObjects();
+                const firstImage = objects.find(obj => obj.id === 'butt-wrap');
+                if(firstImage){
+       
+                    fabricCanvas1.remove(firstImage);
+                }
+              
+
+                // fabricCanvas1.add(img);
+                fabricCanvas1.insertAt(img, 1);
+                fabricCanvas1.renderAll();
+            }
+            else if(id === 'forearm'){
+                const objects = fabricCanvas1.getObjects();
+                const firstImage = objects.find(obj => obj.id === 'forearm');
+                if(firstImage){
+       
+                    fabricCanvas1.remove(firstImage);
+                }
+              
+
+                // fabricCanvas1.add(img);
+                fabricCanvas1.insertAt(img, 1);
+                fabricCanvas1.renderAll();
+            }
+            else if(id === 'joint-collar'){
+                const objects = fabricCanvas1.getObjects();
+                const firstImage = objects.find(obj => obj.id === 'joint-collr');
+                if(firstImage){
+       
+                    fabricCanvas1.remove(firstImage);
+                }
+              
+
+                // fabricCanvas1.add(img);
+                fabricCanvas1.insertAt(img, 1);
+                fabricCanvas1.renderAll();
+            }
+         
+            
+            console.log(fabricCanvas1)
          
         });
     }, 1000);

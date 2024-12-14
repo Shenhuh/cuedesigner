@@ -249,4 +249,5 @@
 @include('partials.text')
 @include('partials.upload')
 @include('partials.shape')
+@include('partials.contextmenu')
 @endsection

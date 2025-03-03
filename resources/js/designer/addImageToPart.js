@@ -18,22 +18,30 @@ export function addImageToPart(image, width, height, top, left, id, part, select
                 scaleX: width / loadedImg.width,
                 scaleY: height / loadedImg.height
             });
+
             id = id.slice(0, -5);
-        
+  
             if(id === 'butt-cap'){
                 const objects = fabricCanvas1.getObjects();
-                const firstImage = objects.find(obj => obj.id === 'butt-cap');
+                const firstImage = objects.find(obj => obj.id === 'butt-capstain');
+                
                 if(firstImage){
-       
+                    
                     fabricCanvas1.remove(firstImage);
+                    
+                    
                 }
-              
-
                 // fabricCanvas1.add(img);
                 fabricCanvas1.insertAt(img, 1);
                 fabricCanvas1.renderAll();
+                
+                
+                
+                
+                
             }
             else if(id === 'butt-sleeve'){
+               
                 const objects = fabricCanvas1.getObjects();
 
                 const firstImage = objects.find(obj => obj.id === 'butt-sleeve');
@@ -42,6 +50,7 @@ export function addImageToPart(image, width, height, top, left, id, part, select
                     fabricCanvas1.remove(firstImage);
                 }
               
+          
 
                 // fabricCanvas1.add(img);
                 fabricCanvas1.insertAt(img, 1);
@@ -75,7 +84,7 @@ export function addImageToPart(image, width, height, top, left, id, part, select
             }
             else if(id === 'joint-collar'){
                 const objects = fabricCanvas1.getObjects();
-                const firstImage = objects.find(obj => obj.id === 'joint-collr');
+                const firstImage = objects.find(obj => obj.id === 'joint-collar');
                 if(firstImage){
        
                     fabricCanvas1.remove(firstImage);
@@ -84,6 +93,10 @@ export function addImageToPart(image, width, height, top, left, id, part, select
 
                 // fabricCanvas1.add(img);
                 fabricCanvas1.insertAt(img, 1);
+                fabricCanvas1.renderAll();
+            }
+            else{
+                fabricCanvas1.add(img);
                 fabricCanvas1.renderAll();
             }
          

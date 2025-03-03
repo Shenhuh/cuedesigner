@@ -25,6 +25,17 @@
         transform: scale(1.05);
         border-color: #000;
     }
+    .clipart-option img {
+    border: 2px solid #ccc;
+    padding: 5px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+    .clipart-option img:hover {
+        transform: scale(1.05);
+        border-color: #000;
+    }
     .selected {
         border: 3px solid #007bff !important; /* Blue border when selected */
     }

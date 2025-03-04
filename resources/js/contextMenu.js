@@ -34,13 +34,11 @@ const menuItems = contextMenu.querySelectorAll('li');
 menuItems.forEach((item) => {
     item.addEventListener('click', (event) => {
         const id = event.target.dataset.id; // Use data attributes for identifying actions
-      
         if (id) {
             switch(id){
                 case 'copy':
                     Copy();
                     break;
-
                 case 'paste':
                     Paste();
                     break;
@@ -53,8 +51,20 @@ menuItems.forEach((item) => {
                 case 'delete':
                     Delete();
                     break;
+				case 'moveBackward':
+					MoveToBack();
+					break;
+				case 'sendToBack':
+					SendToBack();
+					break;
+				case 'moveForward':
+					MoveForward();
+					break;
+				case 'bringToFront':
+					BringToFront();
+					break;
                 default:
-                    alert(`Action ${action} is not implemented.`);
+                    alert(`Action is not implemented.`);
                     break;
             }
         }
@@ -116,7 +126,6 @@ function Paste(){
 	});
 }
 
-
 function Group(){
 	if (!fabricCanvas1.getActiveObject()) {
 		return;
@@ -164,4 +173,34 @@ function Delete() {
 			});
 		}
 	});
+}
+
+function MoveToBack(){
+	fabricCanvas1.getActiveObject().sendBackwards();
+	fabricCanvas1.requestRenderAll();
+}
+
+function SendToBack(){
+	let obj = fabricCanvas1.getActiveObject();
+    if (obj) {
+        fabricCanvas1.remove(obj);
+        fabricCanvas1.insertAt(obj, 1);
+        fabricCanvas1.requestRenderAll();
+    }
+}
+
+function MoveForward() {
+    let obj = fabricCanvas1.getActiveObject();
+    if (obj) {
+        obj.bringForward(); // Moves the object one step up in the stack
+        fabricCanvas1.requestRenderAll();
+    }
+}
+
+function BringToFront() {
+    let obj = fabricCanvas1.getActiveObject();
+    if (obj) {
+        obj.bringToFront(); // Moves the object to the top of the stack
+        fabricCanvas1.requestRenderAll(); // Refresh the canvas
+    }
 }

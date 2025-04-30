@@ -28,6 +28,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // Relationship: a user has many saved designs
+    public function savedDesigns()
+    {
+        return $this->hasMany(SavedDesigns::class);
+    }
+
     // Check if user is an admin
     public function isAdmin()
     {

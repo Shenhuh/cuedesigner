@@ -15,6 +15,7 @@ require('./addText');
 require('./buttCapMaterial');
 require('./uploadImage');
 require('./displayClipart');
+require('./saveDesign');
 document.addEventListener('DOMContentLoaded', function(){
   require('./contextMenu')
     const referenceDiv = document.getElementById('renderer');

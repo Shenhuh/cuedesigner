@@ -10,6 +10,7 @@ use App\Http\Controllers\WoodController;
 use App\Http\Controllers\JointController;
 use App\Http\Controllers\DesignerController;
 use App\Http\Controllers\ShapesController;
+use App\Http\Controllers\SavedDesignsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -75,6 +76,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/admin/shapes', [ShapesController::class, 'store'])->name('shapes.store'); // Store new texture
     Route::put('/admin/shapes/{id}', [ShapesController::class, 'update']);
     Route::delete('/admin/shapes/{id}', [ShapesController::class, 'destroy']);
+
+    
+
+
     
 });
 
@@ -82,3 +87,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::post('/designs', [SavedDesignsController::class, 'store']);
+Route::get('/designs/{id}', [SavedDesignsController::class, 'update']);
+Route::get('/designs/{id}', [SavedDesignsController::class, 'destroy']);

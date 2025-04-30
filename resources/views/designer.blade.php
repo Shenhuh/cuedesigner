@@ -7,7 +7,7 @@
 
     #renderer {
         border: 1px solid black;
-        width: 100vh;
+        width: 110vh;
         height: 100vh;
         position: relative;
     }
@@ -237,7 +237,8 @@
     
         <div id="floatingDiv" class="rounded-bottom fixed-top price d-flex justify-content-between align-items-center">
             <label class="form-label mt-2 ms-3" for="price"><strong>Price:</strong> <span id="price">$200</span></label>
-            <button class="btn btn-success me-3">Save</button>
+          
+            <button class="btn btn-success me-3" id="save-design">Save</button>
             
         </div>
         <div class="bg-light" id="canvas-div" style="flex-grow: 1; overflow-y: auto; height: 100vh; overflow-x:hidden;">
